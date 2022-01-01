@@ -1,0 +1,3 @@
+require('./Define')
+
+Object.Plugins = {}

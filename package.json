@@ -1,0 +1,42 @@
+{
+    "name": "@tyler.thayn/js.core",
+    "title": "TTS Design javascript core libraries",
+    "version": "0.0.9",
+    "description": "TTS Design's javascript core libraries for GScript, NodeJS & Browser implementations",
+    "author": {
+        "name": "TTS Design",
+        "email": "ttsdesign@gmail.com",
+        "url": "http://git.ttscloud.co"
+    },
+    "deprecated": false,
+    "keywords": [
+        "TTS Design",
+        "Javascript",
+        "Core"
+    ],
+    "license": "MIT",
+    "main": "dist/core.js",
+    "scripts": {
+        "build": "grunt make",
+        "docs": "jsdoc -c jsdoc.conf",
+        "prepare": "npm run-script build",
+		"preparex": "npm run-script build && npm run-script docs && npm run-script readme",
+        "readme": "grunt readme"
+    },
+    "dependencies": {
+        "lodash": "^4.17.20"
+    },
+    "bundleDependencies": false,
+    "devDependencies": {
+        "doctrine": "^3.0.0",
+        "esprima-extract-comments": "^1.1.0",
+        "grunt": "^1.4.1",
+        "ink-docstrap": "^1.3.2",
+        "jsdoc": "^3.6.3",
+        "jsmart": "^3.1.0",
+        "strip-comments": "^2.0.1",
+        "uglify-es": "^3.3.9",
+        "underscore": "^1.9.2",
+        "uuid": "^8.3.2"
+    }
+}
