@@ -7,6 +7,13 @@ require('./global')
 
 require('lodash')
 
+require('./Define')
+require('./Extend')
+require('./Clone')
+require('./IsEqual')
+require('./Merge')
+require("./Type')
+
 /**
 * Object class
 * @summary [Object@MDN]{@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object}
@@ -61,31 +68,29 @@ require('./Array/From')
 * @class String
 * @type {string}
 */
-	require('./String/AsAscii')
-	require('./String/AsBase64')
-	require('./String/AsUrlMatch')
-	require('./String/CamelCase')
-	require('./String/Capitalize')
-	require('./String/Hash')
-	require('./String/IsBase64')
-	require('./String/IsEmpty')
-	require('./String/IsJson')
-	require('./String/Match')
-	require('./String/Pad')
-	require('./String/Repeat')
+require('./String.prototype.AsAscii')
+require('./String.prototype.AsBase64')
+require('./String.prototype.AsUrlMatch')
+require('./String.prototype.CamelCase')
+require('./String.prototype.Capitalize')
+require('./String.prototype.Hash')
+require('./String.prototype.IsBase64')
+require('./String.prototype.IsEmpty')
+require('./String.prototype.IsJson')
+require('./String.prototype.Match')
+require('./String.prototype.Pad')
+require('./String.prototype.Repeat')
 
-/* org.tts.js.core/Functional */
-	require('./Functional/Async')
-	require('./Functional/Promise')
-	require('./Functional/Sync')
+require('./Function.Debug')
+require('./Function.Delay')
+require('./Function.Noop')
 
-	require('./Functional/Hook')
-	require('./Functional/Pipe')
+require('./Function.prototype.Async')
+require('./Function.prototype.Promise')
+require('./Function.prototype.Sync')
+require('./Function.prototoype.Hook')
+require('./Function.prototype.Pipe')
 
-	require('./Functional/Debug')
-	require('./Functional/Delay')
-	require('./Functional/Noop')
-	//require('./Functional/Functional')
 
 /* org.tts.js.core/Global */
 	require('./Global/log')

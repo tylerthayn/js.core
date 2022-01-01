@@ -1,3 +1,5 @@
+require('./Define')
+
 /**
 * Generates a hash string
 * @memberof String#
@@ -6,8 +8,6 @@
 * @param {string} type - Hash type (sha1/md5)
 * @returns {string} hash - Hash string
 */
-require('../Object/Define')
-
 function safeAdd(n,r){var a=(65535&n)+(65535&r);return(n>>16)+(r>>16)+(a>>16)<<16|65535&a}
 function bitRotateLeft(r,d){return r<<d|r>>>32-d}
 function md5(M,r,D){return r?D?rawHMACMD5(r,M):hexHMACMD5(r,M):D?rawMD5(M):hexMD5(M)}

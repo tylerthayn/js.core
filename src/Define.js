@@ -69,5 +69,3 @@ global.Define = (obj, key, val, enumerable = false) => {
 
 	return obj
 }
-
-/*=Define=*/

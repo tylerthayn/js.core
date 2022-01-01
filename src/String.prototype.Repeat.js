@@ -5,8 +5,8 @@
 * @function Repeat
 * @param {number} n - Number of times to repeat
 * @returns {string} text
-*/	
-require('../Object/Define')
+*/
+require('./Define')
 
 Define(String.prototype, 'Repeat', function (n) {
 	let s = ''

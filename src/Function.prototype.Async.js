@@ -1,9 +1,9 @@
-require('../Define')
+require('./Define')
 
 Define(Function.prototype, 'Async', {get: function () {
 	let fn = this
 
-	return {
+	let o = {
 		ToPromise: () => {
 			return function () {
 				let args = Array.From(arguments)
@@ -11,9 +11,14 @@ Define(Function.prototype, 'Async', {get: function () {
 					args.last.apply(this, [null].concat(arguments))
 				}).catch(args.last)
 			}
-		},
-		ToSync: () => {
-
 		}
 	}
+
+	if (module && module.exports) {
+		let Deasync = require('deasync')
+		o.ToSync: () => {
+			return Deasync(fn)
+		}
+	}
+	return o
 }})

@@ -1,3 +1,6 @@
+require('./Define')
+require('./String.prototype.Repeat')
+
 /**
 * Pads a string out to a certain width
 * @memberof String#
@@ -7,10 +10,7 @@
 * @param {string} [char] - Char to pad with
 * @param {boolean} [rightPad] - Pad chars tot he right instead of the left
 * @returns {string} text - Padded string
-*/	
-require('../Object/Define')
-require('./Repeat')
-
+*/
 Define(String.prototype, 'Pad', function (length, padChar, rightPad) {
 	let s = this + ''
 	length = length - s.length

@@ -1,3 +1,5 @@
+require('./Define')
+
 /**
 * Capitalize words in a string
 * @memberof String#
@@ -5,9 +7,7 @@
 * @function Capitalize
 * @param {boolean} [AllWords] - Capitalize first letter of each word
 * @returns {string} text - Capitalized text
-*/	
-require('../Object/Define')
-
+*/
 Define(String.prototype, 'Capitalize', function (allWords) {
 	const s = this.toLowerCase()
 	if (typeof allWords !== 'undefined' && allWords === true) {

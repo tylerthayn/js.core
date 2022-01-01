@@ -1,3 +1,5 @@
+require('./Define')
+
 /**
 * String as base64 text
 * @memberof String#
@@ -5,8 +7,6 @@
 * @function AsBase64
 * @returns {string} text - The base64 text
 */
-require('../Object/Define')
-
 Define(String.prototype, 'AsBase64', function (test) {
 	try {
 		if (typeof Buffer === 'function' && 'from' in Buffer) {return Buffer.from(this).toString('base64')} //NodeJs

@@ -1,4 +1,4 @@
-require('../Define')
+require('./Define')
 
 Define(Function.prototype, 'Promise', {get: function () {
 	let fn = this
