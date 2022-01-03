@@ -1,4 +1,4 @@
-require('../Global/global')
+require('./global')
 require('./Define')
 require('../Array/From')
 const lodash = require('lodash')

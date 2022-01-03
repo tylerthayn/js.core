@@ -12,6 +12,21 @@ module.exports = function(grunt) {
 			}
 		}
 	}
+	let install = {
+		default: {
+			options: {
+				pkgName: '@js/core',
+				files: {
+					'dist/core.js': 'core.js',
+					'dist/core.min.js': 'core.min.js'
+				},
+				pkg: {
+					name: '@js/core',
+					main: 'core.js'
+				}
+			}
+		}
+	}
 	let readme = {
 		default: {
 			files: {
@@ -20,6 +35,6 @@ module.exports = function(grunt) {
 		}
 	}
 
-	grunt.initConfig({make: make, readme: readme})
+	grunt.initConfig({install: install, make: make, readme: readme})
 	grunt.loadTasks('tasks')
 }

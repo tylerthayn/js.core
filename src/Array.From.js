@@ -1,4 +1,4 @@
-require('../Object/Define')
+require('./Define')
 const lodash = require('lodash')
 
 /**
