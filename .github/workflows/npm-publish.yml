@@ -8,7 +8,13 @@ on:
     types: [created]
 
 jobs:
+  rev:
+    runs-on: ubuntu-latest
+    steps:
+      -run: grunt rev
+    
   build:
+    needs: rev
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
