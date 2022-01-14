@@ -28,3 +28,8 @@ jobs:
       # Runs a single command using the runners shell
       - run: npm ci
       - run: npm run-script rev
+      - run: git config user.name tylerthayn
+      - run: git config user.email tylerthayn@hotmail.com
+      - run: git add .
+      - run: git commit -m "generated"
+      - run: git push
