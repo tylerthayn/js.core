@@ -15,7 +15,7 @@ module.exports = function(grunt) {
 			grunt.log.writeln('\tUpdating minor version')
 			versions[1]++
 		}
-		if (grunt.task.current.flags.Has('major') && grunt.task.current.flags.major === true) {
+		if (Reflect.has(grunt.task.current.flags, 'major') && grunt.task.current.flags.major === true) {
 			grunt.log.writeln('\tUpdating major version')
 			versions[0]++
 		}
