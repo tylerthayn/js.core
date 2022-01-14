@@ -11,7 +11,7 @@ jobs:
   rev:
     runs-on: ubuntu-latest
     steps:
-      -run: grunt rev
+      - run: grunt rev
     
   build:
     needs: rev
