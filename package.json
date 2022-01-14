@@ -30,6 +30,7 @@
     },
     "bundleDependencies": false,
     "devDependencies": {
+		"find-node-modules": "^2.1.2",
         "doctrine": "^3.0.0",
         "esprima-extract-comments": "^1.1.0",
         "grunt": "^1.4.1",
