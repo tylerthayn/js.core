@@ -27,15 +27,8 @@ module.exports = function(grunt) {
 			}
 		}
 	}
-	let readme = {
-		default: {
-			files: {
-				'README.md': ['src/*.js', 'src/**/*.js']
-			}
-		}
-	}
 	let rev = {}
 
-	grunt.initConfig({install: install, make: make, readme: readme, rev: rev})
+	grunt.initConfig({install: install, make: make, rev: rev})
 	grunt.loadTasks('tasks')
 }
