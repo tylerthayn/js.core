@@ -4,7 +4,7 @@ const Fs = require('fs'), Path = require('path')
 module.exports = function(grunt) {
 	let pkg = require(Path.resolve('./package.json'))
 
-	grunt.registerTask('revRoll', 'Update the package version', function() {
+	grunt.registerTask('rev', 'Update the package version', function() {
 		grunt.log.writeln('Current Version: '+pkg.version)
 		let versions = pkg.version.split('.')
 		if (grunt.task.current.flags.Has('patch') && grunt.task.current.flags.patch === true) {
@@ -21,7 +21,7 @@ module.exports = function(grunt) {
 		}
 		pkg.version = versions.join('.')
 		grunt.log.writeln('New Version: '+pkg.version)
-//		Fs.writeFileSync(Path.resolve('./package.json'), JSON.stringify(pkg, null, 4), 'utf-8')
+		Fs.writeFileSync(Path.resolve('./package.json'), JSON.stringify(pkg, null, 4), 'utf-8')
 	})
 
 }
