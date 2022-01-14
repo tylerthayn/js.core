@@ -7,11 +7,11 @@ module.exports = function(grunt) {
 	grunt.registerTask('rev', 'Update the package version', function() {
 		grunt.log.writeln('Current Version: '+pkg.version)
 		let versions = pkg.version.split('.')
-		if (grunt.task.current.flags.Has('patch') && grunt.task.current.flags.patch === true) {
+		if (Reflect.has(grunt.task.current.flags, 'patch') && grunt.task.current.flags.patch === true) {
 			grunt.log.writeln('\tUpdating patch version')
 			versions[2]++
 		}
-		if (grunt.task.current.flags.Keys().length == 0 || (grunt.task.current.flags.Has('minor') && grunt.task.current.flags.minor === true)) {
+		if (grunt.task.current.flags.Keys().length == 0 || (Reflect.has(grunt.task.current.flags, 'minor') && grunt.task.current.flags.minor === true)) {
 			grunt.log.writeln('\tUpdating minor version')
 			versions[1]++
 		}
