@@ -23,7 +23,7 @@
         "preparexx": "npm run-script build",
         "preparex": "npm run-script build && npm run-script docs && npm run-script readme",
         "readme": "grunt readme",
-        "postinstall": "grunt install"
+        "postinstallx": "grunt install"
     },
     "dependencies": {
         "lodash": "^4.17.20"
