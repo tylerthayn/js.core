@@ -1,7 +1,7 @@
 {
     "name": "@tyler.thayn/js.core",
     "title": "TTS Design javascript core libraries",
-    "version": "0.3.13",
+    "version": "0.4.13",
     "description": "TTS Design's javascript core libraries for GScript, NodeJS & Browser implementations",
     "author": {
         "name": "TTS Design",
@@ -30,7 +30,7 @@
     },
     "bundleDependencies": false,
     "devDependencies": {
-		"find-node-modules": "^2.1.2",
+        "find-node-modules": "^2.1.2",
         "doctrine": "^3.0.0",
         "esprima-extract-comments": "^1.1.0",
         "grunt": "^1.4.1",
