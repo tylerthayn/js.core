@@ -1,7 +1,7 @@
 {
     "name": "@tyler.thayn/js.core",
     "title": "TTS Design javascript core libraries",
-    "version": "0.0.11",
+    "version": "0.2.13",
     "description": "TTS Design's javascript core libraries for GScript, NodeJS & Browser implementations",
     "author": {
         "name": "TTS Design",
@@ -17,13 +17,13 @@
     "license": "MIT",
     "main": "dist/core.js",
     "scripts": {
+        "rev": "grunt revRoll:minor",
         "build": "grunt make",
         "docs": "jsdoc -c jsdoc.conf",
         "preparexx": "npm run-script build",
-		"preparex": "npm run-script build && npm run-script docs && npm run-script readme",
+        "preparex": "npm run-script build && npm run-script docs && npm run-script readme",
         "readme": "grunt readme",
-		"postinstall": "grunt install"
-
+        "postinstall": "grunt install"
     },
     "dependencies": {
         "lodash": "^4.17.20"

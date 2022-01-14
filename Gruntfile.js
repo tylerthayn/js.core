@@ -34,7 +34,8 @@ module.exports = function(grunt) {
 			}
 		}
 	}
+	let revRoll = {}
 
-	grunt.initConfig({install: install, make: make, readme: readme})
+	grunt.initConfig({install: install, make: make, readme: readme, revRoll: revRoll})
 	grunt.loadTasks('tasks')
 }

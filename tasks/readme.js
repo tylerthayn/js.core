@@ -1,5 +1,5 @@
 'use strict'
-require('@js/core')
+require('../')
 const Doctrine = require('doctrine'), ExtractComments = require('esprima-extract-comments'), Fs = require('fs'), Path = require('path')
 //Template = require('@js/Template')
 const Template = require('./templates/README.js')

@@ -6,7 +6,7 @@ module.exports = function(grunt) {
 	let pkg = require(Path.resolve('./package.json'))
 
 	let global = Reflect.has(process.env, 'npm_config_argv') ? process.env.npm_config_argv.match(/"(--global|-g)"/) != null : false
-	let globalFolder = Reflect.has(process.env, 'npm_config_prefix') ? process.env.npm_config_prefix : process.env.NODE_PATH.split(/(;|:)/g).pop()
+	let globalFolder = Path.resolve(Reflect.has(process.env, 'npm_config_prefix') ? process.env.npm_config_prefix : process.env.NODE_PATH.split(/(;|:)/g).pop(), 'node_modules')
 	let installFolder = Path.resolve(global ? globalFolder : findNodeModules('../').length == 0 ? globalFolder : findNodeModules('../')[0])
 
 	grunt.registerMultiTask('install', 'Alternative Install', function() {

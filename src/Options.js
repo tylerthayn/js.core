@@ -4,6 +4,8 @@ require('./Object/Extend')
 
 
 global.Options = function Options () {
-	return Extend.apply(null, [{}].concat(arguments))
+	let options = Extend.apply(null, [{}].concat(arguments))
+	options.Define('Defaults', arguments[0])
+	return options
 }
 
