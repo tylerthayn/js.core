@@ -11,7 +11,7 @@ module.exports = function(grunt) {
 			grunt.log.writeln('\tUpdating patch version')
 			versions[2]++
 		}
-		if (grunt.task.current.flags.Keys().length == 0 || (Reflect.has(grunt.task.current.flags, 'minor') && grunt.task.current.flags.minor === true)) {
+		if (Object.keys(grunt.task.current.flags).length == 0 || (Reflect.has(grunt.task.current.flags, 'minor') && grunt.task.current.flags.minor === true)) {
 			grunt.log.writeln('\tUpdating minor version')
 			versions[1]++
 		}
