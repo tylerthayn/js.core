@@ -1,7 +1,7 @@
 {
     "name": "@tyler.thayn/js.core",
     "title": "TTS Design javascript core libraries",
-    "version": "0.36.13",
+    "version": "0.37.13",
     "description": "TTS Design's javascript core libraries for GScript, NodeJS & Browser implementations",
     "author": {
         "name": "TTS Design",
