@@ -13,5 +13,5 @@ jobs:
       - run: npm run-script rev
       
   call-workflow:
-    uses: https://github.com/tylerthayn/js.core/tree/main/.github/workflows/github.yml@v1
+    uses: .github/workflows/github.yml@v1
 
