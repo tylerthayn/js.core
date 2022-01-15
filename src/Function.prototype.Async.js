@@ -16,7 +16,7 @@ Define(Function.prototype, 'Async', {get: function () {
 
 	if (module && module.exports) {
 		let Deasync = require('deasync')
-		o.ToSync: () => {
+		o.ToSync = () => {
 			return Deasync(fn)
 		}
 	}

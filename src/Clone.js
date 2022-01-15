@@ -1,5 +1,5 @@
 require('./Define')
-require('../Global/global')
+require('./global')
 const lodash = require('lodash')
 
 /**

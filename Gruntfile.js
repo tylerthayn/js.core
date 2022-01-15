@@ -29,6 +29,6 @@ module.exports = function(grunt) {
 	}
 	let rev = {}
 
-	grunt.initConfig({install: install, make: make, rev: rev})
+	grunt.initConfig({install: install, make: make, rev: rev, readme: {}})
 	grunt.loadTasks('tasks')
 }

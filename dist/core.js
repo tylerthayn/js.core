@@ -29,7 +29,7 @@
  * Copyright OpenJS Foundation and other contributors <https://openjsf.org/>
  * Released under MIT license <https://lodash.com/license>
  * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
- * Copyright Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editorsxxx
+ * Copyright Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
  */
 ;(function() {
 
@@ -37,14 +37,15 @@
   var undefined;
 
   /** Used as the semantic version number. */
-  var VERSION = '4.17.20';
+  var VERSION = '4.17.21';
 
   /** Used as the size to enable large array optimizations. */
   var LARGE_ARRAY_SIZE = 200;
 
   /** Error message constants. */
   var CORE_ERROR_TEXT = 'Unsupported core-js use. Try https://npms.io/search?q=ponyfill.',
-      FUNC_ERROR_TEXT = 'Expected a function';
+      FUNC_ERROR_TEXT = 'Expected a function',
+      INVALID_TEMPL_VAR_ERROR_TEXT = 'Invalid `variable` option passed into `_.template`';
 
   /** Used to stand-in for `undefined` hash values. */
   var HASH_UNDEFINED = '__lodash_hash_undefined__';
@@ -177,10 +178,11 @@
   var reRegExpChar = /[\\^$.*+?()[\]{}|]/g,
       reHasRegExpChar = RegExp(reRegExpChar.source);
 
-  /** Used to match leading and trailing whitespace. */
-  var reTrim = /^\s+|\s+$/g,
-      reTrimStart = /^\s+/,
-      reTrimEnd = /\s+$/;
+  /** Used to match leading whitespace. */
+  var reTrimStart = /^\s+/;
+
+  /** Used to match a single whitespace character. */
+  var reWhitespace = /\s/;
 
   /** Used to match wrap detail comments. */
   var reWrapComment = /\{(?:\n\/\* \[wrapped with .+\] \*\/)?\n?/,
@@ -189,6 +191,18 @@
 
   /** Used to match words composed of alphanumeric characters. */
   var reAsciiWord = /[^\x00-\x2f\x3a-\x40\x5b-\x60\x7b-\x7f]+/g;
+
+  /**
+   * Used to validate the `validate` option in `_.template` variable.
+   *
+   * Forbids characters which could potentially change the meaning of the function argument definition:
+   * - "()," (modification of function parameters)
+   * - "=" (default value)
+   * - "[]{}" (destructuring of function parameters)
+   * - "/" (beginning of a comment)
+   * - whitespace
+   */
+  var reForbiddenIdentifierChars = /[()=,{}\[\]\/\s]/;
 
   /** Used to match backslashes in property paths. */
   var reEscapeChar = /\\(\\)?/g;
@@ -1019,6 +1033,19 @@
   }
 
   /**
+   * The base implementation of `_.trim`.
+   *
+   * @private
+   * @param {string} string The string to trim.
+   * @returns {string} Returns the trimmed string.
+   */
+  function baseTrim(string) {
+    return string
+      ? string.slice(0, trimmedEndIndex(string) + 1).replace(reTrimStart, '')
+      : string;
+  }
+
+  /**
    * The base implementation of `_.unary` without support for storing metadata.
    *
    * @private
@@ -1349,6 +1376,21 @@
     return hasUnicode(string)
       ? unicodeToArray(string)
       : asciiToArray(string);
+  }
+
+  /**
+   * Used by `_.trim` and `_.trimEnd` to get the index of the last non-whitespace
+   * character of `string`.
+   *
+   * @private
+   * @param {string} string The string to inspect.
+   * @returns {number} Returns the index of the last non-whitespace character.
+   */
+  function trimmedEndIndex(string) {
+    var index = string.length;
+
+    while (index-- && reWhitespace.test(string.charAt(index))) {}
+    return index;
   }
 
   /**
@@ -12519,7 +12561,7 @@
       if (typeof value != 'string') {
         return value === 0 ? value : +value;
       }
-      value = value.replace(reTrim, '');
+      value = baseTrim(value);
       var isBinary = reIsBinary.test(value);
       return (isBinary || reIsOctal.test(value))
         ? freeParseInt(value.slice(2), isBinary ? 2 : 8)
@@ -14891,6 +14933,12 @@
       if (!variable) {
         source = 'with (obj) {\n' + source + '\n}\n';
       }
+      // Throw an error if a forbidden character was found in `variable`, to prevent
+      // potential command injection attacks.
+      else if (reForbiddenIdentifierChars.test(variable)) {
+        throw new Error(INVALID_TEMPL_VAR_ERROR_TEXT);
+      }
+
       // Cleanup code by stripping empty strings.
       source = (isEvaluating ? source.replace(reEmptyStringLeading, '') : source)
         .replace(reEmptyStringMiddle, '$1')
@@ -15004,7 +15052,7 @@
     function trim(string, chars, guard) {
       string = toString(string);
       if (string && (guard || chars === undefined)) {
-        return string.replace(reTrim, '');
+        return baseTrim(string);
       }
       if (!string || !(chars = baseToString(chars))) {
         return string;
@@ -15039,7 +15087,7 @@
     function trimEnd(string, chars, guard) {
       string = toString(string);
       if (string && (guard || chars === undefined)) {
-        return string.replace(reTrimEnd, '');
+        return string.slice(0, trimmedEndIndex(string) + 1);
       }
       if (!string || !(chars = baseToString(chars))) {
         return string;
@@ -17245,6 +17293,82 @@
 		})
 		return obj
 	}
+	
+	/**
+	* Extend the contents of two or more objects into the target object
+	* @memberof global.
+	* @function Extend
+	* @param {(object|array)} target
+	* @param {...(object|array)} sources
+	* @return {object}
+	*/
+	Define(global, 'Extend', function () {
+		return lodash.merge.apply(null, arguments)
+	})
+	
+	/**
+	* Recursively (deep) clone
+	* @global
+	* @function Clone
+	* @param {object} parent - Parent value to clone
+	* @return {object} - The cloned object
+	*/
+	Define(global, 'Clone', lodash.cloneDeep)
+	
+	/**
+	* Determines if objects are equal
+	* @global
+	* @function IsEqual
+	* @param {object[]} objects
+	* @returns {boolean} result
+	*/
+	Define(global, 'IsEqual', function () {
+		for (let i=1; i<arguments.length; i++) {
+			if (!lodash.isEqual(arguments[0], arguments[i])) {
+				return false
+			}
+		}
+		return true
+	})
+	
+	/**
+	* Assigns own and inherited enumerable string keyed properties of source objects to the destination object for all destination properties that resolve to undefined. Source objects are applied from left to right. Once a property is set, additional values of the same property are ignored.
+	* @global
+	* @function Merge
+	* @param {(object|array)} target
+	* @param {...(object|array)} sources
+	* @return {(object|array)} target
+	*/
+	Define(global, 'Merge', lodash.defaults)
+	
+	/**
+	* Object Type lookup
+	* @global
+	* @function Type
+	* @param {*} item - Item to lookup type of
+	* @param {(string|object)} [compare] - Comparison type label string or comparison object
+	* @returns {(string|boolean)} result - String representing item type or a boolean from type comparisons
+	*/
+	Define(global, 'Type', function Type () {
+		// Type.call(thisObject) => return type label
+		if (arguments.length == 0) {return Type(this)}
+		// Type(obj) => return type label
+		if (arguments.length == 1) {
+			var type = Object.prototype.toString.call(arguments[0]).match(/\[object (.+)\]/i)[1]
+			return type != 'Object' ? type : arguments[0].constructor.name || type
+		}
+		// Type(obj, typeLabel) || Type(obj1, obj2) => return boolean indicating whether type's are the same
+		if (arguments.length == 2) {return Type(arguments[0]).toLowerCase() === (typeof arguments[1] === 'string' ? arguments[1] : Type(arguments[1])).toLowerCase()}
+		// Type(obj1, obj2, ...objN) return boolean indicating whether all object type's match
+		var type = Type(arguments[0])
+		for (var i=1; i<arguments.length; i++) {
+			if (!Type(arguments[0], arguments[i])) {
+				return false
+			}
+		}
+		return true
+	})
+	
 	/**
 	* Defines object elements
 	* @memberof Object#
@@ -17259,35 +17383,16 @@
 	
 	/**
 	* Extend the contents of two or more objects into the target object
-	* @memberof global.
-	* @function Extend
-	* @param {(object|array)} target
-	* @param {...(object|array)} sources
-	* @return {object}
-	*/	
-	Define(global, 'Extend', function () {
-		return lodash.merge.apply(null, arguments)
-	})
-	/**
-	* Extend the contents of two or more objects into the target object
 	* @memberof Object#
 	* @instance
 	* @function Extend
 	* @param {...(object|array)} source
 	* @return {object}
-	*/	
+	*/
 	Define(Object.prototype, 'Extend', function () {
 		return lodash.merge.apply(null, [this].concat(Array.From(arguments)))
 	})
 	
-	/**
-	* Recursively (deep) clone
-	* @global
-	* @function Clone
-	* @param {object} parent - Parent value to clone
-	* @return {object} - The cloned object
-	*/
-	Define(global, 'Clone', lodash.cloneDeep)
 	/**
 	* Recursively (deep) clone
 	* @memberof Object#
@@ -17296,7 +17401,7 @@
 	* @return {object} - The cloned object
 	*/
 	Define(Object.prototype, 'Clone', function () {
-		return Clone(this)	
+		return Clone(this)
 	})
 	
 	/**
@@ -17361,24 +17466,9 @@
 	* @function Includes
 	* @param {string[]} paths - Array of paths
 	* @returns {boolean} result
-	*/	
+	*/
 	Define(Object.prototype, 'Includes', Object.prototype.Has)
 	
-	/**
-	* Determines if objects are equal
-	* @global
-	* @function IsEqual
-	* @param {object[]} objects
-	* @returns {boolean} result
-	*/	
-	Define(global, 'IsEqual', function () {
-		for (let i=1; i<arguments.length; i++) {
-			if (!lodash.isEqual(arguments[0], arguments[i])) {
-				return false
-			}
-		}
-		return true
-	})
 	/**
 	* Determines if objects are equal
 	* @memberof Object#
@@ -17386,7 +17476,7 @@
 	* @function IsEqual
 	* @param {object[]} objects
 	* @returns {boolean} result
-	*/	
+	*/
 	Define(Object.prototype, 'IsEqual', function () {
 		for (let i=0; i<arguments.length; i++) {
 			if (!lodash.isEqual(this, arguments[i])) {
@@ -17408,34 +17498,25 @@
 	})
 	
 	/**
-	* Assigns own and inherited enumerable string keyed properties of source objects to the destination object for all destination properties that resolve to undefined. Source objects are applied from left to right. Once a property is set, additional values of the same property are ignored.
-	* @global
-	* @function Merge
-	* @param {(object|array)} target
-	* @param {...(object|array)} sources
-	* @return {(object|array)} target
-	*/
-	Define(global, 'Merge', lodash.defaults)
-	/**
 	* Assigns own and inherited enumerable string keyed properties of source objects to the object for all destination properties that resolve to undefined. Source objects are applied from left to right. Once a property is set, additional values of the same property are ignored.
 	* @memberof Object#
 	* @instance
 	* @function Merge
 	* @param {...(object|array)} sources
 	* @return {object}
-	*/	
+	*/
 	Define(Object.prototype, 'Merge', function () {
 		return Merge.apply(null, [this].concat(lodash.toArray(arguments)))
 	})
 	
 	/**
-	* Gets a list of object element paths 
+	* Gets a list of object element paths
 	* @memberof Object#
 	* @instance
 	* @function Paths
 	* @param {number} [depth] - Depth of recursion
 	* @param {array} paths - The object element paths
-	*/	
+	*/
 	Define(Object.prototype, 'Paths', function(depth = Infinity) {
 	    const list = []
 	    visit(this)
@@ -17507,44 +17588,103 @@
 	
 	/**
 	* Object Type lookup
-	* @global
-	* @function Type
-	* @param {*} item - Item to lookup type of
-	* @param {(string|object)} [compare] - Comparison type label string or comparison object
-	* @returns {(string|boolean)} result - String representing item type or a boolean from type comparisons
-	*/	
-	Define(global, 'Type', function Type () {
-		// Type.call(thisObject) => return type label
-		if (arguments.length == 0) {return Type(this)}
-		// Type(obj) => return type label
-		if (arguments.length == 1) {
-			var type = Object.prototype.toString.call(arguments[0]).match(/\[object (.+)\]/i)[1]
-			return type != 'Object' ? type : arguments[0].constructor.name || type 	
-		}
-		// Type(obj, typeLabel) || Type(obj1, obj2) => return boolean indicating whether type's are the same
-		if (arguments.length == 2) {return Type(arguments[0]).toLowerCase() === (typeof arguments[1] === 'string' ? arguments[1] : Type(arguments[1])).toLowerCase()}
-		// Type(obj1, obj2, ...objN) return boolean indicating whether all object type's match
-		var type = Type(arguments[0])
-		for (var i=1; i<arguments.length; i++) {
-			if (!Type(arguments[0], arguments[i])) {
-				return false
-			}
-		}
-		return true
-	})
-	/**
-	* Object Type lookup
 	* @memberof Object#
 	* @instance
 	* @function Type
 	* @param {...(string|object)} [compare] - Comparison type label string or object
 	* @returns {(string|boolean)} result - String representing item type or a boolean from type comparisons
-	*/	
+	*/
 	Define(Object.prototype, 'Type', function () {
 		return arguments.length > 0 ? Type.apply(null, [this].concat(Array.From(arguments))) : Type(this)
 	})
 	
-	;Define(Object.prototype,'Values',function(){return lodash.values(this)});
+	Define(Object.prototype,'Values',function(){
+		return lodash.values(this)
+	})
+	
+	/**
+	* Difference in arrays
+	* @memberof Array#
+	* @instance
+	* @function Difference
+	* @param {*} lists - Array or list of arrays
+	* @returns {array} diff - List of diffference values
+	*/
+	function Array_Difference (a, b) {
+		if (!Array.IsArray(a)) {return null}
+		if (!Array.IsArray(b)) {return a}
+		var diffArray = [];
+		for (var i=0; i<a.length; i++) {
+			var hasElement = false
+			for (var j=0; j< b.length; j++) {
+				if (a[i]===b[j]) {
+					hasElement = true
+					break
+				}
+			}
+			if (hasElement===false) {
+				diffArray.push(a[i])
+			}
+		}
+		return diffArray
+	}
+	Define(Array, 'Difference', function () {
+		var diffArray  = arguments[0]
+		for (var i=1; i<arguments.length; i++) {
+			diffArray = Array_Difference(diffArray, arguments[i])
+		}
+		return diffArray
+	})
+	
+	/**
+	* Converts value to an array
+	* @memberof Array.
+	* @static
+	* @function From
+	* @param {*} value - value to convert
+	* @return {array} array - The converted array
+	*/
+	Define(Array, 'From', value => lodash.toArray(value))
+	
+	/**
+	* Check if an object is an array
+	* @memberof Array.
+	* @static
+	* @function IsArray
+	* @param {object} object - Object to check if an array
+	* @returns {boolean} result
+	*/
+	Array.Define('IsArray', function (a) {
+		return Object.prototype.toString.call(a) == '[object Array]'
+	})
+	
+	/**
+	* Flatten array elements
+	* @memberof Array#
+	* @instance
+	* @function Flatten
+	* @param {number} depth
+	* @returns {array} list - Flattened list
+	*/
+	Array.Define('Flatten', function (list, depth) {
+		depth = (typeof depth == 'number') ? depth : Infinity
+		if (!depth) {
+			if (Array.IsArray(list)) {
+				return list.map(function(i) {return i})
+			}
+			return list
+		}
+		return _flatten(list, 1)
+		function _flatten(list, d) {
+			return list.reduce(function(acc, item) {
+				if (Array.IsArray(item) && d < depth) {
+					return acc.concat(_flatten(item, d + 1))
+				} else {
+					return acc.concat(item)
+				}
+			}, [])
+		}
+	})
 	
 	/**
 	* First element in an array
@@ -17552,7 +17692,7 @@
 	* @instance
 	* @member {*} first
 	* @returns {*} element - The first element of the array
-	*/	
+	*/
 	Define(Array.prototype, 'first', {get: function () {
 		if (this.length > 0) {return this[0]}
 		return null
@@ -17564,7 +17704,7 @@
 	* @instance
 	* @member {array} head
 	* @param {array} array -  All but the last element of array
-	*/	
+	*/
 	Define(Array.prototype, 'head', {get: function () {
 		return this.slice(0, this.length-1)
 	}})
@@ -17586,7 +17726,7 @@
 	* @instance
 	* @member {array} tail
 	* @param {array} array -  All but the first element of array
-	*/	
+	*/
 	Define(Array.prototype, 'tail', {get: function () {
 		return this.length > 1 ? this.slice(1, this.length) : []
 	}})
@@ -17599,7 +17739,6 @@
 	* @param {*} elements - Element or array of elements to delete
 	* @param {array} array - The modified array
 	*/
-	/*=Array.prototype.Delete=*/
 	Define(Array.prototype, 'Delete', function () {
 		for (let i=0; i<arguments.length; i++) {
 			let index = this.indexOf(arguments[i])
@@ -17631,73 +17770,10 @@
 	* @function Difference
 	* @param {*} lists - Array or list of arrays
 	* @returns {array} diff - List of diffference values
-	*/	
-	function Array_Difference (a, b) {
-		if (!Array.IsArray(a)) {return null}
-		if (!Array.IsArray(b)) {return a}
-		var diffArray = [];
-		for (var i=0; i<a.length; i++) {
-			var hasElement = false
-			for (var j=0; j< b.length; j++) {
-				if (a[i]===b[j]) {
-					hasElement = true
-					break
-				}
-			}
-			if (hasElement===false) {
-				diffArray.push(a[i])
-			}
-		}
-		return diffArray
-	}
-	Define(Array, 'Difference', function () {
-		var diffArray  = arguments[0]
-		for (var i=1; i<arguments.length; i++) {
-			diffArray = Array_Difference(diffArray, arguments[i])
-		}
-		return diffArray
-	})
+	*/
 	Define(Array.prototype, 'Difference', function () {
 		return Array.Difference.apply(null, [this].concat(Array.prototype.slice.call(arguments, 0)))
 	})
-	
-	/**
-	* Flatten array elements
-	* @memberof Array#
-	* @instance
-	* @function Flatten
-	* @param {number} depth
-	* @returns {array} list - Flattened list
-	*/	
-	Array.Define('Flatten', function (list, depth) {
-		depth = (typeof depth == 'number') ? depth : Infinity
-		if (!depth) {
-			if (Array.IsArray(list)) {
-				return list.map(function(i) {return i})
-			}
-			return list
-		}
-		return _flatten(list, 1)
-		function _flatten(list, d) {
-			return list.reduce(function(acc, item) {
-				if (Array.IsArray(item) && d < depth) {
-					return acc.concat(_flatten(item, d + 1))
-				} else {
-					return acc.concat(item)
-				}
-			}, [])
-		}
-	})
-	
-	/**
-	* Converts value to an array
-	* @memberof Array.
-	* @static
-	* @function From
-	* @param {*} value - value to convert
-	* @return {array} array - The converted array
-	*/
-	Define(Array, 'From', value => lodash.toArray(value))
 	
 	/**
 	* Array Intersection
@@ -17721,13 +17797,11 @@
 	      if(o[key] === i - 1) o[key] = i
 	    }
 	  }
-	  
 	  var a = []
 	  for(var i in last) {
 	    var key = last[i]
 	    if(o[key] === l) a.push(key)
 	  }
-	  
 	  return a
 	}
 	function intersect (a, b) {
@@ -17740,17 +17814,14 @@
 	}
 	intersect.big = function(a, b) {
 	  if (!b) return many(a)
-	  
 	  var ret = []
 	  var temp = {}
-	  
 	  for (var i = 0; i < b.length; i++) {
 	    temp[b[i]] = true
 	  }
 	  for (var i = 0; i < a.length; i++) {
 	    if (temp[a[i]]) ret.push(a[i])
 	  }
-	  
 	  return ret
 	}
 	function indexOf(arr, el) {
@@ -17765,18 +17836,6 @@
 			intArray = intersect(intArray, arguments[i])
 		}
 		return intArray
-	})
-	
-	/**
-	* Check if an object is an array
-	* @memberof Array.
-	* @static
-	* @function IsArray
-	* @param {object} object - Object to check if an array
-	* @returns {boolean} result
-	*/
-	Array.Define('IsArray', function (a) {
-		return Object.prototype.toString.call(a) == '[object Array]'
 	})
 	
 	/**
@@ -17807,7 +17866,7 @@
 	* @function OmitAt
 	* @param {*} indexes - Indexes of elements to omit
 	* @returns {array} array
-	*/	
+	*/
 	Define(Array.prototype, 'OmitAt', function () {
 		let a = [], omitIndexes = []
 		for (let i=0; i<arguments.length; i++) {
@@ -17826,7 +17885,7 @@
 	* @memberof Array#
 	* @instance
 	* @function Shuffle
-	*/	
+	*/
 	Define(Array.prototype, 'Shuffle', function (seed = 1000) {
 		let i, j, shuffleItem
 		if (this.length <= 2) {
@@ -17848,7 +17907,7 @@
 	* @function Union
 	* @param {*} lists - Array or array list
 	* @returns {array} array
-	*/	
+	*/
 	Define(Array.prototype, 'Union', function () {
 		return (this.concat.apply(this, arguments)).Unique()
 	})
@@ -17860,7 +17919,7 @@
 	* @function Unique
 	* @param {*} lists - Array or array list
 	* @returns {array} array
-	*/	
+	*/
 	Define(Array.prototype, 'Unique', function (mutate) {
 		if (typeof mutate !== 'undefined' && mutate === true) {
 			for (var i=this.length-1; i>=0; i--) {
@@ -17887,7 +17946,7 @@
 	* @function Xor
 	* @param {array} lists - Array or array list
 	* @param {array} array
-	*/	
+	*/
 	Define(Array.prototype, 'Xor', function () {
 		let xorArray = this
 		for (let i=0; i<arguments.length; i++) {
@@ -17902,7 +17961,7 @@
 	* @instance
 	* @function AsAscii
 	* @returns {string} text - The ascii text
-	*/	
+	*/
 	Define(String.prototype, 'AsAscii', function (test) {
 		try {
 			if (typeof Buffer === 'function' && 'from' in Buffer) {return Buffer.from(this, 'base64').toString('ascii')} //NodeJs
@@ -17945,7 +18004,7 @@
 	* @function CamelCase
 	* @param {boolean} [UpperCamel] - Set if Upper Camel Case
 	* @returns {string} text - Text with camel case
-	*/	
+	*/
 	const preserveCamelCase=a=>{let b=!1,d=!1,e=!1;for(let f=0;f<a.length;f++){const g=a[f];b&&/[a-zA-Z]/.test(g)&&g.toUpperCase()===g?(a=a.slice(0,f)+'-'+a.slice(f),b=!1,e=d,d=!0,f++):d&&e&&/[a-zA-Z]/.test(g)&&g.toLowerCase()===g?(a=a.slice(0,f-1)+'-'+a.slice(f-1),e=d,d=!1,b=!0):(b=g.toLowerCase()===g,e=d,d=g.toUpperCase()===g)}return a}
 	function camelCase(a,b){b=Object.assign({pascalCase:!1},b);const c=e=>b.pascalCase?e.charAt(0).toUpperCase()+e.slice(1):e;if(a=Array.isArray(a)?a.map(e=>e.trim()).filter(e=>e.length).join('-'):a.trim(),0===a.length)return'';if(1===a.length)return b.pascalCase?a.toUpperCase():a.toLowerCase();if(/^[a-z\d]+$/.test(a))return c(a);const d=a!==a.toLowerCase();return d&&(a=preserveCamelCase(a)),a=a.replace(/^[_.\- ]+/,'').toLowerCase().replace(/[_.\- ]+(\w|$)/g,(e,f)=>f.toUpperCase()),c(a)}
 	function CamelCase(){const a=camelCase.apply(camelCase,arguments);return a.charAt(0).toUpperCase()+a.slice(1)}
@@ -17960,7 +18019,7 @@
 	* @function Capitalize
 	* @param {boolean} [AllWords] - Capitalize first letter of each word
 	* @returns {string} text - Capitalized text
-	*/	
+	*/
 	Define(String.prototype, 'Capitalize', function (allWords) {
 		const s = this.toLowerCase()
 		if (typeof allWords !== 'undefined' && allWords === true) {
@@ -18017,7 +18076,7 @@
 	* @instance
 	* @function IsBase64
 	* @returns {boolean} result
-	*/	
+	*/
 	Define(String.prototype, 'IsBase64', function () {
 		return this.toString() === this.AsAscii(true).AsBase64(true)
 	})
@@ -18028,7 +18087,7 @@
 	* @instance
 	* @function IsEmpty
 	* @returns {boolean} result
-	*/	
+	*/
 	Define(String.prototype, 'IsEmpty', function () {
 		return (typeof this === 'undefined' || this == null || this.length === 0) ? true : false
 	})
@@ -18039,7 +18098,7 @@
 	* @instance
 	* @function IsJson
 	* @returns {boolean} result
-	*/	
+	*/
 	Define(String.prototype, 'IsJson', function () {
 		try {
 			JSON.parse(this)
@@ -18062,7 +18121,7 @@
 	* @param {string} [char] - Char to pad with
 	* @param {boolean} [rightPad] - Pad chars tot he right instead of the left
 	* @returns {string} text - Padded string
-	*/	
+	*/
 	Define(String.prototype, 'Pad', function (length, padChar, rightPad) {
 		let s = this + ''
 		length = length - s.length
@@ -18081,16 +18140,50 @@
 	* @function Repeat
 	* @param {number} n - Number of times to repeat
 	* @returns {string} text
-	*/	
+	*/
 	Define(String.prototype, 'Repeat', function (n) {
 		let s = ''
 		for (let i=0; i<n; i++) {s += this}
 		return s
 	})
 	
+	Define(Function, 'Debug', function (name, print, cb) {
+		let _log = typeof print === 'undefined' ? function () {} : print == 'json' ? logj : log
+		return function () {
+			global.DEBUG[name] = arguments
+			_log(arguments)
+			if (cb !== 'undefined') {
+				return cb(arguments)
+			} else {
+				return arguments
+			}
+		}
+	})
+	
+	/**
+	* Delay function
+	* @global
+	* @function Delay
+	*/
+	Define(Function, 'Delay', function () {
+		let args = [...arguments]
+		let time = args.shift(), fn = args.shift()
+		return setTimeout(function () {
+			fn(...args)
+		}, time)
+	})
+	
+	/**
+	* No op function
+	* @global
+	* @function Noop
+	*/
+	Define(Function, 'Noop', function () {
+	})
+	
 	Define(Function.prototype, 'Async', {get: function () {
 		let fn = this
-		return {
+		let o = {
 			ToPromise: () => {
 				return function () {
 					let args = Array.From(arguments)
@@ -18098,10 +18191,15 @@
 						args.last.apply(this, [null].concat(arguments))
 					}).catch(args.last)
 				}
-			},
-			ToSync: () => {
 			}
 		}
+		if (module && module.exports) {
+			let Deasync = 
+			o.ToSync = () => {
+				return Deasync(fn)
+			}
+		}
+		return o
 	}})
 	
 	Define(Function.prototype, 'Promise', {get: function () {
@@ -18151,45 +18249,56 @@
 	Define(Function.prototype, 'Hook', {get: function () {
 		let fn = this
 		return {
-			'Pre': function () {
+			'Pre': (hooks) => {
+				if (typeof hooks === 'function') {
+					hooks = [hooks]
+				}
+				return function () {
+					let _args = Array.From(arguments)
+					hooks.forEach((hook) => {
+						hook.apply(this, _args.head)
+					}, this)
+					fn.apply(this, _args)
+				}
 			},
-			'Post': function () {
+			'Post': (hooks) => {
+				if (typeof hooks === 'function') {
+					hooks = [hooks]
+				}
+				return function () {
+					let _args = Array.From(arguments)
+					fn.apply(this, _args.head.push((error, result) => {
+						hooks.forEach((hook) => {
+							hook.apply(this, _args.head)
+						}, this)
+						_args.last.call(this, error, result)
+					}))
+				}
 			}
 		}
 	}})
 	
 	Define(Function.prototype, 'Pipe', function () {
-		let fn = this
-	})
-	
-	Define(global, 'Debug', function (name, print) {
-		let logger = typeof print === 'undefined' ? function () {} : print == 'json' ? logj : log
+		let fn = this, fns = Array.From(arguments)
 		return function () {
-			global.DEBUG[name] = arguments
-			logger(arguments)
-			return arguments
+			let args = Array.From(arguments)
+			let cb = args.pop()
+			function exec () {
+				if (fns.length == 0) {
+					return cb(null, args)
+				}
+				let fn = fns.shift()
+				return fn.apply(this, args.push((error, result) => {
+					if (error) {
+						return cb(error)
+					} else {
+						args = result
+						return exec()
+					}
+				}))
+			}
+			return exec()
 		}
-	})
-	
-	/**
-	* Delay function
-	* @global
-	* @function Delay
-	*/
-	Define(global, 'Delay', function () {
-		let args = [...arguments]
-		let time = args.shift(), f = args.shift()
-		return setTimeout(function () {
-			f(...args)
-		}, time)
-	})
-	
-	/**
-	* No op function
-	* @global
-	* @function Noop
-	*/
-	Define(global, 'Noop', function Noop() {
 	})
 	
 	Define(global, 'log', console.log)
@@ -18234,17 +18343,19 @@
 		return $$console
 	})
 	
-	global.Uuid = () => {
+	Define(global, 'Uuid', () => {
 		let d = Date.now()
 		return `xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx`.replace(/[xy]/g, c => {
 			const r = (d + Math.random() * 16) % 16 | 0
 			d = Math.floor(d / 16)
 			return (c == `x` ? r : (r & 0x3 | 0x8)).toString(16)
 		})
-	}
+	})
 	
 	global.Options = function Options () {
-		return Extend.apply(null, [{}].concat(arguments))
+		let options = Extend.apply(null, [{}].concat(arguments))
+		options.Define('Defaults', arguments[0])
+		return options
 	}
 	
 	Object.Extensions = {}

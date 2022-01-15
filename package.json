@@ -1,12 +1,16 @@
 {
     "name": "@tyler.thayn/js.core",
     "title": "TTS Design javascript core libraries",
-    "version": "0.48.13",
+    "version": "0.4.0",
     "description": "TTS Design's javascript core libraries for GScript, NodeJS & Browser implementations",
     "author": {
-        "name": "TTS Design",
-        "email": "ttsdesign@gmail.com",
-        "url": "http://git.ttscloud.co"
+        "name": "Tyler Thayn",
+        "email": "tylertthayn@gmail.com",
+        "url": "https://github.com/tylerthayn"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/tylerthayn/js.core"
     },
     "deprecated": false,
     "keywords": [
@@ -21,8 +25,9 @@
         "build": "grunt make",
         "docs": "jsdoc -c jsdoc.conf",
         "preparexx": "npm run-script build",
-        "preparex": "npm run-script build && npm run-script docs && npm run-script readme",
+        "prepare": "grunt rev && grunt make && grunt readme",
         "readme": "grunt readme",
+		"git": "git add * && git commit -m \"auto\" && git push",
         "_postinstall_": "grunt install"
     },
     "dependencies": {
@@ -30,9 +35,10 @@
     },
     "bundleDependencies": false,
     "devDependencies": {
-        "find-node-modules": "^2.1.2",
         "doctrine": "^3.0.0",
+        "ejs": "^3.1.6",
         "esprima-extract-comments": "^1.1.0",
+        "find-node-modules": "^2.1.2",
         "grunt": "^1.4.1",
         "ink-docstrap": "^1.3.2",
         "jsdoc": "^3.6.3",

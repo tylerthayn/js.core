@@ -1,6 +1,6 @@
 require('./global')
 require('./Define')
-require('../Array/From')
+require('./Array.From')
 
 /**
 * Object Type lookup

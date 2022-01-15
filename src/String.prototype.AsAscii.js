@@ -5,7 +5,7 @@
 * @function AsAscii
 * @returns {string} text - The ascii text
 */
-require('../Define')
+require('./Define')
 
 Define(String.prototype, 'AsAscii', function (test) {
 	try {

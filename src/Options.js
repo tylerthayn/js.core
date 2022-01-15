@@ -1,6 +1,6 @@
 require('./global')
-require('./Object/Define')
-require('./Object/Extend')
+require('./Define')
+require('./Extend')
 
 
 global.Options = function Options () {

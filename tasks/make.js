@@ -20,20 +20,19 @@ module.exports = function(grunt) {
 		code = `(function (factory) {\r\n\tif (typeof define === 'function' && define.amd) {\r\n\t\tdefine('org.tts.js.core', [], factory)\r\n\t} else if (typeof module === 'object' && module.exports) {\r\n\t\tmodule.exports = factory()\r\n\t} else {\r\n\t\tfactory()\r\n\t}\r\n}(function () {\r\n\r\n\t` + code.replace(/\r\n/g, '\r\n\t') + `\r\n\r\n}))`
 
 		grunt.log.write('Generating dist folders...')
-		try {Fs.mkdirSync(Path.resolve(options.dir, pkg.version), {recursive: true})} catch (e) {}
+		try {Fs.mkdirSync(Path.resolve(options.dir), {recursive: true})} catch (e) {}
 		grunt.log.ok()
 
 		grunt.log.write('Creating release file...')
-		Fs.writeFileSync(Path.resolve(options.dir, pkg.version, options.file), code, 'utf-8')
+		//Fs.writeFileSync(Path.resolve(options.dir, pkg.version, options.file), code, 'utf-8')
 		Fs.writeFileSync(Path.resolve(options.dir, options.file), code, 'utf-8')
 		grunt.log.ok()
 
-/*
 		grunt.log.write('Creating minified file...')
-		Fs.writeFileSync(Path.resolve(options.dir, pkg.version, options.min), UglifyJS.minify(code, minifyOptions).code, 'utf-8')
+		//Fs.writeFileSync(Path.resolve(options.dir, pkg.version, options.min), UglifyJS.minify(code, minifyOptions).code, 'utf-8')
 		Fs.writeFileSync(Path.resolve(options.dir, options.min), UglifyJS.minify(code, minifyOptions).code, 'utf-8')
 		grunt.log.ok()
-*/
+
 	})
 
 

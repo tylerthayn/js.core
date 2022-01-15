@@ -1,4 +1,4 @@
-require('../Object/Define')
+require('./Define')
 
 /**
 * Check if an object is an array
