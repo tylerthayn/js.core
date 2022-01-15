@@ -1,0 +1,21 @@
+name: UpdateVersion
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+jobs:
+  update-version:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: npm run-script rev
+      - run: git config user.name tylerthayn
+      - run: git config user.email tylerthayn@hotmail.com
+      - run: git add .
+      - run: git commit -m "generated"
+      - run: git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
