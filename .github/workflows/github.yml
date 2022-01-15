@@ -35,6 +35,9 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
   publish:
+    runs-on: ubuntu-latest
+    environment: production
+    
     steps:
       - uses: actions/checkout@v2
       - run: git config user.name tylerthayn
