@@ -22,7 +22,7 @@ jobs:
     environment: production
     
     steps:
-      - uses: ./.github/actions/my-action@v1
+      - uses: actions/checkout@v2
         with:
           username: ${{ inputs.username }}
           token: ${{ secrets.GITHUB_TOKEN }}
