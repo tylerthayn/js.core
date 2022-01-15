@@ -17,5 +17,5 @@ jobs:
       - run: npm run-script rev
       
   call-workflow:
-    uses: tylerthayn/js.core/.github/workflows/github.yml@v1
+    uses: tylerthayn/js.core/.github/workflows/github.yml@main
 
