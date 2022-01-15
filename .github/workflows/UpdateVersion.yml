@@ -16,6 +16,11 @@ jobs:
       - uses: actions/checkout@v2
       - run: npm run-script rev
       
-  call-workflow:
+  call-workflow-passing-data:
     uses: tylerthayn/js.core/.github/workflows/github.yml@main
+    with:
+      username: tylerthayn
+    secrets:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
 
