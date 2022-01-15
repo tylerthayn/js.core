@@ -1,10 +1,6 @@
 name: GitHub
 on:
   workflow_call:
-    inputs:
-      username:
-        required: true
-        type: string
         
   push:
     branches: [ main ]
