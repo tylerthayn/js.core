@@ -18,8 +18,7 @@ jobs:
       
   call-workflow-passing-data:
     uses: tylerthayn/js.core/.github/workflows/github.yml@main
-    with:
-      username: tylerthayn
+
 
 
 
