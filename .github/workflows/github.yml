@@ -6,7 +6,7 @@ on:
         required: true
         type: string
     secrets:
-      GITHUB_TOKEN2:
+      GITHUB_TOKEN:
         required: true
         
   push:
