@@ -1,6 +1,6 @@
 @tyler.thayn/js.core
 ======
-[![https://www.npmjs.com/package/@tyler.thayn/js.core](https://img.shields.io/badge/version-v0.4.0-blue.svg)](https://www.npmjs.com/package/@tyler.thayn/js.core)
+[![https://www.npmjs.com/package/@tyler.thayn/js.core](https://img.shields.io/badge/version-v0.5.1-blue.svg)](https://www.npmjs.com/package/@tyler.thayn/js.core)
 [![https://github.com/tylerthayn/js.core/blob/main/LICENSE](https://img.shields.io/badge/license-mit-blue.svg)](https://img.shields.io/badge/license-mit-blue.svg)
 [![](https://data.jsdelivr.com/v1/package/npm/@tyler.thayn/js.core/badge)](https://www.jsdelivr.com/package/npm/@tyler.thayn/js.core)
 

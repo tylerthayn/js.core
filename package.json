@@ -1,7 +1,7 @@
 {
     "name": "@tyler.thayn/js.core",
     "title": "TTS Design javascript core libraries",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "description": "TTS Design's javascript core libraries for GScript, NodeJS & Browser implementations",
     "author": {
         "name": "Tyler Thayn",
@@ -27,7 +27,7 @@
         "preparexx": "npm run-script build",
         "prepare": "grunt rev && grunt make && grunt readme",
         "readme": "grunt readme",
-		"git": "git add * && git commit -m \"auto\" && git push",
+        "git": "git add * && git commit -m \"auto\" && git push",
         "_postinstall_": "grunt install"
     },
     "dependencies": {

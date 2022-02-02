@@ -17282,6 +17282,9 @@
 			throw new TypeError('expected "key" to be a string')
 		}
 		if (IsDescriptor(val)) {
+			if (enumerable) {
+				val.enumerable = true
+			}
 			_define(obj, key, val)
 			return obj
 		}

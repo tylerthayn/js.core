@@ -56,6 +56,9 @@ global.Define = (obj, key, val, enumerable = false) => {
 	}
 
 	if (IsDescriptor(val)) {
+		if (enumerable) {
+			val.enumerable = true
+		}
 		_define(obj, key, val)
 		return obj
 	}
