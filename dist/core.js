@@ -18345,6 +18345,7 @@
 		global.console = $console
 		return $$console
 	})
+	Define(global, 'Logger', Logger)
 	
 	Define(global, 'Uuid', () => {
 		let d = Date.now()
