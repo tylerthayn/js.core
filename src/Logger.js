@@ -33,3 +33,6 @@ Define(Logger, 'NoConflict', () => {
 	return $$console
 })
 
+Define(global, 'Logger', Logger)
+
+
