@@ -14,6 +14,8 @@ require('./IsEqual')
 require('./Merge')
 require('./Type')
 
+
+
 /**
 * Object class
 * @summary [Object@MDN]{@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object}
@@ -97,7 +99,7 @@ require('./Function.prototype.Pipe')
 /* org.tts.js.core/Global */
 require('./log')
 require('./logj')
-require('./Logger')
+
 
 
 
@@ -114,3 +116,6 @@ require('./Extensions/Logger')
 //require('./Extensions/Settings')
 
 //require('./Plugins/MultiLogger')
+
+require('./Class')
+require('./Logger')

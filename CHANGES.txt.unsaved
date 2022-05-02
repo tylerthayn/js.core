@@ -1,0 +1,8 @@
+1. Extend() to combine array not overwrite
+2. Class
+3. Logger {} to work properly
+
+	let {log, logj...} = new Logger('name')
+
+
+
