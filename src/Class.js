@@ -1,6 +1,7 @@
 
 !(function () {
-	function extend(dest){var i,j,len,src;for(j=1,len=arguments.length;j<len;j++){src=arguments[j];for(i in src)dest[i]=src[i]}return dest}
+	function extend(dest){var i,j,len,src;for(j=1,len=arguments.length;j<len;j++){src=arguments[j];for(i in src)Define(dest,i,src[i])}return dest}
+	function setOptions(obj,options){Object.prototype.hasOwnProperty.call(obj,'options')||(obj.options=obj.options?create(obj.options):{});for(var i in options)obj.options[i]=options[i];return obj.options}
 	var create=Object.create||function(){function F(){}return function(proto){F.prototype=proto;return new F}}()
 	var isArray=Array.isArray||function(obj){return'[object Array]'===Object.prototype.toString.call(obj)}
 
@@ -13,6 +14,8 @@
 		// Returns a Javascript function that is a class constructor (to be called with `new`).
 		var NewClass = function () {
 			Object.Extensions.EventEmitter(this)
+
+			setOptions(this);
 
 			// call the constructor
 			if (this.initialize) {
@@ -34,6 +37,10 @@
 
 		NewClass.prototype = proto;
 
+		NewClass.prototype.initialize = function (options) {
+			Extend(this.options, options)
+		}
+
 		// inherit parent's statics
 		for (var i in this) {
 			if (Object.prototype.hasOwnProperty.call(this, i) && i !== 'prototype' && i !== '__super__') {
@@ -53,13 +60,16 @@
 			delete props.includes;
 		}
 
-		// merge options
-		if (proto.options) {
-			props.options = extend(create(proto.options), props.options);
-		}
-
 		// mix given properties into the prototype
 		extend(proto, props);
+
+		// merge options
+		if (proto.options) {
+			proto.options = parentProto.options ? create(parentProto.options) : {};
+			extend(proto.options, props.options);
+		}
+
+
 
 		proto._initHooks = [];
 
