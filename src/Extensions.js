@@ -1,3 +1,1 @@
-require('./Define')
-
 Object.Extensions = {}

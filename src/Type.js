@@ -1,7 +1,3 @@
-require('./global')
-require('./Define')
-require('./Array.From')
-
 /**
 * Object Type lookup
 * @global
@@ -22,7 +18,17 @@ Define(global, 'Type', function Type () {
 	}
 
 	// Type(obj, typeLabel) || Type(obj1, obj2) => return boolean indicating whether type's are the same
-	if (arguments.length == 2) {return Type(arguments[0]).toLowerCase() === (typeof arguments[1] === 'string' ? arguments[1] : Type(arguments[1])).toLowerCase()}
+	if (arguments.length == 2) {
+		if (Array.isArray(arguments[1])) {
+			for (i=0; i<arguments[1].length; i++) {
+				if (Type(arguments[0], arguments[1][i])) {
+					return true
+				}
+			}
+			return false
+		}
+		return Type(arguments[0]).toLowerCase() === (typeof arguments[1] === 'string' ? arguments[1] : Type(arguments[1])).toLowerCase()
+	}
 
 	// Type(obj1, obj2, ...objN) return boolean indicating whether all object type's match
 	var type = Type(arguments[0])

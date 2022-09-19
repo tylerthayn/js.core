@@ -1,0 +1,7 @@
+{
+    "targets": [],
+    "sources": [
+        "D:\\NodeJs\\node_modules\\lodash\\lodash.js"
+    ],
+    "output": ".Build\\tmp\\lodash.js"
+}

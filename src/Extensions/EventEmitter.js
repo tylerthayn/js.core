@@ -1,6 +1,3 @@
-require('../Define')
-require('../global')
-
 Define(Object.Extensions, 'EventEmitter', function (o) {
 	var R = typeof Reflect === 'object' ? Reflect : null
 	var ReflectApply=R&&'function'==typeof R.apply?R.apply:function ReflectApply(target,receiver,args){return Function.prototype.apply.call(target,receiver,args)};

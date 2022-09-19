@@ -1,6 +1,3 @@
-require('./global')
-require('./Define')
-
 Define(global, 'Uuid', () => {
 	let d = Date.now()
 	return `xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx`.replace(/[xy]/g, c => {
@@ -9,5 +6,3 @@ Define(global, 'Uuid', () => {
 		return (c == `x` ? r : (r & 0x3 | 0x8)).toString(16)
 	})
 })
-
-

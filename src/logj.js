@@ -1,7 +1,3 @@
-require('./Define')
-require('./global')
-require('./log')
-
 Define(global, 'logj', function (v) {
 	let s = v
 	try {

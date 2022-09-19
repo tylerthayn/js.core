@@ -10,5 +10,3 @@ if (typeof global !== 'object') {
 		this.global = this
 	}
 }
-
-/*=global=*/

@@ -1,3 +1,0 @@
-require('./Define')
-
-Object.Plugins = {}

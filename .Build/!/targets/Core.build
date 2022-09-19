@@ -1,0 +1,54 @@
+
+module.exports = {
+	config: {
+		output: './index.js',
+		name: '@js/core',
+		deps: {},
+		defaultLoader: false,
+		include: {
+			indentChar: '\t',
+			indent: 1,
+			listFile: false
+		}
+	},
+	build: function () {
+		this.Include('./global.js')
+
+		this.Build('lodash')
+		this.Write(`let lodash = module && module.exports ? module.exports._.noConflict() : _.noConflict()`)
+
+		this.Include('./Define.js')
+		this.Include('./Object/Define.js')
+		this.Include('./Extend.js')
+		this.Include('./Clone.js')
+		this.Include('./IsEqual.js')
+		this.Include('./Merge.js')
+		this.Include('./Type.js')
+		this.Include('./Uuid.js')
+
+		this.Include('./log.js')
+		this.Include('./logj.js')
+
+		this.Include('./Array')
+		this.Include('./Function')
+		this.Include('./Object')
+		this.Include('./String')
+
+		this.Include('./Extensions.js')
+		this.Include('./Extensions')
+
+		this.Wrap(
+`(function (factory) {
+	if (typeof define === 'function' && define.amd) {
+		define('@js/core', [], factory)
+	} else if (typeof module === 'object' && module.exports) {
+		module.exports = factory()
+	} else {
+		factory()
+	}
+}(function () {`,
+`}))`)
+
+		this.Output()
+	}
+}

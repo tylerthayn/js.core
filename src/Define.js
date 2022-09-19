@@ -1,5 +1,3 @@
-require('./global')
-
 const dataDesc = new Set(['configurable', 'enumerable', 'get', 'set'])
 const accDesc = new Set(['configurable', 'enumerable', 'writable', 'value'])
 const _define = (typeof Reflect !== 'undefined' && Reflect.defineProperty) ? Reflect.defineProperty : Object.defineProperty
@@ -33,19 +31,7 @@ function IsDescriptor (obj, key, checkProto) {
 	return false
 }
 
-
-
-/**
-* Defines object elements
-* @memberof global.
-* @function Define
-* @param {object}
-* @param {string} name - Name of property
-* @param {*} value - Value of property
-* @param {boolean} [enumerable]
-* @returns {object}
-*/
-global.Define = (obj, key, val, enumerable = false) => {
+function Define (obj, key, val, enumerable = false) {
 
 	if (!IsObject(obj) && typeof obj !== 'function' && !Array.isArray(obj)) {
 		throw new TypeError('expected an object, function, or array')
@@ -72,3 +58,17 @@ global.Define = (obj, key, val, enumerable = false) => {
 
 	return obj
 }
+
+
+/**
+* Defines object elements
+* @memberof global.
+* @function Define
+* @param {object}
+* @param {string} name - Name of property
+* @param {*} value - Value of property
+* @param {boolean} [enumerable]
+* @returns {object}
+*/
+Define(global, 'Define', Define)
+

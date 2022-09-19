@@ -1,0 +1,31 @@
+
+module.exports = (Builder) => {
+
+	Builder.Config({
+		output: './String.js',
+		name: '@js/core/String',
+		deps: {
+			Define: '@js/core/Define'
+		},
+		defaultLoader: false,
+		includeOptions: {
+			indentChar: '\t',
+			indent: 1,
+			listFile: false
+		}
+	})
+
+	Builder.Include('./String/AsAscii.js', {indent: 1})
+	Builder.Include('./String/AsBase64.js', {indent: 1})
+	Builder.Include('./String/AsUrlMatch.js', {indent: 1})
+	Builder.Include('./String/CamelCase.js', {indent: 1})
+	Builder.Include('./String/Capitalize.js', {indent: 1})
+	Builder.Include('./String/Hash.js', {indent: 1})
+	Builder.Include('./String/IsBase64.js', {indent: 1})
+	Builder.Include('./String/IsEmpty.js', {indent: 1})
+	Builder.Include('./String/IsJson.js', {indent: 1})
+	Builder.Include('./String/Match.js', {indent: 1})
+	Builder.Include('./String/Pad.js', {indent: 1})
+	Builder.Include('./String/Repeat.js', {indent: 1})
+	Builder.Output()
+}

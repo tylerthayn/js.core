@@ -1,0 +1,38 @@
+
+module.exports = (Builder) => {
+
+	Builder.Config({
+		output: './Array.js',
+		name: '@js/core/Array',
+		deps: {
+			lodash: 'lodash',
+			Define: '@js/core/Define'
+		},
+		defaultLoader: false,
+		includeOptions: {
+			indentChar: '\t',
+			indent: 1,
+			listFile: false
+		}
+	})
+
+	Builder.Include('./Array/From.js', {indent: 1})
+	Builder.Include('./Array/IsArray.js', {indent: 1})
+	Builder.Include('./Array/Flatten.js', {indent: 1})
+	Builder.Include('./Array/Difference.js', {indent: 1})
+
+	Builder.Include('./Array/first.js', {indent: 1})
+	Builder.Include('./Array/head.js', {indent: 1})
+	Builder.Include('./Array/last.js', {indent: 1})
+	Builder.Include('./Array/tail.js', {indent: 1})
+	Builder.Include('./Array/Delete.js', {indent: 1})
+	Builder.Include('./Array/DeleteAt.js', {indent: 1})
+	Builder.Include('./Array/Intersection.js', {indent: 1})
+	Builder.Include('./Array/Omit.js', {indent: 1})
+	Builder.Include('./Array/OmitAt.js', {indent: 1})
+	Builder.Include('./Array/Shuffle.js', {indent: 1})
+	Builder.Include('./Array/Union.js', {indent: 1})
+	Builder.Include('./Array/Unique.js', {indent: 1})
+	Builder.Include('./Array/Xor.js', {indent: 1})
+	Builder.Output()
+}
