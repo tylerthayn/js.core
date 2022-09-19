@@ -8,6 +8,9 @@
 	}
 }(function (_) {
 
+	/**	
+	 * @module @js/core	
+	*/	
 		
 	/**	
 	* Array class	

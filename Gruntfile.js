@@ -1,22 +1,13 @@
 
 module.exports = function(grunt) {
 	grunt.initConfig({
-		alias: {
-			options: {
-				name: '@js/core',
-				local: true,
-				global: true,
-				files: ['index.js', 'package.json', 'README.md', 'LICENSE'],
-				folders: ['docs']
-			}
-		},
 		amd: {
 			default: {
 				options: {
 					src: 'src/index.js',
 					dest: 'index.js',
 
-					name: '@js/core',
+					name: '@tyler.thayn/js.core',
 					dependencies: {
 					},
 				}
@@ -25,6 +16,7 @@ module.exports = function(grunt) {
 		clean: {
 			options: {
 				paths: [
+					'.Build/tmp',
 					'index.js',
 					'docs'
 				]
