@@ -55,5 +55,5 @@
         "rev:major": "grunt rev:major"
     },
     "title": "TTS Design javascript core libraries",
-    "version": "0.13.7"
+    "version": "0.13.8"
 }
