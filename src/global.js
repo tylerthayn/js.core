@@ -1,6 +1,7 @@
 /**
 * global reference
 * @global
+* @name global
 * @type {object}
 */
 if (typeof global !== 'object') {

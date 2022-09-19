@@ -44,10 +44,10 @@
         "url": "git+https://github.com/tylerthayn/js.core.git"
     },
     "scripts": {
-        "build": "grunt default && npm run-script docs && grunt readme",
+        "build": "grunt default",
         "docs": "jsdoc -c jsdoc.conf",
         "git": "git add * && git commit -m \"auto\" && git push",
-        "prepare": "grunt default",
+        "prepare": "grunt default && npm run-script docs && grunt readme && npm run-script git",
         "postinstall": "node alias.js",
         "readme": "grunt readme",
         "rev:patch": "grunt rev:patch",
@@ -55,5 +55,5 @@
         "rev:major": "grunt rev:major"
     },
     "title": "TTS Design javascript core libraries",
-    "version": "0.13.6"
+    "version": "0.13.7"
 }

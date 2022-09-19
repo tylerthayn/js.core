@@ -62,7 +62,7 @@ function Define (obj, key, val, enumerable = false) {
 
 /**
 * Defines object elements
-* @memberof global.
+* @global
 * @function Define
 * @param {object}
 * @param {string} name - Name of property

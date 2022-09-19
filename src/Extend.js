@@ -57,7 +57,7 @@
 
 	/**
 	* Extend the contents of two or more objects into the target object
-	* @memberof global.
+	* @global
 	* @function Extend
 	* @param {(object|array)} target
 	* @param {...(object|array)} sources

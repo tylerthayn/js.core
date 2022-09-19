@@ -1,14 +1,14 @@
 /**
 * Delay function
-* @global
+* @memberof Function.
 * @function Delay
+* @param {number} time - time to delay
+* @param {callback} cb - callback function
+* @param {...*} args - args to pass to callback
 */
-Define(Function, 'Delay', function () {
-	let args = [...arguments]
-	let time = args.shift(), fn = args.shift()
-
+Define(Function, 'Delay', function (time, cb, ...args) {
 	return setTimeout(function () {
-		fn(...args)
+		cb(...args)
 	}, time)
 })
 

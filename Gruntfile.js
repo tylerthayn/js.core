@@ -4,7 +4,7 @@ module.exports = function(grunt) {
 		amd: {
 			default: {
 				options: {
-					src: 'src/index.js',
+					src: 'index.js',
 					dest: 'index.js',
 
 					name: '@tyler.thayn/js.core',
@@ -69,6 +69,7 @@ module.exports = function(grunt) {
 		},
 		readme: {
 			options: {
+				output: 'README.md',
 				template: '.Build/templates/readme'
 			}
 		},

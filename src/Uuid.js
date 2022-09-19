@@ -1,3 +1,10 @@
+/**
+ * Uuid
+ *
+ * @global
+ * @function Uuid
+ * @returns {string} uuid
+ */
 Define(global, 'Uuid', () => {
 	let d = Date.now()
 	return `xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx`.replace(/[xy]/g, c => {

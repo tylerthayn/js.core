@@ -1,6 +1,7 @@
 /**
 * No op function
-* @global
+*
+* @memberof Function.
 * @function Noop
 */
 Define(Function, 'Noop', function () {

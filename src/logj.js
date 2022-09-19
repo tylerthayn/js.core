@@ -1,3 +1,10 @@
+/**
+ * JSON Logger
+ *
+ * @global
+ * @function logj
+ * @param {*} object - Object to log
+ */
 Define(global, 'logj', function (v) {
 	let s = v
 	try {
