@@ -44,6 +44,16 @@ module.exports = function(grunt) {
 				}
 			}
 		},
+		jsdoc: {
+			default: {
+				src: ["src/*.js", "src/**/*.js", "README.md"],
+				options: {
+					"destination": "docs",
+					"template": ".Build/templates/docs/template",
+					"configure": "jsdoc.conf"
+				}
+			}
+		},
 		lodash: {
 			options: {
 				src: require.resolve('lodash'),
@@ -77,5 +87,11 @@ module.exports = function(grunt) {
 	})
 
 	grunt.loadTasks('.Build/tasks')
-	grunt.registerTask('default', ['clean', 'concat', 'amd']);
+	grunt.loadNpmTasks('grunt-jsdoc')
+	grunt.registerTask('docs', ['jsdoc', 'readme'])
+	grunt.registerTask('default', ['clean', 'concat', 'amd', 'docs'])
+	grunt.registerTask('patch', ['rev:patch', 'default'])
+	grunt.registerTask('minor', ['rev:minor', 'default'])
+	grunt.registerTask('major', ['rev:major', 'default'])
+
 }

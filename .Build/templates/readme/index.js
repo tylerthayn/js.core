@@ -6,13 +6,17 @@ function Filter(ast,filters){let _ast=ast;filters.Keys().forEach(key=>{_ast=_ast
 function Sort (a, b) {return a.longname.localeCompare(b.longname, 'en'/*, { sensitivity: 'base' }*/)}
 function StringifyParam(param){let s=`${param.name}`;return param.optional?`[${s}]`:s}
 
+let package = JSON.parse(Fs.readFileSync(Path.resolve('./package.json'), 'utf-8'))
+
 module.exports = (ast) => {
 	let output = ''
 	let log = (s) => {output += s + '\n'}
 
+	log(`\n## ${package.name}  \n`)
+
 	function Process (doclet, ast, indent = 0) {
 		if (doclet.kind == 'class' || doclet.kind == 'module' || doclet.kind == 'namespace') {
-			log('\t'.repeat(indent)+doclet.longname)
+			log('\n'+'\t'.repeat(indent)+'### '+doclet.longname+'  \n')
 
 			Filter(ast, {memberof: doclet.longname, scope: 'static', kind: 'class'}).forEach(child => Process(child, ast, indent+1))
 			Filter(ast, {memberof: doclet.longname, scope: 'static', kind: 'member'}).forEach(child => Process(child, ast, indent+1))
@@ -23,9 +27,9 @@ module.exports = (ast) => {
 			Filter(ast, {memberof: doclet.longname, scope: 'instance', kind: 'class'}).forEach(child => Process(child, ast, indent+1))
 			log('')
 		} else if (doclet.kind == 'function') {
-			log('\t'.repeat(indent)+doclet.name+'('+(doclet.params ? doclet.params.map(p => StringifyParam(p)).join(', ') : '')+')')
+			log('\t'.repeat(indent)+doclet.name+'('+(doclet.params ? doclet.params.map(p => StringifyParam(p)).join(', ') : '')+')  ')
 		} else if (doclet.kind == 'member') {
-			log('\t'.repeat(indent)+doclet.name+' '+'{'+doclet.type.names.join('|')+'}')
+			log('\t'.repeat(indent)+doclet.name+' '+'{'+doclet.type.names.join('|')+'}  ')
 		}
 	}
 
@@ -33,8 +37,9 @@ module.exports = (ast) => {
 	ast = ast.filter(t => t.Get('comment', '') != '')
 
 	Filter(ast, {scope: 'global', kind: 'class'}).sort(Sort).forEach(t => {Process(t, ast)})
-	Filter(ast, {scope: 'global', kind: 'function'}).sort(Sort).forEach(t => {Process(t, ast)})
-	Filter(ast, {scope: 'global', kind: 'member'}).sort(Sort).forEach(t => {Process(t, ast)})
+	log('\n###   \n')
+	Filter(ast, {scope: 'global', kind: 'function'}).sort(Sort).forEach(t => {Process(t, ast, 1)})
+	Filter(ast, {scope: 'global', kind: 'member'}).sort(Sort).forEach(t => {Process(t, ast, 1)})
 
 	//Filter(ast, {kind: 'module'}).sort(Sort).forEach(t => {Process(t, ast)})
 	//Filter(ast, {kind: '').sort(Sort).forEach(t => {Process(t, ast)})
