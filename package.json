@@ -51,9 +51,9 @@
         "prepare": "grunt default && npm run-script git",
         "postinstall": "node alias.js",
         "readme": "grunt readme",
-        "patch": "grunt patch && grunt default && npm run-script git",
-        "minor": "grunt minor && grunt default && npm run-script git",
-        "major": "grunt major && grunt default && npm run-script git"
+        "patch": "grunt patch",
+        "minor": "grunt minor",
+        "major": "grunt major"
     },
     "title": "TTS Design javascript core libraries",
     "version": "0.13.10"
