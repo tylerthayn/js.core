@@ -90,8 +90,8 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-jsdoc')
 	grunt.registerTask('docs', ['jsdoc', 'readme'])
 	grunt.registerTask('default', ['clean', 'concat', 'amd', 'docs'])
-	grunt.registerTask('patch', ['rev:patch', 'default'])
-	grunt.registerTask('minor', ['rev:minor', 'default'])
-	grunt.registerTask('major', ['rev:major', 'default'])
+	grunt.registerTask('patch', ['rev:patch'])
+	grunt.registerTask('minor', ['rev:minor'])
+	grunt.registerTask('major', ['rev:major'])
 
 }
