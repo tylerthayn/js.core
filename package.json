@@ -56,5 +56,5 @@
         "major": "grunt major && grunt default && npm run-script git"
     },
     "title": "TTS Design javascript core libraries",
-    "version": "0.13.9"
+    "version": "0.13.10"
 }

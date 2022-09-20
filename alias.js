@@ -11,8 +11,8 @@ let content = Fs.readFileSync(Path.resolve(folder, package.main), 'utf-8')
 Fs.writeFileSync(Path.resolve(folder, package.main), content.replace(package.name, package.alias), 'utf-8')
 
 // Replace alias name in README.md
-let content = Fs.readFileSync(Path.resolve(folder, 'README.md'), 'utf-8')
-Fs.writeFileSync(Path.resolve(folder, 'README.md'), content.replace(new RegExp(package.name, 'g'), package.alias), 'utf-8')
+let readme = Fs.readFileSync(Path.resolve(folder, 'README.md'), 'utf-8')
+Fs.writeFileSync(Path.resolve(folder, 'README.md'), readme.replace(new RegExp(package.name, 'g'), package.alias), 'utf-8')
 
 
 // Update package.json file
