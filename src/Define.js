@@ -64,7 +64,7 @@ function Define (obj, key, val, enumerable = false) {
 * Defines object elements
 * @global
 * @function Define
-* @param {object}
+* @param {object} obj - Object to define on
 * @param {string} name - Name of property
 * @param {*} value - Value of property
 * @param {boolean} [enumerable]

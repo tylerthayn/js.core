@@ -8,7 +8,6 @@
 	Flatten(depth)  {array}
 	From(value)  {array}
 	IsArray(object)  {boolean}
-
 	first {*}  
 	head {array}  
 	last {*}  
@@ -25,19 +24,15 @@
 	Unique(lists)  {array}
 	Xor(lists, array)  
 
-
 ### Function  
 
 	Debug(name, logFn, (callback})  
 	Delay(time, cb, args)  
 	Noop()  
 
-
-
 ### Object  
 
 	Extensions {Object}  
-
 	Clone()  {object}
 	Define(name, value, [enumerable])  {object}
 	Each(fn, this)  
@@ -54,9 +49,7 @@
 	Trim()  {object}
 	Type([compare])  {string|boolean}
 
-
 ### String  
-
 
 	AsAscii()  {string}
 	AsBase64()  {string}
@@ -69,7 +62,6 @@
 	IsJson()  {boolean}
 	Pad(length, [char], [rightPad])  {string}
 	Repeat(n)  {string}
-
 
 ###   
 

@@ -1,0 +1,97 @@
+<!-- start:doc -->
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Docs</title>
+		<link rel="stylesheet" href="D:/CDN/css/jquery-ui.css">
+		<link rel="stylesheet" href="D:/CDN/css/tts.css">
+		<link rel="stylesheet" href="styles.css">
+		<script src="D:/CDN/web.core.js" data-main="main"></script>
+	</head>
+	<body class="App">
+
+<div class="Docs" name="{{name}}">
+<!-- start:doc -->
+	<!-- start:item -->
+	<div id="_{{longname}}" class="Item {{CamelCase scope}}" data-name="{{longname}}" data-scope="{{scope}}">
+		<div class="Header">
+			<div class="Title">{{name}}</div>
+			{{#if params}}
+			<div class="Params">
+				{{#params}}
+				<div class="Param">{{name}}</div>
+				{{/params}}
+			</div>
+			{{/if}}
+			{{#if returns}}
+			<div class="Returns">
+				{{#Returns returns}}
+					{{#Iterate type.names}}
+						<div>{{this}}</div>
+					{{/Iterate}}
+				{{/Returns}}
+			</div>
+			{{/if}}
+			<div class="Spacer"></div>
+			<div class="Controls">
+				<i class="material-icons">help</i>
+			</div>
+		</div>
+		<div class="Content" style="xdisplay:none;">
+			{{ParseLinks description}}
+			<br>
+			{{#if (Kind "function" this)}}
+			{{#if params}}
+			Params
+			<ul class="Params">
+				{{#params}}
+					<li class="Param">
+						<div class="Name">{{name}}</div>
+						<div class="Types">
+						{{#type}}&#123;{{Join names '|'}}&#125;{{/type}}
+						</div>
+						<div class="Description">{{description}}</div>
+				{{/params}}
+			</ul>
+			{{/if}}
+			{{#returns}}
+			Returns: &#123;{{#type}}{{Join names '|'}}&#125;{{/type}}<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{description}}
+			{{/returns}}
+			{{/if}}
+			
+			{{ParseLinks summary}}
+			<br>
+			Location: {{{Location meta}}}
+			<div class="References">
+				{{#examples}}
+				<div class="Example" onClick="ShowExample(this)">Example</div>
+				<div class="Example" style="display:none;">{{.}}</div>
+				{{/examples}}
+				{{#tutorials}}
+				<div class="Tutorial" onClick="ShowTutorial({{.}})">Tutorial</div>
+				{{/tutorials}}
+			</div>
+	<!-- start:item -->
+		<!-- start:children --><children><!-- start:children -->
+			<!-- start:static --><static><!-- start:static -->
+			<!-- end:static --></static><!-- end:static -->
+			<!-- start:instance --><instance><!-- start:instance -->
+			<!-- end:instance --></instance><!-- end:instance -->
+		<!-- end:children --></children><!-- end:children -->
+	<!-- end:item -->
+		</div>
+	</div>
+	<!-- end:item -->
+
+<!-- Function -->
+
+
+<!-- Function -->
+
+<!-- end:doc -->
+</div>
+<!-- end:doc -->
+	</body>
+</html>

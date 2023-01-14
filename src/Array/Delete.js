@@ -5,6 +5,9 @@
 * @function Delete
 * @param {*} elements - Element or array of elements to delete
 * @param {array} array - The modified array
+* @tutorial Array/Delete
+* @example exname
+* ['one', 'two', 'three'].Delete('two')
 */
 Define(Array.prototype, 'Delete', function () {
 	for (let i=0; i<arguments.length; i++) {

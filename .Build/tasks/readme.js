@@ -14,7 +14,7 @@ module.exports = function(grunt) {
 		let data = ''
 		cp.stdout.on('data', chunk => {data += chunk.toString()})
 		cp.on('close', code => {
-			//grunt.file.write('./.Build/tmp/ast', data)
+			grunt.file.write('./.Build/tmp/ast', data)
 			let readme = template(JSON.parse(data))
 			grunt.file.write(options.output, template(JSON.parse(data)))
 			done(true)
