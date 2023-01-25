@@ -46,6 +46,22 @@
 		
 		
 	/**	
+	* @namespace tyler	
+	*/	
+		
+	/**	
+	* @typedef {function} Plugin	
+	* @param {object}	
+	*/	
+		
+	/**	
+	* @typedef {object} TOptions	
+	* @property {string} name	
+	* @property {string|object} data	
+	*/	
+		
+		
+	/**	
 	* global reference	
 	* @global	
 	* @name global	
@@ -126,7 +142,7 @@
 	* Defines object elements	
 	* @global	
 	* @function Define	
-	* @param {object}	
+	* @param {object} obj - Object to define on	
 	* @param {string} name - Name of property	
 	* @param {*} value - Value of property	
 	* @param {boolean} [enumerable]	
@@ -231,10 +247,14 @@
 	/**	
 	 * Object extensions	
 	 *	
-	 * @name Object.Extensions	
-	 * @type {Object}	
+	 * @property {object} Extensions	
 	 */	
 	Object.Extensions = {}	
+		
+	/**	
+	* @typedef {function} Plugin	
+	* @param {object} o	
+	*/	
 		
 		
 	/**	
@@ -359,6 +379,9 @@
 	* @function Delete	
 	* @param {*} elements - Element or array of elements to delete	
 	* @param {array} array - The modified array	
+	* @tutorial Array/Delete	
+	* @example exname	
+	* ['one', 'two', 'three'].Delete('two')	
 	*/	
 	Define(Array.prototype, 'Delete', function () {	
 		for (let i=0; i<arguments.length; i++) {	
@@ -758,7 +781,10 @@
 	})	
 		
 		
-	Define(Object.Extensions, 'EventEmitter', function (o) {	
+	/**	
+	* @property {Plugin} EventEmitter	
+	*/	
+	Object.Extensions.EventEmitter = function (o) {	
 		var R = typeof Reflect === 'object' ? Reflect : null	
 		var ReflectApply=R&&'function'==typeof R.apply?R.apply:function ReflectApply(target,receiver,args){return Function.prototype.apply.call(target,receiver,args)};	
 		var ReflectOwnKeys	
@@ -810,7 +836,7 @@
 		
 		return o	
 		
-	})	
+	}	
 		
 		
 		

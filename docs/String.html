@@ -1,134 +1,108 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width">
-	<title>Documentation Class: String</title>
+    
+    <meta charset="utf-8">
+    <title>String - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+	<!--<link type="text/css" rel="stylesheet" href="styles/jsdoc.css">-->
+	<link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+	<link type="text/css" rel="stylesheet" href="styles/jquery-ui.css">
+	<link type="text/css" rel="stylesheet" href="styles/tts.css">
 
-	<!--[if lt IE 9]>
-	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-	<![endif]-->
-	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
+    <script src="scripts/nav.js" defer></script>
+    
 
-	<link type="text/css" rel="stylesheet" href="styles/site.spacelab.css">
+	<script src="scripts/web.core.js" data-main="scripts/main" defer></script>
 
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-
 <body>
 
-<div class="navbar navbar-default navbar-fixed-top navbar-inverse">
-<div class="container">
-	<div class="navbar-header">
-		<a class="navbar-brand" href="index.html"><img class="branding-logo" src="data:image/png;base64,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////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////AFP3ByUAABMGSURBVHja7Hz9c9tIkmxmdQMUQZG0dmxL8s2N5yz6/f9/z47oHdMWKdkzFj/BL3Tl+wGk7Nm4d3uULK9fhBGhMAVChUR2dXVVdsEUvsfD8APWD1g/YP2A9QPWVzhi/c/Y8R2Ee9qT/ScBt62xXE6ITgCEAIgiIFDU/hwpEQDq3wCI1P4q1t8JtQ0KFGC1MUBfnAT3N9hZI51kYKyRRWCMGcGaN+7sAzCh/qDgNShLJL02KKvZJWQCDE7BnJC5SEqAggMw7R6QMv9sfvc44P6HpED5nq3NNG0p7kax/kSofiIZJKPqZ3NidwuITgKUxP1fYYdRbtiR4qjhqqa1xgtSYKIJqtncfS9GZie1y089iQBr/69RSQYKTjqMLgk0iAQgSCJJUHDQRIoSDAwgIBglB2UyklZbF8j9CDtEwh2UIEBOiaDcWzu2bpASSQeIUMNKJiq4uQhzOkE4YZAAghDhkBGim5sIJIgE6ebwwEQYHE5SgCWKBtQDTDdBlizRBIPTjawoGrb5ae1bogjR6IEgXEZSTAysyaVRpkBKVEhWO7CCSAhBBtKNlmKy+tlq3oSAAIEKXttygxP0IJPMjZARyRAh0ZyE0o6tEVxmImG7qdmdQuhO6nnSwQSgm9CddKe+nzxdTAWgiwmBzhToTCh2puhMxO5UYGcCEG4Qxc5UQHcqqjuVSCc7U3UnrJ+xiyk6mBCdP35q7MKpZJ4Ehq51jWZdGLsG61inY5zP2DU+YdfAGUO3ayF0rTubdrrWtRmMHaJDzro0m9PQDTbrmBHd0LVO7LDbMYJmYdYhDR0L1gldA7ozGgM7Hc5nHc7BTmfO0Y6toVVmpHXmJAuUKIASRcnmgkUJqkBZlEVZYGGi2FwKQLEU2ARQFgCAsiiBAksBBRatckd8UaIoKdSTaWcJKMri7i+BEmyWqO8x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"
-		alt="logo"/>TTSCloud</a>
-		<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span>
-        </button>
-	</div>
-	<div class="navbar-collapse collapse" id="topNavigation">
-		<ul class="nav navbar-nav">
-			
-			<li class="dropdown">
-				<a href="modules.list.html" class="dropdown-toggle" data-toggle="dropdown">Modules<b class="caret"></b></a>
-				<ul class="dropdown-menu ">
-					<li><a href="@tyler.thayn_js.module_core.html">@tyler.thayn/js.core</a></li>
-				</ul>
-			</li>
-			
-			<li class="dropdown">
-				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
-				<ul class="dropdown-menu ">
-					<li><a href="Array.html">Array</a></li><li><a href="Function.html">Function</a></li><li><a href="Object.html">Object</a></li><li><a href="String.html">String</a></li>
-				</ul>
-			</li>
-			
-			<li class="dropdown">
-				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
-				<ul class="dropdown-menu ">
-					<li><a href="global.html#Clone">Clone</a></li><li><a href="global.html#Define">Define</a></li><li><a href="global.html#Extend">Extend</a></li><li><a href="global.html#global#global">global</a></li><li><a href="global.html#global#global#IsEqual">IsEqual</a></li><li><a href="global.html#global#global#log">log</a></li><li><a href="global.html#global#global#logj">logj</a></li><li><a href="global.html#global#global#Merge">Merge</a></li><li><a href="global.html#global#global#Type">Type</a></li><li><a href="global.html#global#global#Uuid">Uuid</a></li>
-				</ul>
-			</li>
-			
-		</ul>
-        
-            <div class="col-sm-3 col-md-3">
-                <form class="navbar-form" role="search">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search" name="q" id="search-input">
-                        <div class="input-group-btn">
-                            <button class="btn btn-default" id="search-submit"><i class="glyphicon glyphicon-search"></i></button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        
-	</div>
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
 
-</div>
-</div>
+<label for="nav-trigger" class="overlay"></label>
 
 
-<div class="container" id="toc-content">
-<div class="row">
-
+<nav style="display:none;" >
 	
-	<div class="col-md-8">
 	
-		<div id="main">
-			
+	<i class="material-icons CloseMenu" data-action="Close">close</i>
+	<h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Array.html">Array</a><ul class='methods'><li data-type='method'><a href="Array.html#.Difference">Difference</a></li><li data-type='method'><a href="Array.html#.Difference">Difference</a></li><li data-type='method'><a href="Array.html#.Flatten">Flatten</a></li><li data-type='method'><a href="Array.html#.Flatten">Flatten</a></li><li data-type='method'><a href="Array.html#.From">From</a></li><li data-type='method'><a href="Array.html#.From">From</a></li><li data-type='method'><a href="Array.html#.IsArray">IsArray</a></li><li data-type='method'><a href="Array.html#.IsArray">IsArray</a></li><li data-type='method'><a href="Array.html#Delete">Delete</a></li><li data-type='method'><a href="Array.html#Delete">Delete</a></li><li data-type='method'><a href="Array.html#DeleteAt">DeleteAt</a></li><li data-type='method'><a href="Array.html#DeleteAt">DeleteAt</a></li><li data-type='method'><a href="Array.html#Difference">Difference</a></li><li data-type='method'><a href="Array.html#Difference">Difference</a></li><li data-type='method'><a href="Array.html#Intersection">Intersection</a></li><li data-type='method'><a href="Array.html#Intersection">Intersection</a></li><li data-type='method'><a href="Array.html#Omit">Omit</a></li><li data-type='method'><a href="Array.html#Omit">Omit</a></li><li data-type='method'><a href="Array.html#OmitAt">OmitAt</a></li><li data-type='method'><a href="Array.html#OmitAt">OmitAt</a></li><li data-type='method'><a href="Array.html#Pick">Pick</a></li><li data-type='method'><a href="Array.html#Pick">Pick</a></li><li data-type='method'><a href="Array.html#Shuffle">Shuffle</a></li><li data-type='method'><a href="Array.html#Shuffle">Shuffle</a></li><li data-type='method'><a href="Array.html#Union">Union</a></li><li data-type='method'><a href="Array.html#Union">Union</a></li><li data-type='method'><a href="Array.html#Unique">Unique</a></li><li data-type='method'><a href="Array.html#Unique">Unique</a></li><li data-type='method'><a href="Array.html#Xor">Xor</a></li><li data-type='method'><a href="Array.html#Xor">Xor</a></li></ul></li><li></li><li><a href="Function.html">Function</a><ul class='methods'><li data-type='method'><a href="Function.html#.Debug">Debug</a></li><li data-type='method'><a href="Function.html#.Debug">Debug</a></li><li data-type='method'><a href="Function.html#.Delay">Delay</a></li><li data-type='method'><a href="Function.html#.Delay">Delay</a></li><li data-type='method'><a href="Function.html#.Noop">Noop</a></li><li data-type='method'><a href="Function.html#.Noop">Noop</a></li></ul></li><li></li><li><a href="Object.html">Object</a><ul class='methods'><li data-type='method'><a href="Object.html#Clone">Clone</a></li><li data-type='method'><a href="Object.html#Clone">Clone</a></li><li data-type='method'><a href="Object.html#Define">Define</a></li><li data-type='method'><a href="Object.html#Define">Define</a></li><li data-type='method'><a href="Object.html#Each">Each</a></li><li data-type='method'><a href="Object.html#Each">Each</a></li><li data-type='method'><a href="Object.html#Extend">Extend</a></li><li data-type='method'><a href="Object.html#Extend">Extend</a></li><li data-type='method'><a href="Object.html#Get">Get</a></li><li data-type='method'><a href="Object.html#Get">Get</a></li><li data-type='method'><a href="Object.html#Has">Has</a></li><li data-type='method'><a href="Object.html#Has">Has</a></li><li data-type='method'><a href="Object.html#Includes">Includes</a></li><li data-type='method'><a href="Object.html#Includes">Includes</a></li><li data-type='method'><a href="Object.html#IsEqual">IsEqual</a></li><li data-type='method'><a href="Object.html#IsEqual">IsEqual</a></li><li data-type='method'><a href="Object.html#Keys">Keys</a></li><li data-type='method'><a href="Object.html#Keys">Keys</a></li><li data-type='method'><a href="Object.html#Merge">Merge</a></li><li data-type='method'><a href="Object.html#Merge">Merge</a></li><li data-type='method'><a href="Object.html#Paths">Paths</a></li><li data-type='method'><a href="Object.html#Paths">Paths</a></li><li data-type='method'><a href="Object.html#Pick">Pick</a></li><li data-type='method'><a href="Object.html#Pick">Pick</a></li><li data-type='method'><a href="Object.html#Set">Set</a></li><li data-type='method'><a href="Object.html#Set">Set</a></li><li data-type='method'><a href="Object.html#Trim">Trim</a></li><li data-type='method'><a href="Object.html#Trim">Trim</a></li><li data-type='method'><a href="Object.html#Type">Type</a></li><li data-type='method'><a href="Object.html#Type">Type</a></li></ul></li><li></li><li><a href="String.html">String</a><ul class='methods'><li data-type='method'><a href="String.html#AsAscii">AsAscii</a></li><li data-type='method'><a href="String.html#AsAscii">AsAscii</a></li><li data-type='method'><a href="String.html#AsBase64">AsBase64</a></li><li data-type='method'><a href="String.html#AsBase64">AsBase64</a></li><li data-type='method'><a href="String.html#AsUrlMatch">AsUrlMatch</a></li><li data-type='method'><a href="String.html#AsUrlMatch">AsUrlMatch</a></li><li data-type='method'><a href="String.html#CamelCase">CamelCase</a></li><li data-type='method'><a href="String.html#CamelCase">CamelCase</a></li><li data-type='method'><a href="String.html#Capitalize">Capitalize</a></li><li data-type='method'><a href="String.html#Capitalize">Capitalize</a></li><li data-type='method'><a href="String.html#Hash">Hash</a></li><li data-type='method'><a href="String.html#Hash">Hash</a></li><li data-type='method'><a href="String.html#IsBase64">IsBase64</a></li><li data-type='method'><a href="String.html#IsBase64">IsBase64</a></li><li data-type='method'><a href="String.html#IsEmpty">IsEmpty</a></li><li data-type='method'><a href="String.html#IsEmpty">IsEmpty</a></li><li data-type='method'><a href="String.html#IsJson">IsJson</a></li><li data-type='method'><a href="String.html#IsJson">IsJson</a></li><li data-type='method'><a href="String.html#Pad">Pad</a></li><li data-type='method'><a href="String.html#Pad">Pad</a></li><li data-type='method'><a href="String.html#Repeat">Repeat</a></li><li data-type='method'><a href="String.html#Repeat">Repeat</a></li></ul></li><li></li></ul><h3>Modules</h3><ul><li><a href="@tyler.thayn_js.module_core.html">core</a></li><li></li></ul><h3>Namespaces</h3><ul><li><a href="@tyler.thayn_js.module_core-tyler.html">tyler</a></li><li></li></ul><h3>Global</h3><ul><li><a href="global.html#Clone">Clone</a></li><li><a href="global.html#Define">Define</a></li><li><a href="global.html#Extend">Extend</a></li><li><a href="global.html#global#global">global</a></li><li><a href="global.html#global#global#IsEqual">IsEqual</a></li><li><a href="global.html#global#global#log">log</a></li><li><a href="global.html#global#global#logj">logj</a></li><li><a href="global.html#global#global#Merge">Merge</a></li><li><a href="global.html#global#global#Type">Type</a></li><li><a href="global.html#global#global#Uuid">Uuid</a></li></ul>
+	
+</nav>
 
-	<h1 class="page-title">Class: String</h1>
+<i class="material-icons ShowMenu">more_vert</i>
+
+<div id="main">
+    
+    <h1 class="page-title">String</h1>
+    
+
+    
+
+
+
+
 <section>
 
 <header>
     
         <h2>
-        String
+        
+            String
+        
         </h2>
         
     
 </header>
 
-
 <article>
-    <div class="container-overview">
     
+        <div class="container-overview">
         
-<hr>
-<dt>
-    <h4 class="name" id="String"><span class="type-signature"></span>new String()</h4>
-    
-    
-    <p class="summary"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String@MDN</a></p>
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        String class
-    </div>
-    
+            
 
     
 
-    
+    <h4 class="name" id="String"><span class="type-signature"></span>new String<span class="signature">()</span><span class="type-signature"></span></h4>
 
     
+    <p class="summary usertext"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String@MDN</a></p>
     
 
-    
+
+
+
 <dl class="details">
     
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>String class</li></ul></dd>
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line29">line 29</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 
     
 
@@ -138,28 +112,54 @@
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-
-	
-
-	
-
-	
+    
 </dl>
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        </div>
     
 
     
@@ -167,24 +167,10 @@
     
 
     
-
+    
     
 
-    
-
-    
-</dd>
-
-    
-    </div>
-
-    
-
-    
-
-    
-
-    
+     
 
     
 
@@ -193,38 +179,36 @@
     
         <h3 class="subsection-title">Methods</h3>
 
-        <dl>
+        
             
-<hr>
-<dt>
-    <h4 class="name" id="AsAscii"><span class="type-signature"></span>AsAscii()</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        String as ascii text
-    </div>
-    
 
     
 
-    
+    <h4 class="name" id="AsAscii"><span class="type-signature"></span>AsAscii<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span></h4>
 
     
-    
 
-    
+
+
+
 <dl class="details">
     
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>String as ascii text</li></ul></dd>
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="String_AsAscii.js.html">String/AsAscii.js</a>, <a href="String_AsAscii.js.html#line1">line 1</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 
     
 
@@ -234,49 +218,59 @@
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-
-	
-
-	
-
-	
+    
 </dl>
 
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
-    <h5>Returns:</h5>
-    
-            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
 <div class="param-desc">
     text - The ascii text
 </div>
 
 
 
-<dl>
+<dl class="param-type">
     <dt>
         Type
     </dt>
@@ -289,44 +283,40 @@
     </dd>
 </dl>
 
-
-        
-
     
-</dd>
+
+
 
         
             
-<hr>
-<dt>
-    <h4 class="name" id="AsAscii"><span class="type-signature"></span>AsAscii()</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        String as ascii text
-    </div>
-    
 
     
 
-    
+    <h4 class="name" id="AsAscii"><span class="type-signature"></span>AsAscii<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span></h4>
 
     
-    
 
-    
+
+
+
 <dl class="details">
     
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>String as ascii text</li></ul></dd>
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="String_AsAscii.js.html">String/AsAscii.js</a>, <a href="String_AsAscii.js.html#line1">line 1</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 
     
 
@@ -336,49 +326,59 @@
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-
-	
-
-	
-
-	
+    
 </dl>
 
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
-    <h5>Returns:</h5>
-    
-            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
 <div class="param-desc">
     text - The ascii text
 </div>
 
 
 
-<dl>
+<dl class="param-type">
     <dt>
         Type
     </dt>
@@ -391,44 +391,40 @@
     </dd>
 </dl>
 
-
-        
-
     
-</dd>
+
+
 
         
             
-<hr>
-<dt>
-    <h4 class="name" id="AsBase64"><span class="type-signature"></span>AsBase64()</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        String as base64 text
-    </div>
-    
 
     
 
-    
+    <h4 class="name" id="AsBase64"><span class="type-signature"></span>AsBase64<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span></h4>
 
     
-    
 
-    
+
+
+
 <dl class="details">
     
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>String as base64 text</li></ul></dd>
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="String_AsBase64.js.html">String/AsBase64.js</a>, <a href="String_AsBase64.js.html#line1">line 1</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 
     
 
@@ -438,49 +434,59 @@
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-
-	
-
-	
-
-	
+    
 </dl>
 
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
-    <h5>Returns:</h5>
-    
-            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
 <div class="param-desc">
     text - The base64 text
 </div>
 
 
 
-<dl>
+<dl class="param-type">
     <dt>
         Type
     </dt>
@@ -493,44 +499,40 @@
     </dd>
 </dl>
 
-
-        
-
     
-</dd>
+
+
 
         
             
-<hr>
-<dt>
-    <h4 class="name" id="AsBase64"><span class="type-signature"></span>AsBase64()</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        String as base64 text
-    </div>
-    
 
     
 
-    
+    <h4 class="name" id="AsBase64"><span class="type-signature"></span>AsBase64<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span></h4>
 
     
-    
 
-    
+
+
+
 <dl class="details">
     
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>String as base64 text</li></ul></dd>
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="String_AsBase64.js.html">String/AsBase64.js</a>, <a href="String_AsBase64.js.html#line1">line 1</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 
     
 
@@ -540,49 +542,59 @@
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-
-	
-
-	
-
-	
+    
 </dl>
 
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
-    <h5>Returns:</h5>
-    
-            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
 <div class="param-desc">
     text - The base64 text
 </div>
 
 
 
-<dl>
+<dl class="param-type">
     <dt>
         Type
     </dt>
@@ -595,44 +607,40 @@
     </dd>
 </dl>
 
-
-        
-
     
-</dd>
+
+
 
         
             
-<hr>
-<dt>
-    <h4 class="name" id="AsUrlMatch"><span class="type-signature"></span>AsUrlMatch()</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        String as converted to url match pattern
-    </div>
-    
 
     
 
-    
+    <h4 class="name" id="AsUrlMatch"><span class="type-signature"></span>AsUrlMatch<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span></h4>
 
     
-    
 
-    
+
+
+
 <dl class="details">
     
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>String as converted to url match pattern</li></ul></dd>
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="String_AsUrlMatch.js.html">String/AsUrlMatch.js</a>, <a href="String_AsUrlMatch.js.html#line1">line 1</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 
     
 
@@ -642,49 +650,59 @@
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-
-	
-
-	
-
-	
+    
 </dl>
 
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
-    <h5>Returns:</h5>
-    
-            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
 <div class="param-desc">
     pattern - The match pattern
 </div>
 
 
 
-<dl>
+<dl class="param-type">
     <dt>
         Type
     </dt>
@@ -697,44 +715,40 @@
     </dd>
 </dl>
 
-
-        
-
     
-</dd>
+
+
 
         
             
-<hr>
-<dt>
-    <h4 class="name" id="AsUrlMatch"><span class="type-signature"></span>AsUrlMatch()</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        String as converted to url match pattern
-    </div>
-    
 
     
 
-    
+    <h4 class="name" id="AsUrlMatch"><span class="type-signature"></span>AsUrlMatch<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span></h4>
 
     
-    
 
-    
+
+
+
 <dl class="details">
     
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>String as converted to url match pattern</li></ul></dd>
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="String_AsUrlMatch.js.html">String/AsUrlMatch.js</a>, <a href="String_AsUrlMatch.js.html#line1">line 1</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 
     
 
@@ -744,49 +758,59 @@
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-
-	
-
-	
-
-	
+    
 </dl>
 
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
-    <h5>Returns:</h5>
-    
-            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
 <div class="param-desc">
     pattern - The match pattern
 </div>
 
 
 
-<dl>
+<dl class="param-type">
     <dt>
         Type
     </dt>
@@ -799,38 +823,82 @@
     </dd>
 </dl>
 
-
-        
-
     
-</dd>
+
+
 
         
             
-<hr>
-<dt>
-    <h4 class="name" id="CamelCase"><span class="type-signature"></span>CamelCase( [UpperCamel])</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        String converted to camel case
-    </div>
-    
 
     
 
+    <h4 class="name" id="CamelCase"><span class="type-signature"></span>CamelCase<span class="signature">(UpperCamel<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {string}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>String converted to camel case</li></ul></dd>
     
 
     
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="String_CamelCase.js.html">String/CamelCase.js</a>, <a href="String_CamelCase.js.html#line1">line 1</a>
+    </li></ul></dd>
     
-        <h5>Parameters:</h5>
-        
 
-<table class="params table table-striped">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
     <thead>
     <tr>
         
@@ -840,7 +908,7 @@
         <th>Type</th>
 
         
-        <th>Argument</th>
+        <th>Attributes</th>
         
 
         
@@ -888,69 +956,31 @@
     </tbody>
 </table>
 
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
 
 
 
-	
-
-	
-
-	
-
-	
-</dl>
 
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
-    <h5>Returns:</h5>
-    
-            
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
 <div class="param-desc">
     text - Text with camel case
 </div>
 
 
 
-<dl>
+<dl class="param-type">
     <dt>
         Type
     </dt>
@@ -963,38 +993,82 @@
     </dd>
 </dl>
 
-
-        
-
     
-</dd>
+
+
 
         
             
-<hr>
-<dt>
-    <h4 class="name" id="CamelCase"><span class="type-signature"></span>CamelCase( [UpperCamel])</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        String converted to camel case
-    </div>
-    
 
     
 
+    <h4 class="name" id="CamelCase"><span class="type-signature"></span>CamelCase<span class="signature">(UpperCamel<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {string}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>String converted to camel case</li></ul></dd>
     
 
     
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="String_CamelCase.js.html">String/CamelCase.js</a>, <a href="String_CamelCase.js.html#line1">line 1</a>
+    </li></ul></dd>
     
-        <h5>Parameters:</h5>
-        
 
-<table class="params table table-striped">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
     <thead>
     <tr>
         
@@ -1004,7 +1078,7 @@
         <th>Type</th>
 
         
-        <th>Argument</th>
+        <th>Attributes</th>
         
 
         
@@ -1052,69 +1126,31 @@
     </tbody>
 </table>
 
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
 
 
 
-	
-
-	
-
-	
-
-	
-</dl>
 
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
-    <h5>Returns:</h5>
-    
-            
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
 <div class="param-desc">
     text - Text with camel case
 </div>
 
 
 
-<dl>
+<dl class="param-type">
     <dt>
         Type
     </dt>
@@ -1127,38 +1163,82 @@
     </dd>
 </dl>
 
-
-        
-
     
-</dd>
+
+
 
         
             
-<hr>
-<dt>
-    <h4 class="name" id="Capitalize"><span class="type-signature"></span>Capitalize( [AllWords])</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        Capitalize words in a string
-    </div>
-    
 
     
 
+    <h4 class="name" id="Capitalize"><span class="type-signature"></span>Capitalize<span class="signature">(AllWords<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {string}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>Capitalize words in a string</li></ul></dd>
     
 
     
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="String_Capitalize.js.html">String/Capitalize.js</a>, <a href="String_Capitalize.js.html#line1">line 1</a>
+    </li></ul></dd>
     
-        <h5>Parameters:</h5>
-        
 
-<table class="params table table-striped">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
     <thead>
     <tr>
         
@@ -1168,7 +1248,7 @@
         <th>Type</th>
 
         
-        <th>Argument</th>
+        <th>Attributes</th>
         
 
         
@@ -1216,69 +1296,31 @@
     </tbody>
 </table>
 
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
 
 
 
-	
-
-	
-
-	
-
-	
-</dl>
 
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
-    <h5>Returns:</h5>
-    
-            
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
 <div class="param-desc">
     text - Capitalized text
 </div>
 
 
 
-<dl>
+<dl class="param-type">
     <dt>
         Type
     </dt>
@@ -1291,38 +1333,82 @@
     </dd>
 </dl>
 
-
-        
-
     
-</dd>
+
+
 
         
             
-<hr>
-<dt>
-    <h4 class="name" id="Capitalize"><span class="type-signature"></span>Capitalize( [AllWords])</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        Capitalize words in a string
-    </div>
-    
 
     
 
+    <h4 class="name" id="Capitalize"><span class="type-signature"></span>Capitalize<span class="signature">(AllWords<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {string}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>Capitalize words in a string</li></ul></dd>
     
 
     
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="String_Capitalize.js.html">String/Capitalize.js</a>, <a href="String_Capitalize.js.html#line1">line 1</a>
+    </li></ul></dd>
     
-        <h5>Parameters:</h5>
-        
 
-<table class="params table table-striped">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
     <thead>
     <tr>
         
@@ -1332,7 +1418,7 @@
         <th>Type</th>
 
         
-        <th>Argument</th>
+        <th>Attributes</th>
         
 
         
@@ -1380,69 +1466,31 @@
     </tbody>
 </table>
 
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
 
 
 
-	
-
-	
-
-	
-
-	
-</dl>
 
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
-    <h5>Returns:</h5>
-    
-            
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
 <div class="param-desc">
     text - Capitalized text
 </div>
 
 
 
-<dl>
+<dl class="param-type">
     <dt>
         Type
     </dt>
@@ -1455,38 +1503,82 @@
     </dd>
 </dl>
 
-
-        
-
     
-</dd>
+
+
 
         
             
-<hr>
-<dt>
-    <h4 class="name" id="Hash"><span class="type-signature"></span>Hash(type)</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        Generates a hash string
-    </div>
-    
 
     
 
+    <h4 class="name" id="Hash"><span class="type-signature"></span>Hash<span class="signature">(type)</span><span class="type-signature"> &rarr; {string}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>Generates a hash string</li></ul></dd>
     
 
     
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="String_Hash.js.html">String/Hash.js</a>, <a href="String_Hash.js.html#line1">line 1</a>
+    </li></ul></dd>
     
-        <h5>Parameters:</h5>
-        
 
-<table class="params table table-striped">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
     <thead>
     <tr>
         
@@ -1532,69 +1624,31 @@
     </tbody>
 </table>
 
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
 
 
 
-	
-
-	
-
-	
-
-	
-</dl>
 
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
-    <h5>Returns:</h5>
-    
-            
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
 <div class="param-desc">
     hash - Hash string
 </div>
 
 
 
-<dl>
+<dl class="param-type">
     <dt>
         Type
     </dt>
@@ -1607,38 +1661,82 @@
     </dd>
 </dl>
 
-
-        
-
     
-</dd>
+
+
 
         
             
-<hr>
-<dt>
-    <h4 class="name" id="Hash"><span class="type-signature"></span>Hash(type)</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        Generates a hash string
-    </div>
-    
 
     
 
+    <h4 class="name" id="Hash"><span class="type-signature"></span>Hash<span class="signature">(type)</span><span class="type-signature"> &rarr; {string}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>Generates a hash string</li></ul></dd>
     
 
     
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="String_Hash.js.html">String/Hash.js</a>, <a href="String_Hash.js.html#line1">line 1</a>
+    </li></ul></dd>
     
-        <h5>Parameters:</h5>
-        
 
-<table class="params table table-striped">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
     <thead>
     <tr>
         
@@ -1684,69 +1782,31 @@
     </tbody>
 </table>
 
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
 
 
 
-	
-
-	
-
-	
-
-	
-</dl>
 
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
-    <h5>Returns:</h5>
-    
-            
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
 <div class="param-desc">
     hash - Hash string
 </div>
 
 
 
-<dl>
+<dl class="param-type">
     <dt>
         Type
     </dt>
@@ -1759,44 +1819,40 @@
     </dd>
 </dl>
 
-
-        
-
     
-</dd>
+
+
 
         
             
-<hr>
-<dt>
-    <h4 class="name" id="IsBase64"><span class="type-signature"></span>IsBase64()</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        Tests if a string is Base64 format
-    </div>
-    
 
     
 
-    
+    <h4 class="name" id="IsBase64"><span class="type-signature"></span>IsBase64<span class="signature">()</span><span class="type-signature"> &rarr; {boolean}</span></h4>
 
     
-    
 
-    
+
+
+
 <dl class="details">
     
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>Tests if a string is Base64 format</li></ul></dd>
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="String_IsBase64.js.html">String/IsBase64.js</a>, <a href="String_IsBase64.js.html#line1">line 1</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 
     
 
@@ -1806,49 +1862,59 @@
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-
-	
-
-	
-
-	
+    
 </dl>
 
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
-    <h5>Returns:</h5>
-    
-            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
 <div class="param-desc">
     result
 </div>
 
 
 
-<dl>
+<dl class="param-type">
     <dt>
         Type
     </dt>
@@ -1861,44 +1927,40 @@
     </dd>
 </dl>
 
-
-        
-
     
-</dd>
+
+
 
         
             
-<hr>
-<dt>
-    <h4 class="name" id="IsBase64"><span class="type-signature"></span>IsBase64()</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        Tests if a string is Base64 format
-    </div>
-    
 
     
 
-    
+    <h4 class="name" id="IsBase64"><span class="type-signature"></span>IsBase64<span class="signature">()</span><span class="type-signature"> &rarr; {boolean}</span></h4>
 
     
-    
 
-    
+
+
+
 <dl class="details">
     
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>Tests if a string is Base64 format</li></ul></dd>
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="String_IsBase64.js.html">String/IsBase64.js</a>, <a href="String_IsBase64.js.html#line1">line 1</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 
     
 
@@ -1908,49 +1970,59 @@
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-
-	
-
-	
-
-	
+    
 </dl>
 
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
-    <h5>Returns:</h5>
-    
-            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
 <div class="param-desc">
     result
 </div>
 
 
 
-<dl>
+<dl class="param-type">
     <dt>
         Type
     </dt>
@@ -1963,44 +2035,40 @@
     </dd>
 </dl>
 
-
-        
-
     
-</dd>
+
+
 
         
             
-<hr>
-<dt>
-    <h4 class="name" id="IsEmpty"><span class="type-signature"></span>IsEmpty()</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        Checks if a string is empty, null or undefined
-    </div>
-    
 
     
 
-    
+    <h4 class="name" id="IsEmpty"><span class="type-signature"></span>IsEmpty<span class="signature">()</span><span class="type-signature"> &rarr; {boolean}</span></h4>
 
     
-    
 
-    
+
+
+
 <dl class="details">
     
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>Checks if a string is empty, null or undefined</li></ul></dd>
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="String_IsEmpty.js.html">String/IsEmpty.js</a>, <a href="String_IsEmpty.js.html#line1">line 1</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 
     
 
@@ -2010,49 +2078,59 @@
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-
-	
-
-	
-
-	
+    
 </dl>
 
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
-    <h5>Returns:</h5>
-    
-            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
 <div class="param-desc">
     result
 </div>
 
 
 
-<dl>
+<dl class="param-type">
     <dt>
         Type
     </dt>
@@ -2065,44 +2143,40 @@
     </dd>
 </dl>
 
-
-        
-
     
-</dd>
+
+
 
         
             
-<hr>
-<dt>
-    <h4 class="name" id="IsEmpty"><span class="type-signature"></span>IsEmpty()</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        Checks if a string is empty, null or undefined
-    </div>
-    
 
     
 
-    
+    <h4 class="name" id="IsEmpty"><span class="type-signature"></span>IsEmpty<span class="signature">()</span><span class="type-signature"> &rarr; {boolean}</span></h4>
 
     
-    
 
-    
+
+
+
 <dl class="details">
     
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>Checks if a string is empty, null or undefined</li></ul></dd>
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="String_IsEmpty.js.html">String/IsEmpty.js</a>, <a href="String_IsEmpty.js.html#line1">line 1</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 
     
 
@@ -2112,49 +2186,59 @@
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-
-	
-
-	
-
-	
+    
 </dl>
 
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
-    <h5>Returns:</h5>
-    
-            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
 <div class="param-desc">
     result
 </div>
 
 
 
-<dl>
+<dl class="param-type">
     <dt>
         Type
     </dt>
@@ -2167,44 +2251,40 @@
     </dd>
 </dl>
 
-
-        
-
     
-</dd>
+
+
 
         
             
-<hr>
-<dt>
-    <h4 class="name" id="IsJson"><span class="type-signature"></span>IsJson()</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        Test whether a string is JSON
-    </div>
-    
 
     
 
-    
+    <h4 class="name" id="IsJson"><span class="type-signature"></span>IsJson<span class="signature">()</span><span class="type-signature"> &rarr; {boolean}</span></h4>
 
     
-    
 
-    
+
+
+
 <dl class="details">
     
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>Test whether a string is JSON</li></ul></dd>
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="String_IsJson.js.html">String/IsJson.js</a>, <a href="String_IsJson.js.html#line1">line 1</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 
     
 
@@ -2214,49 +2294,59 @@
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-
-	
-
-	
-
-	
+    
 </dl>
 
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
-    <h5>Returns:</h5>
-    
-            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
 <div class="param-desc">
     result
 </div>
 
 
 
-<dl>
+<dl class="param-type">
     <dt>
         Type
     </dt>
@@ -2269,44 +2359,40 @@
     </dd>
 </dl>
 
-
-        
-
     
-</dd>
+
+
 
         
             
-<hr>
-<dt>
-    <h4 class="name" id="IsJson"><span class="type-signature"></span>IsJson()</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        Test whether a string is JSON
-    </div>
-    
 
     
 
-    
+    <h4 class="name" id="IsJson"><span class="type-signature"></span>IsJson<span class="signature">()</span><span class="type-signature"> &rarr; {boolean}</span></h4>
 
     
-    
 
-    
+
+
+
 <dl class="details">
     
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>Test whether a string is JSON</li></ul></dd>
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="String_IsJson.js.html">String/IsJson.js</a>, <a href="String_IsJson.js.html#line1">line 1</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 
     
 
@@ -2316,49 +2402,59 @@
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-
-	
-
-	
-
-	
+    
 </dl>
 
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
-    <h5>Returns:</h5>
-    
-            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
 <div class="param-desc">
     result
 </div>
 
 
 
-<dl>
+<dl class="param-type">
     <dt>
         Type
     </dt>
@@ -2371,38 +2467,82 @@
     </dd>
 </dl>
 
-
-        
-
     
-</dd>
+
+
 
         
             
-<hr>
-<dt>
-    <h4 class="name" id="Pad"><span class="type-signature"></span>Pad(length [, char] [, rightPad])</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        Pads a string out to a certain width
-    </div>
-    
 
     
 
+    <h4 class="name" id="Pad"><span class="type-signature"></span>Pad<span class="signature">(length, char<span class="signature-attributes">opt</span>, rightPad<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {string}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>Pads a string out to a certain width</li></ul></dd>
     
 
     
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="String_Pad.js.html">String/Pad.js</a>, <a href="String_Pad.js.html#line1">line 1</a>
+    </li></ul></dd>
     
-        <h5>Parameters:</h5>
-        
 
-<table class="params table table-striped">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
     <thead>
     <tr>
         
@@ -2412,7 +2552,7 @@
         <th>Type</th>
 
         
-        <th>Argument</th>
+        <th>Attributes</th>
         
 
         
@@ -2526,69 +2666,31 @@
     </tbody>
 </table>
 
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
 
 
 
-	
-
-	
-
-	
-
-	
-</dl>
 
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
-    <h5>Returns:</h5>
-    
-            
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
 <div class="param-desc">
     text - Padded string
 </div>
 
 
 
-<dl>
+<dl class="param-type">
     <dt>
         Type
     </dt>
@@ -2601,38 +2703,82 @@
     </dd>
 </dl>
 
-
-        
-
     
-</dd>
+
+
 
         
             
-<hr>
-<dt>
-    <h4 class="name" id="Pad"><span class="type-signature"></span>Pad(length [, char] [, rightPad])</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        Pads a string out to a certain width
-    </div>
-    
 
     
 
+    <h4 class="name" id="Pad"><span class="type-signature"></span>Pad<span class="signature">(length, char<span class="signature-attributes">opt</span>, rightPad<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {string}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>Pads a string out to a certain width</li></ul></dd>
     
 
     
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="String_Pad.js.html">String/Pad.js</a>, <a href="String_Pad.js.html#line1">line 1</a>
+    </li></ul></dd>
     
-        <h5>Parameters:</h5>
-        
 
-<table class="params table table-striped">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
     <thead>
     <tr>
         
@@ -2642,7 +2788,7 @@
         <th>Type</th>
 
         
-        <th>Argument</th>
+        <th>Attributes</th>
         
 
         
@@ -2756,69 +2902,31 @@
     </tbody>
 </table>
 
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
 
 
 
-	
-
-	
-
-	
-
-	
-</dl>
 
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
-    <h5>Returns:</h5>
-    
-            
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
 <div class="param-desc">
     text - Padded string
 </div>
 
 
 
-<dl>
+<dl class="param-type">
     <dt>
         Type
     </dt>
@@ -2831,38 +2939,82 @@
     </dd>
 </dl>
 
-
-        
-
     
-</dd>
+
+
 
         
             
-<hr>
-<dt>
-    <h4 class="name" id="Repeat"><span class="type-signature"></span>Repeat(n)</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        Repeats a string of text n times
-    </div>
-    
 
     
 
+    <h4 class="name" id="Repeat"><span class="type-signature"></span>Repeat<span class="signature">(n)</span><span class="type-signature"> &rarr; {string}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>Repeats a string of text n times</li></ul></dd>
     
 
     
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="String_Repeat.js.html">String/Repeat.js</a>, <a href="String_Repeat.js.html#line1">line 1</a>
+    </li></ul></dd>
     
-        <h5>Parameters:</h5>
-        
 
-<table class="params table table-striped">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
     <thead>
     <tr>
         
@@ -2908,69 +3060,31 @@
     </tbody>
 </table>
 
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
 
 
 
-	
-
-	
-
-	
-
-	
-</dl>
 
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
-    <h5>Returns:</h5>
-    
-            
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
 <div class="param-desc">
     text
 </div>
 
 
 
-<dl>
+<dl class="param-type">
     <dt>
         Type
     </dt>
@@ -2983,38 +3097,82 @@
     </dd>
 </dl>
 
-
-        
-
     
-</dd>
+
+
 
         
             
-<hr>
-<dt>
-    <h4 class="name" id="Repeat"><span class="type-signature"></span>Repeat(n)</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        Repeats a string of text n times
-    </div>
-    
 
     
 
+    <h4 class="name" id="Repeat"><span class="type-signature"></span>Repeat<span class="signature">(n)</span><span class="type-signature"> &rarr; {string}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>Repeats a string of text n times</li></ul></dd>
     
 
     
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="String_Repeat.js.html">String/Repeat.js</a>, <a href="String_Repeat.js.html#line1">line 1</a>
+    </li></ul></dd>
     
-        <h5>Parameters:</h5>
-        
 
-<table class="params table table-striped">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
     <thead>
     <tr>
         
@@ -3060,69 +3218,31 @@
     </tbody>
 </table>
 
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
 
 
 
-	
-
-	
-
-	
-
-	
-</dl>
 
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
-    <h5>Returns:</h5>
-    
-            
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
 <div class="param-desc">
     text
 </div>
 
 
 
-<dl>
+<dl class="param-type">
     <dt>
         Type
     </dt>
@@ -3135,13 +3255,11 @@
     </dd>
 </dl>
 
+    
+
+
 
         
-
-    
-</dd>
-
-        </dl>
     
 
     
@@ -3154,55 +3272,57 @@
 
 
 
-	<h1 class="page-title">Class: String</h1>
+
+
+
 <section>
 
 <header>
     
         <h2>
-        String
+        
+            String
+        
         </h2>
         
     
 </header>
 
-
 <article>
-    <div class="container-overview">
     
+        <div class="container-overview">
         
-<hr>
-<dt>
-    <h4 class="name" id="String"><span class="type-signature"></span>new String()</h4>
-    
-    
-    <p class="summary"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String@MDN</a></p>
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        String class
-    </div>
-    
+            
 
     
 
-    
+    <h4 class="name" id="String"><span class="type-signature"></span>new String<span class="signature">()</span><span class="type-signature"></span></h4>
 
     
+    <p class="summary usertext"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String@MDN</a></p>
     
 
-    
+
+
+
 <dl class="details">
     
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>String class</li></ul></dd>
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line29">line 29</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 
     
 
@@ -3212,28 +3332,54 @@
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-
-	
-
-	
-
-	
+    
 </dl>
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        </div>
     
 
     
@@ -3241,24 +3387,10 @@
     
 
     
-
+    
     
 
-    
-
-    
-</dd>
-
-    
-    </div>
-
-    
-
-    
-
-    
-
-    
+     
 
     
 
@@ -3267,38 +3399,36 @@
     
         <h3 class="subsection-title">Methods</h3>
 
-        <dl>
+        
             
-<hr>
-<dt>
-    <h4 class="name" id="AsAscii"><span class="type-signature"></span>AsAscii()</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        String as ascii text
-    </div>
-    
 
     
 
-    
+    <h4 class="name" id="AsAscii"><span class="type-signature"></span>AsAscii<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span></h4>
 
     
-    
 
-    
+
+
+
 <dl class="details">
     
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>String as ascii text</li></ul></dd>
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="String_AsAscii.js.html">String/AsAscii.js</a>, <a href="String_AsAscii.js.html#line1">line 1</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 
     
 
@@ -3308,49 +3438,59 @@
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-
-	
-
-	
-
-	
+    
 </dl>
 
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
-    <h5>Returns:</h5>
-    
-            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
 <div class="param-desc">
     text - The ascii text
 </div>
 
 
 
-<dl>
+<dl class="param-type">
     <dt>
         Type
     </dt>
@@ -3363,44 +3503,40 @@
     </dd>
 </dl>
 
-
-        
-
     
-</dd>
+
+
 
         
             
-<hr>
-<dt>
-    <h4 class="name" id="AsAscii"><span class="type-signature"></span>AsAscii()</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        String as ascii text
-    </div>
-    
 
     
 
-    
+    <h4 class="name" id="AsAscii"><span class="type-signature"></span>AsAscii<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span></h4>
 
     
-    
 
-    
+
+
+
 <dl class="details">
     
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>String as ascii text</li></ul></dd>
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="String_AsAscii.js.html">String/AsAscii.js</a>, <a href="String_AsAscii.js.html#line1">line 1</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 
     
 
@@ -3410,49 +3546,59 @@
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-
-	
-
-	
-
-	
+    
 </dl>
 
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
-    <h5>Returns:</h5>
-    
-            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
 <div class="param-desc">
     text - The ascii text
 </div>
 
 
 
-<dl>
+<dl class="param-type">
     <dt>
         Type
     </dt>
@@ -3465,44 +3611,40 @@
     </dd>
 </dl>
 
-
-        
-
     
-</dd>
+
+
 
         
             
-<hr>
-<dt>
-    <h4 class="name" id="AsBase64"><span class="type-signature"></span>AsBase64()</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        String as base64 text
-    </div>
-    
 
     
 
-    
+    <h4 class="name" id="AsBase64"><span class="type-signature"></span>AsBase64<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span></h4>
 
     
-    
 
-    
+
+
+
 <dl class="details">
     
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>String as base64 text</li></ul></dd>
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="String_AsBase64.js.html">String/AsBase64.js</a>, <a href="String_AsBase64.js.html#line1">line 1</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 
     
 
@@ -3512,49 +3654,59 @@
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-
-	
-
-	
-
-	
+    
 </dl>
 
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
-    <h5>Returns:</h5>
-    
-            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
 <div class="param-desc">
     text - The base64 text
 </div>
 
 
 
-<dl>
+<dl class="param-type">
     <dt>
         Type
     </dt>
@@ -3567,44 +3719,40 @@
     </dd>
 </dl>
 
-
-        
-
     
-</dd>
+
+
 
         
             
-<hr>
-<dt>
-    <h4 class="name" id="AsBase64"><span class="type-signature"></span>AsBase64()</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        String as base64 text
-    </div>
-    
 
     
 
-    
+    <h4 class="name" id="AsBase64"><span class="type-signature"></span>AsBase64<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span></h4>
 
     
-    
 
-    
+
+
+
 <dl class="details">
     
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>String as base64 text</li></ul></dd>
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="String_AsBase64.js.html">String/AsBase64.js</a>, <a href="String_AsBase64.js.html#line1">line 1</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 
     
 
@@ -3614,49 +3762,59 @@
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-
-	
-
-	
-
-	
+    
 </dl>
 
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
-    <h5>Returns:</h5>
-    
-            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
 <div class="param-desc">
     text - The base64 text
 </div>
 
 
 
-<dl>
+<dl class="param-type">
     <dt>
         Type
     </dt>
@@ -3669,44 +3827,40 @@
     </dd>
 </dl>
 
-
-        
-
     
-</dd>
+
+
 
         
             
-<hr>
-<dt>
-    <h4 class="name" id="AsUrlMatch"><span class="type-signature"></span>AsUrlMatch()</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        String as converted to url match pattern
-    </div>
-    
 
     
 
-    
+    <h4 class="name" id="AsUrlMatch"><span class="type-signature"></span>AsUrlMatch<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span></h4>
 
     
-    
 
-    
+
+
+
 <dl class="details">
     
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>String as converted to url match pattern</li></ul></dd>
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="String_AsUrlMatch.js.html">String/AsUrlMatch.js</a>, <a href="String_AsUrlMatch.js.html#line1">line 1</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 
     
 
@@ -3716,49 +3870,59 @@
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-
-	
-
-	
-
-	
+    
 </dl>
 
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
-    <h5>Returns:</h5>
-    
-            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
 <div class="param-desc">
     pattern - The match pattern
 </div>
 
 
 
-<dl>
+<dl class="param-type">
     <dt>
         Type
     </dt>
@@ -3771,44 +3935,40 @@
     </dd>
 </dl>
 
-
-        
-
     
-</dd>
+
+
 
         
             
-<hr>
-<dt>
-    <h4 class="name" id="AsUrlMatch"><span class="type-signature"></span>AsUrlMatch()</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        String as converted to url match pattern
-    </div>
-    
 
     
 
-    
+    <h4 class="name" id="AsUrlMatch"><span class="type-signature"></span>AsUrlMatch<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span></h4>
 
     
-    
 
-    
+
+
+
 <dl class="details">
     
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>String as converted to url match pattern</li></ul></dd>
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="String_AsUrlMatch.js.html">String/AsUrlMatch.js</a>, <a href="String_AsUrlMatch.js.html#line1">line 1</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 
     
 
@@ -3818,49 +3978,59 @@
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-
-	
-
-	
-
-	
+    
 </dl>
 
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
-    <h5>Returns:</h5>
-    
-            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
 <div class="param-desc">
     pattern - The match pattern
 </div>
 
 
 
-<dl>
+<dl class="param-type">
     <dt>
         Type
     </dt>
@@ -3873,38 +4043,82 @@
     </dd>
 </dl>
 
-
-        
-
     
-</dd>
+
+
 
         
             
-<hr>
-<dt>
-    <h4 class="name" id="CamelCase"><span class="type-signature"></span>CamelCase( [UpperCamel])</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        String converted to camel case
-    </div>
-    
 
     
 
+    <h4 class="name" id="CamelCase"><span class="type-signature"></span>CamelCase<span class="signature">(UpperCamel<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {string}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>String converted to camel case</li></ul></dd>
     
 
     
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="String_CamelCase.js.html">String/CamelCase.js</a>, <a href="String_CamelCase.js.html#line1">line 1</a>
+    </li></ul></dd>
     
-        <h5>Parameters:</h5>
-        
 
-<table class="params table table-striped">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
     <thead>
     <tr>
         
@@ -3914,7 +4128,7 @@
         <th>Type</th>
 
         
-        <th>Argument</th>
+        <th>Attributes</th>
         
 
         
@@ -3962,69 +4176,31 @@
     </tbody>
 </table>
 
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
 
 
 
-	
-
-	
-
-	
-
-	
-</dl>
 
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
-    <h5>Returns:</h5>
-    
-            
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
 <div class="param-desc">
     text - Text with camel case
 </div>
 
 
 
-<dl>
+<dl class="param-type">
     <dt>
         Type
     </dt>
@@ -4037,38 +4213,82 @@
     </dd>
 </dl>
 
-
-        
-
     
-</dd>
+
+
 
         
             
-<hr>
-<dt>
-    <h4 class="name" id="CamelCase"><span class="type-signature"></span>CamelCase( [UpperCamel])</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        String converted to camel case
-    </div>
-    
 
     
 
+    <h4 class="name" id="CamelCase"><span class="type-signature"></span>CamelCase<span class="signature">(UpperCamel<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {string}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>String converted to camel case</li></ul></dd>
     
 
     
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="String_CamelCase.js.html">String/CamelCase.js</a>, <a href="String_CamelCase.js.html#line1">line 1</a>
+    </li></ul></dd>
     
-        <h5>Parameters:</h5>
-        
 
-<table class="params table table-striped">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
     <thead>
     <tr>
         
@@ -4078,7 +4298,7 @@
         <th>Type</th>
 
         
-        <th>Argument</th>
+        <th>Attributes</th>
         
 
         
@@ -4126,69 +4346,31 @@
     </tbody>
 </table>
 
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
 
 
 
-	
-
-	
-
-	
-
-	
-</dl>
 
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
-    <h5>Returns:</h5>
-    
-            
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
 <div class="param-desc">
     text - Text with camel case
 </div>
 
 
 
-<dl>
+<dl class="param-type">
     <dt>
         Type
     </dt>
@@ -4201,38 +4383,82 @@
     </dd>
 </dl>
 
-
-        
-
     
-</dd>
+
+
 
         
             
-<hr>
-<dt>
-    <h4 class="name" id="Capitalize"><span class="type-signature"></span>Capitalize( [AllWords])</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        Capitalize words in a string
-    </div>
-    
 
     
 
+    <h4 class="name" id="Capitalize"><span class="type-signature"></span>Capitalize<span class="signature">(AllWords<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {string}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>Capitalize words in a string</li></ul></dd>
     
 
     
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="String_Capitalize.js.html">String/Capitalize.js</a>, <a href="String_Capitalize.js.html#line1">line 1</a>
+    </li></ul></dd>
     
-        <h5>Parameters:</h5>
-        
 
-<table class="params table table-striped">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
     <thead>
     <tr>
         
@@ -4242,7 +4468,7 @@
         <th>Type</th>
 
         
-        <th>Argument</th>
+        <th>Attributes</th>
         
 
         
@@ -4290,69 +4516,31 @@
     </tbody>
 </table>
 
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
 
 
 
-	
-
-	
-
-	
-
-	
-</dl>
 
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
-    <h5>Returns:</h5>
-    
-            
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
 <div class="param-desc">
     text - Capitalized text
 </div>
 
 
 
-<dl>
+<dl class="param-type">
     <dt>
         Type
     </dt>
@@ -4365,38 +4553,82 @@
     </dd>
 </dl>
 
-
-        
-
     
-</dd>
+
+
 
         
             
-<hr>
-<dt>
-    <h4 class="name" id="Capitalize"><span class="type-signature"></span>Capitalize( [AllWords])</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        Capitalize words in a string
-    </div>
-    
 
     
 
+    <h4 class="name" id="Capitalize"><span class="type-signature"></span>Capitalize<span class="signature">(AllWords<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {string}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>Capitalize words in a string</li></ul></dd>
     
 
     
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="String_Capitalize.js.html">String/Capitalize.js</a>, <a href="String_Capitalize.js.html#line1">line 1</a>
+    </li></ul></dd>
     
-        <h5>Parameters:</h5>
-        
 
-<table class="params table table-striped">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
     <thead>
     <tr>
         
@@ -4406,7 +4638,7 @@
         <th>Type</th>
 
         
-        <th>Argument</th>
+        <th>Attributes</th>
         
 
         
@@ -4454,69 +4686,31 @@
     </tbody>
 </table>
 
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
 
 
 
-	
-
-	
-
-	
-
-	
-</dl>
 
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
-    <h5>Returns:</h5>
-    
-            
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
 <div class="param-desc">
     text - Capitalized text
 </div>
 
 
 
-<dl>
+<dl class="param-type">
     <dt>
         Type
     </dt>
@@ -4529,38 +4723,82 @@
     </dd>
 </dl>
 
-
-        
-
     
-</dd>
+
+
 
         
             
-<hr>
-<dt>
-    <h4 class="name" id="Hash"><span class="type-signature"></span>Hash(type)</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        Generates a hash string
-    </div>
-    
 
     
 
+    <h4 class="name" id="Hash"><span class="type-signature"></span>Hash<span class="signature">(type)</span><span class="type-signature"> &rarr; {string}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>Generates a hash string</li></ul></dd>
     
 
     
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="String_Hash.js.html">String/Hash.js</a>, <a href="String_Hash.js.html#line1">line 1</a>
+    </li></ul></dd>
     
-        <h5>Parameters:</h5>
-        
 
-<table class="params table table-striped">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
     <thead>
     <tr>
         
@@ -4606,69 +4844,31 @@
     </tbody>
 </table>
 
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
 
 
 
-	
-
-	
-
-	
-
-	
-</dl>
 
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
-    <h5>Returns:</h5>
-    
-            
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
 <div class="param-desc">
     hash - Hash string
 </div>
 
 
 
-<dl>
+<dl class="param-type">
     <dt>
         Type
     </dt>
@@ -4681,38 +4881,82 @@
     </dd>
 </dl>
 
-
-        
-
     
-</dd>
+
+
 
         
             
-<hr>
-<dt>
-    <h4 class="name" id="Hash"><span class="type-signature"></span>Hash(type)</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        Generates a hash string
-    </div>
-    
 
     
 
+    <h4 class="name" id="Hash"><span class="type-signature"></span>Hash<span class="signature">(type)</span><span class="type-signature"> &rarr; {string}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>Generates a hash string</li></ul></dd>
     
 
     
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="String_Hash.js.html">String/Hash.js</a>, <a href="String_Hash.js.html#line1">line 1</a>
+    </li></ul></dd>
     
-        <h5>Parameters:</h5>
-        
 
-<table class="params table table-striped">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
     <thead>
     <tr>
         
@@ -4758,69 +5002,31 @@
     </tbody>
 </table>
 
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
 
 
 
-	
-
-	
-
-	
-
-	
-</dl>
 
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
-    <h5>Returns:</h5>
-    
-            
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
 <div class="param-desc">
     hash - Hash string
 </div>
 
 
 
-<dl>
+<dl class="param-type">
     <dt>
         Type
     </dt>
@@ -4833,44 +5039,40 @@
     </dd>
 </dl>
 
-
-        
-
     
-</dd>
+
+
 
         
             
-<hr>
-<dt>
-    <h4 class="name" id="IsBase64"><span class="type-signature"></span>IsBase64()</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        Tests if a string is Base64 format
-    </div>
-    
 
     
 
-    
+    <h4 class="name" id="IsBase64"><span class="type-signature"></span>IsBase64<span class="signature">()</span><span class="type-signature"> &rarr; {boolean}</span></h4>
 
     
-    
 
-    
+
+
+
 <dl class="details">
     
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>Tests if a string is Base64 format</li></ul></dd>
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="String_IsBase64.js.html">String/IsBase64.js</a>, <a href="String_IsBase64.js.html#line1">line 1</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 
     
 
@@ -4880,49 +5082,59 @@
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-
-	
-
-	
-
-	
+    
 </dl>
 
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
-    <h5>Returns:</h5>
-    
-            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
 <div class="param-desc">
     result
 </div>
 
 
 
-<dl>
+<dl class="param-type">
     <dt>
         Type
     </dt>
@@ -4935,44 +5147,40 @@
     </dd>
 </dl>
 
-
-        
-
     
-</dd>
+
+
 
         
             
-<hr>
-<dt>
-    <h4 class="name" id="IsBase64"><span class="type-signature"></span>IsBase64()</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        Tests if a string is Base64 format
-    </div>
-    
 
     
 
-    
+    <h4 class="name" id="IsBase64"><span class="type-signature"></span>IsBase64<span class="signature">()</span><span class="type-signature"> &rarr; {boolean}</span></h4>
 
     
-    
 
-    
+
+
+
 <dl class="details">
     
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>Tests if a string is Base64 format</li></ul></dd>
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="String_IsBase64.js.html">String/IsBase64.js</a>, <a href="String_IsBase64.js.html#line1">line 1</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 
     
 
@@ -4982,49 +5190,59 @@
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-
-	
-
-	
-
-	
+    
 </dl>
 
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
-    <h5>Returns:</h5>
-    
-            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
 <div class="param-desc">
     result
 </div>
 
 
 
-<dl>
+<dl class="param-type">
     <dt>
         Type
     </dt>
@@ -5037,44 +5255,40 @@
     </dd>
 </dl>
 
-
-        
-
     
-</dd>
+
+
 
         
             
-<hr>
-<dt>
-    <h4 class="name" id="IsEmpty"><span class="type-signature"></span>IsEmpty()</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        Checks if a string is empty, null or undefined
-    </div>
-    
 
     
 
-    
+    <h4 class="name" id="IsEmpty"><span class="type-signature"></span>IsEmpty<span class="signature">()</span><span class="type-signature"> &rarr; {boolean}</span></h4>
 
     
-    
 
-    
+
+
+
 <dl class="details">
     
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>Checks if a string is empty, null or undefined</li></ul></dd>
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="String_IsEmpty.js.html">String/IsEmpty.js</a>, <a href="String_IsEmpty.js.html#line1">line 1</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 
     
 
@@ -5084,49 +5298,59 @@
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-
-	
-
-	
-
-	
+    
 </dl>
 
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
-    <h5>Returns:</h5>
-    
-            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
 <div class="param-desc">
     result
 </div>
 
 
 
-<dl>
+<dl class="param-type">
     <dt>
         Type
     </dt>
@@ -5139,44 +5363,40 @@
     </dd>
 </dl>
 
-
-        
-
     
-</dd>
+
+
 
         
             
-<hr>
-<dt>
-    <h4 class="name" id="IsEmpty"><span class="type-signature"></span>IsEmpty()</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        Checks if a string is empty, null or undefined
-    </div>
-    
 
     
 
-    
+    <h4 class="name" id="IsEmpty"><span class="type-signature"></span>IsEmpty<span class="signature">()</span><span class="type-signature"> &rarr; {boolean}</span></h4>
 
     
-    
 
-    
+
+
+
 <dl class="details">
     
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>Checks if a string is empty, null or undefined</li></ul></dd>
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="String_IsEmpty.js.html">String/IsEmpty.js</a>, <a href="String_IsEmpty.js.html#line1">line 1</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 
     
 
@@ -5186,49 +5406,59 @@
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-
-	
-
-	
-
-	
+    
 </dl>
 
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
-    <h5>Returns:</h5>
-    
-            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
 <div class="param-desc">
     result
 </div>
 
 
 
-<dl>
+<dl class="param-type">
     <dt>
         Type
     </dt>
@@ -5241,44 +5471,40 @@
     </dd>
 </dl>
 
-
-        
-
     
-</dd>
+
+
 
         
             
-<hr>
-<dt>
-    <h4 class="name" id="IsJson"><span class="type-signature"></span>IsJson()</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        Test whether a string is JSON
-    </div>
-    
 
     
 
-    
+    <h4 class="name" id="IsJson"><span class="type-signature"></span>IsJson<span class="signature">()</span><span class="type-signature"> &rarr; {boolean}</span></h4>
 
     
-    
 
-    
+
+
+
 <dl class="details">
     
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>Test whether a string is JSON</li></ul></dd>
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="String_IsJson.js.html">String/IsJson.js</a>, <a href="String_IsJson.js.html#line1">line 1</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 
     
 
@@ -5288,49 +5514,59 @@
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-
-	
-
-	
-
-	
+    
 </dl>
 
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
-    <h5>Returns:</h5>
-    
-            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
 <div class="param-desc">
     result
 </div>
 
 
 
-<dl>
+<dl class="param-type">
     <dt>
         Type
     </dt>
@@ -5343,44 +5579,40 @@
     </dd>
 </dl>
 
-
-        
-
     
-</dd>
+
+
 
         
             
-<hr>
-<dt>
-    <h4 class="name" id="IsJson"><span class="type-signature"></span>IsJson()</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        Test whether a string is JSON
-    </div>
-    
 
     
 
-    
+    <h4 class="name" id="IsJson"><span class="type-signature"></span>IsJson<span class="signature">()</span><span class="type-signature"> &rarr; {boolean}</span></h4>
 
     
-    
 
-    
+
+
+
 <dl class="details">
     
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>Test whether a string is JSON</li></ul></dd>
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="String_IsJson.js.html">String/IsJson.js</a>, <a href="String_IsJson.js.html#line1">line 1</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 
     
 
@@ -5390,49 +5622,59 @@
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-
-	
-
-	
-
-	
+    
 </dl>
 
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
-    <h5>Returns:</h5>
-    
-            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
 <div class="param-desc">
     result
 </div>
 
 
 
-<dl>
+<dl class="param-type">
     <dt>
         Type
     </dt>
@@ -5445,38 +5687,82 @@
     </dd>
 </dl>
 
-
-        
-
     
-</dd>
+
+
 
         
             
-<hr>
-<dt>
-    <h4 class="name" id="Pad"><span class="type-signature"></span>Pad(length [, char] [, rightPad])</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        Pads a string out to a certain width
-    </div>
-    
 
     
 
+    <h4 class="name" id="Pad"><span class="type-signature"></span>Pad<span class="signature">(length, char<span class="signature-attributes">opt</span>, rightPad<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {string}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>Pads a string out to a certain width</li></ul></dd>
     
 
     
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="String_Pad.js.html">String/Pad.js</a>, <a href="String_Pad.js.html#line1">line 1</a>
+    </li></ul></dd>
     
-        <h5>Parameters:</h5>
-        
 
-<table class="params table table-striped">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
     <thead>
     <tr>
         
@@ -5486,7 +5772,7 @@
         <th>Type</th>
 
         
-        <th>Argument</th>
+        <th>Attributes</th>
         
 
         
@@ -5600,69 +5886,31 @@
     </tbody>
 </table>
 
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
 
 
 
-	
-
-	
-
-	
-
-	
-</dl>
 
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
-    <h5>Returns:</h5>
-    
-            
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
 <div class="param-desc">
     text - Padded string
 </div>
 
 
 
-<dl>
+<dl class="param-type">
     <dt>
         Type
     </dt>
@@ -5675,38 +5923,82 @@
     </dd>
 </dl>
 
-
-        
-
     
-</dd>
+
+
 
         
             
-<hr>
-<dt>
-    <h4 class="name" id="Pad"><span class="type-signature"></span>Pad(length [, char] [, rightPad])</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        Pads a string out to a certain width
-    </div>
-    
 
     
 
+    <h4 class="name" id="Pad"><span class="type-signature"></span>Pad<span class="signature">(length, char<span class="signature-attributes">opt</span>, rightPad<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {string}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>Pads a string out to a certain width</li></ul></dd>
     
 
     
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="String_Pad.js.html">String/Pad.js</a>, <a href="String_Pad.js.html#line1">line 1</a>
+    </li></ul></dd>
     
-        <h5>Parameters:</h5>
-        
 
-<table class="params table table-striped">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
     <thead>
     <tr>
         
@@ -5716,7 +6008,7 @@
         <th>Type</th>
 
         
-        <th>Argument</th>
+        <th>Attributes</th>
         
 
         
@@ -5830,69 +6122,31 @@
     </tbody>
 </table>
 
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
 
 
 
-	
-
-	
-
-	
-
-	
-</dl>
 
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
-    <h5>Returns:</h5>
-    
-            
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
 <div class="param-desc">
     text - Padded string
 </div>
 
 
 
-<dl>
+<dl class="param-type">
     <dt>
         Type
     </dt>
@@ -5905,38 +6159,82 @@
     </dd>
 </dl>
 
-
-        
-
     
-</dd>
+
+
 
         
             
-<hr>
-<dt>
-    <h4 class="name" id="Repeat"><span class="type-signature"></span>Repeat(n)</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        Repeats a string of text n times
-    </div>
-    
 
     
 
+    <h4 class="name" id="Repeat"><span class="type-signature"></span>Repeat<span class="signature">(n)</span><span class="type-signature"> &rarr; {string}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>Repeats a string of text n times</li></ul></dd>
     
 
     
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="String_Repeat.js.html">String/Repeat.js</a>, <a href="String_Repeat.js.html#line1">line 1</a>
+    </li></ul></dd>
     
-        <h5>Parameters:</h5>
-        
 
-<table class="params table table-striped">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
     <thead>
     <tr>
         
@@ -5982,69 +6280,31 @@
     </tbody>
 </table>
 
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
 
 
 
-	
-
-	
-
-	
-
-	
-</dl>
 
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
-    <h5>Returns:</h5>
-    
-            
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
 <div class="param-desc">
     text
 </div>
 
 
 
-<dl>
+<dl class="param-type">
     <dt>
         Type
     </dt>
@@ -6057,38 +6317,82 @@
     </dd>
 </dl>
 
-
-        
-
     
-</dd>
+
+
 
         
             
-<hr>
-<dt>
-    <h4 class="name" id="Repeat"><span class="type-signature"></span>Repeat(n)</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        Repeats a string of text n times
-    </div>
-    
 
     
 
+    <h4 class="name" id="Repeat"><span class="type-signature"></span>Repeat<span class="signature">(n)</span><span class="type-signature"> &rarr; {string}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>Repeats a string of text n times</li></ul></dd>
     
 
     
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="String_Repeat.js.html">String/Repeat.js</a>, <a href="String_Repeat.js.html#line1">line 1</a>
+    </li></ul></dd>
     
-        <h5>Parameters:</h5>
-        
 
-<table class="params table table-striped">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
     <thead>
     <tr>
         
@@ -6134,69 +6438,31 @@
     </tbody>
 </table>
 
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
 
 
 
-	
-
-	
-
-	
-
-	
-</dl>
 
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
-    <h5>Returns:</h5>
-    
-            
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
 <div class="param-desc">
     text
 </div>
 
 
 
-<dl>
+<dl class="param-type">
     <dt>
         Type
     </dt>
@@ -6209,13 +6475,11 @@
     </dd>
 </dl>
 
+    
+
+
 
         
-
-    
-</dd>
-
-        </dl>
     
 
     
@@ -6228,131 +6492,18 @@
 
 
 
-		</div>
-	</div>
 
-	<div class="clearfix"></div>
-
-	
-		<div class="col-md-3">
-			<div id="toc" class="col-md-3 hidden-xs hidden-sm hidden-md"></div>
-		</div>
-	
-
-</div>
+    
 </div>
 
-
-    <div class="modal fade" id="searchResults">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title">Search results</h4>
-          </div>
-          <div class="modal-body"></div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          </div>
-        </div><!-- /.modal-content -->
-      </div><!-- /.modal-dialog -->
-    </div>
-
-
-<footer>
-
-
-<span class="jsdoc-message">
-	<!--Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.11</a>
-	
-		on 2022-09-20T13:36:26-06:00
-	
-	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>. -->
-</span>
-</footer>
-
-<script src="scripts/docstrap.lib.js"></script>
-<script src="scripts/toc.js"></script>
-
-    <script type="text/javascript" src="scripts/fulltext-search-ui.js"></script>
-
-
-<script>
-$( function () {
-	$( "[id*='$']" ).each( function () {
-		var $this = $( this );
-
-		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
-	} );
-
-	$( ".tutorial-section pre, .readme-section pre, pre.prettyprint.source" ).each( function () {
-		var $this = $( this );
-
-		var example = $this.find( "code" );
-		exampleText = example.html();
-		var lang = /{@lang (.*?)}/.exec( exampleText );
-		if ( lang && lang[1] ) {
-			exampleText = exampleText.replace( lang[0], "" );
-			example.html( exampleText );
-			lang = lang[1];
-		} else {
-			var langClassMatch = example.parent()[0].className.match(/lang\-(\S+)/);
-			lang = langClassMatch ? langClassMatch[1] : "javascript";
-		}
-
-		if ( lang ) {
-
-			$this
-			.addClass( "sunlight-highlight-" + lang )
-			.addClass( "linenums" )
-			.html( example.html() );
-
-		}
-	} );
-
-	Sunlight.highlightAll( {
-		lineNumbers : false,
-		showMenu : true,
-		enableDoclinks : true
-	} );
-
-	$.catchAnchorLinks( {
-        navbarOffset: 10
-	} );
-	$( "#toc" ).toc( {
-		anchorName  : function ( i, heading, prefix ) {
-			return $( heading ).attr( "id" ) || ( prefix + i );
-		},
-		selectors   : "#toc-content h1,#toc-content h2,#toc-content h3,#toc-content h4",
-		showAndHide : false,
-		smoothScrolling: true
-	} );
-
-	$( "#main span[id^='toc']" ).addClass( "toc-shim" );
-	$( '.dropdown-toggle' ).dropdown();
-
-    $( "table" ).each( function () {
-      var $this = $( this );
-      $this.addClass('table');
-    } );
-
-} );
-</script>
+<br class="clear">
 
 
 
-<!--Navigation and Symbol Display-->
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
 
-
-<!--Google Analytics-->
-
-
-
-    <script type="text/javascript">
-        $(document).ready(function() {
-            SearcherDisplay.init();
-        });
-    </script>
 
 
 </body>

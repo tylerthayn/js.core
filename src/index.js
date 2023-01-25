@@ -33,3 +33,19 @@
 * @global
 * @type {string}
 */
+
+
+/**
+* @namespace tyler
+*/
+
+/**
+* @typedef {function} Plugin
+* @param {object}
+*/
+
+/**
+* @typedef {object} TOptions
+* @property {string} name
+* @property {string|object} data
+*/

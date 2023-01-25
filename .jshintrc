@@ -1,0 +1,24 @@
+{
+	"asi": true,
+	"curly": true,
+	"eqeqeq": true,
+	"esversion": 6,
+	"immed": true,
+	"latedef": "nofunc",
+	"newcap": false,
+	"noarg": true,
+	"sub": true,
+	"undef": true,
+	"unused": false,
+	"boss": true,
+	"eqnull": true,
+	"node": true,
+	"globals": {
+		"log": true,
+		"logj": true,
+		"Type": true,
+		"Clone": true,
+		"Extend": true,
+		"Template": true
+	}
+}

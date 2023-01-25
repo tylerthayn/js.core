@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>Array/Flatten.js - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+	<!--<link type="text/css" rel="stylesheet" href="styles/jsdoc.css">-->
+	<link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+	<link type="text/css" rel="stylesheet" href="styles/jquery-ui.css">
+	<link type="text/css" rel="stylesheet" href="styles/tts.css">
+
+    <script src="scripts/nav.js" defer></script>
+    
+
+	<script src="scripts/web.core.js" data-main="scripts/main" defer></script>
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+
+<nav style="display:none;" >
+	
+	
+	<i class="material-icons CloseMenu" data-action="Close">close</i>
+	<h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Array.html">Array</a><ul class='methods'><li data-type='method'><a href="Array.html#.Difference">Difference</a></li><li data-type='method'><a href="Array.html#.Difference">Difference</a></li><li data-type='method'><a href="Array.html#.Flatten">Flatten</a></li><li data-type='method'><a href="Array.html#.Flatten">Flatten</a></li><li data-type='method'><a href="Array.html#.From">From</a></li><li data-type='method'><a href="Array.html#.From">From</a></li><li data-type='method'><a href="Array.html#.IsArray">IsArray</a></li><li data-type='method'><a href="Array.html#.IsArray">IsArray</a></li><li data-type='method'><a href="Array.html#Delete">Delete</a></li><li data-type='method'><a href="Array.html#Delete">Delete</a></li><li data-type='method'><a href="Array.html#DeleteAt">DeleteAt</a></li><li data-type='method'><a href="Array.html#DeleteAt">DeleteAt</a></li><li data-type='method'><a href="Array.html#Difference">Difference</a></li><li data-type='method'><a href="Array.html#Difference">Difference</a></li><li data-type='method'><a href="Array.html#Intersection">Intersection</a></li><li data-type='method'><a href="Array.html#Intersection">Intersection</a></li><li data-type='method'><a href="Array.html#Omit">Omit</a></li><li data-type='method'><a href="Array.html#Omit">Omit</a></li><li data-type='method'><a href="Array.html#OmitAt">OmitAt</a></li><li data-type='method'><a href="Array.html#OmitAt">OmitAt</a></li><li data-type='method'><a href="Array.html#Pick">Pick</a></li><li data-type='method'><a href="Array.html#Pick">Pick</a></li><li data-type='method'><a href="Array.html#Shuffle">Shuffle</a></li><li data-type='method'><a href="Array.html#Shuffle">Shuffle</a></li><li data-type='method'><a href="Array.html#Union">Union</a></li><li data-type='method'><a href="Array.html#Union">Union</a></li><li data-type='method'><a href="Array.html#Unique">Unique</a></li><li data-type='method'><a href="Array.html#Unique">Unique</a></li><li data-type='method'><a href="Array.html#Xor">Xor</a></li><li data-type='method'><a href="Array.html#Xor">Xor</a></li></ul></li><li></li><li><a href="Function.html">Function</a><ul class='methods'><li data-type='method'><a href="Function.html#.Debug">Debug</a></li><li data-type='method'><a href="Function.html#.Debug">Debug</a></li><li data-type='method'><a href="Function.html#.Delay">Delay</a></li><li data-type='method'><a href="Function.html#.Delay">Delay</a></li><li data-type='method'><a href="Function.html#.Noop">Noop</a></li><li data-type='method'><a href="Function.html#.Noop">Noop</a></li></ul></li><li></li><li><a href="Object.html">Object</a><ul class='methods'><li data-type='method'><a href="Object.html#Clone">Clone</a></li><li data-type='method'><a href="Object.html#Clone">Clone</a></li><li data-type='method'><a href="Object.html#Define">Define</a></li><li data-type='method'><a href="Object.html#Define">Define</a></li><li data-type='method'><a href="Object.html#Each">Each</a></li><li data-type='method'><a href="Object.html#Each">Each</a></li><li data-type='method'><a href="Object.html#Extend">Extend</a></li><li data-type='method'><a href="Object.html#Extend">Extend</a></li><li data-type='method'><a href="Object.html#Get">Get</a></li><li data-type='method'><a href="Object.html#Get">Get</a></li><li data-type='method'><a href="Object.html#Has">Has</a></li><li data-type='method'><a href="Object.html#Has">Has</a></li><li data-type='method'><a href="Object.html#Includes">Includes</a></li><li data-type='method'><a href="Object.html#Includes">Includes</a></li><li data-type='method'><a href="Object.html#IsEqual">IsEqual</a></li><li data-type='method'><a href="Object.html#IsEqual">IsEqual</a></li><li data-type='method'><a href="Object.html#Keys">Keys</a></li><li data-type='method'><a href="Object.html#Keys">Keys</a></li><li data-type='method'><a href="Object.html#Merge">Merge</a></li><li data-type='method'><a href="Object.html#Merge">Merge</a></li><li data-type='method'><a href="Object.html#Paths">Paths</a></li><li data-type='method'><a href="Object.html#Paths">Paths</a></li><li data-type='method'><a href="Object.html#Pick">Pick</a></li><li data-type='method'><a href="Object.html#Pick">Pick</a></li><li data-type='method'><a href="Object.html#Set">Set</a></li><li data-type='method'><a href="Object.html#Set">Set</a></li><li data-type='method'><a href="Object.html#Trim">Trim</a></li><li data-type='method'><a href="Object.html#Trim">Trim</a></li><li data-type='method'><a href="Object.html#Type">Type</a></li><li data-type='method'><a href="Object.html#Type">Type</a></li></ul></li><li></li><li><a href="String.html">String</a><ul class='methods'><li data-type='method'><a href="String.html#AsAscii">AsAscii</a></li><li data-type='method'><a href="String.html#AsAscii">AsAscii</a></li><li data-type='method'><a href="String.html#AsBase64">AsBase64</a></li><li data-type='method'><a href="String.html#AsBase64">AsBase64</a></li><li data-type='method'><a href="String.html#AsUrlMatch">AsUrlMatch</a></li><li data-type='method'><a href="String.html#AsUrlMatch">AsUrlMatch</a></li><li data-type='method'><a href="String.html#CamelCase">CamelCase</a></li><li data-type='method'><a href="String.html#CamelCase">CamelCase</a></li><li data-type='method'><a href="String.html#Capitalize">Capitalize</a></li><li data-type='method'><a href="String.html#Capitalize">Capitalize</a></li><li data-type='method'><a href="String.html#Hash">Hash</a></li><li data-type='method'><a href="String.html#Hash">Hash</a></li><li data-type='method'><a href="String.html#IsBase64">IsBase64</a></li><li data-type='method'><a href="String.html#IsBase64">IsBase64</a></li><li data-type='method'><a href="String.html#IsEmpty">IsEmpty</a></li><li data-type='method'><a href="String.html#IsEmpty">IsEmpty</a></li><li data-type='method'><a href="String.html#IsJson">IsJson</a></li><li data-type='method'><a href="String.html#IsJson">IsJson</a></li><li data-type='method'><a href="String.html#Pad">Pad</a></li><li data-type='method'><a href="String.html#Pad">Pad</a></li><li data-type='method'><a href="String.html#Repeat">Repeat</a></li><li data-type='method'><a href="String.html#Repeat">Repeat</a></li></ul></li><li></li></ul><h3>Modules</h3><ul><li><a href="@tyler.thayn_js.module_core.html">core</a></li><li></li></ul><h3>Namespaces</h3><ul><li><a href="@tyler.thayn_js.module_core-tyler.html">tyler</a></li><li></li></ul><h3>Global</h3><ul><li><a href="global.html#Clone">Clone</a></li><li><a href="global.html#Define">Define</a></li><li><a href="global.html#Extend">Extend</a></li><li><a href="global.html#global#global">global</a></li><li><a href="global.html#global#global#IsEqual">IsEqual</a></li><li><a href="global.html#global#global#log">log</a></li><li><a href="global.html#global#global#logj">logj</a></li><li><a href="global.html#global#global#Merge">Merge</a></li><li><a href="global.html#global#global#Type">Type</a></li><li><a href="global.html#global#global#Uuid">Uuid</a></li></ul>
+	
+</nav>
+
+<i class="material-icons ShowMenu">more_vert</i>
+
+<div id="main">
+    
+    <h1 class="page-title">Array/Flatten.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+* Flatten array elements
+* @memberof Array.
+* @static
+* @function Flatten
+* @param {number} depth
+* @returns {array} list - Flattened list
+*/
+Array.Define('Flatten', function (list, depth) {
+	depth = (typeof depth == 'number') ? depth : Infinity
+
+	if (!depth) {
+		if (Array.IsArray(list)) {
+			return list.map(function(i) {return i})
+		}
+		return list
+	}
+
+	return _flatten(list, 1)
+
+	function _flatten(list, d) {
+		return list.reduce(function(acc, item) {
+			if (Array.IsArray(item) &amp;&amp; d &lt; depth) {
+				return acc.concat(_flatten(item, d + 1))
+			} else {
+				return acc.concat(item)
+			}
+		}, [])
+	}
+})
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+
+    
+</div>
+
+<br class="clear">
+
+
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+
+
+</body>
+</html>

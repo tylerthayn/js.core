@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>Extensions/EventEmitter.js - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+	<!--<link type="text/css" rel="stylesheet" href="styles/jsdoc.css">-->
+	<link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+	<link type="text/css" rel="stylesheet" href="styles/jquery-ui.css">
+	<link type="text/css" rel="stylesheet" href="styles/tts.css">
+
+    <script src="scripts/nav.js" defer></script>
+    
+
+	<script src="scripts/web.core.js" data-main="scripts/main" defer></script>
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+
+<nav style="display:none;" >
+	
+	
+	<i class="material-icons CloseMenu" data-action="Close">close</i>
+	<h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Array.html">Array</a><ul class='methods'><li data-type='method'><a href="Array.html#.Difference">Difference</a></li><li data-type='method'><a href="Array.html#.Difference">Difference</a></li><li data-type='method'><a href="Array.html#.Flatten">Flatten</a></li><li data-type='method'><a href="Array.html#.Flatten">Flatten</a></li><li data-type='method'><a href="Array.html#.From">From</a></li><li data-type='method'><a href="Array.html#.From">From</a></li><li data-type='method'><a href="Array.html#.IsArray">IsArray</a></li><li data-type='method'><a href="Array.html#.IsArray">IsArray</a></li><li data-type='method'><a href="Array.html#Delete">Delete</a></li><li data-type='method'><a href="Array.html#Delete">Delete</a></li><li data-type='method'><a href="Array.html#DeleteAt">DeleteAt</a></li><li data-type='method'><a href="Array.html#DeleteAt">DeleteAt</a></li><li data-type='method'><a href="Array.html#Difference">Difference</a></li><li data-type='method'><a href="Array.html#Difference">Difference</a></li><li data-type='method'><a href="Array.html#Intersection">Intersection</a></li><li data-type='method'><a href="Array.html#Intersection">Intersection</a></li><li data-type='method'><a href="Array.html#Omit">Omit</a></li><li data-type='method'><a href="Array.html#Omit">Omit</a></li><li data-type='method'><a href="Array.html#OmitAt">OmitAt</a></li><li data-type='method'><a href="Array.html#OmitAt">OmitAt</a></li><li data-type='method'><a href="Array.html#Pick">Pick</a></li><li data-type='method'><a href="Array.html#Pick">Pick</a></li><li data-type='method'><a href="Array.html#Shuffle">Shuffle</a></li><li data-type='method'><a href="Array.html#Shuffle">Shuffle</a></li><li data-type='method'><a href="Array.html#Union">Union</a></li><li data-type='method'><a href="Array.html#Union">Union</a></li><li data-type='method'><a href="Array.html#Unique">Unique</a></li><li data-type='method'><a href="Array.html#Unique">Unique</a></li><li data-type='method'><a href="Array.html#Xor">Xor</a></li><li data-type='method'><a href="Array.html#Xor">Xor</a></li></ul></li><li></li><li><a href="Function.html">Function</a><ul class='methods'><li data-type='method'><a href="Function.html#.Debug">Debug</a></li><li data-type='method'><a href="Function.html#.Debug">Debug</a></li><li data-type='method'><a href="Function.html#.Delay">Delay</a></li><li data-type='method'><a href="Function.html#.Delay">Delay</a></li><li data-type='method'><a href="Function.html#.Noop">Noop</a></li><li data-type='method'><a href="Function.html#.Noop">Noop</a></li></ul></li><li></li><li><a href="Object.html">Object</a><ul class='methods'><li data-type='method'><a href="Object.html#Clone">Clone</a></li><li data-type='method'><a href="Object.html#Clone">Clone</a></li><li data-type='method'><a href="Object.html#Define">Define</a></li><li data-type='method'><a href="Object.html#Define">Define</a></li><li data-type='method'><a href="Object.html#Each">Each</a></li><li data-type='method'><a href="Object.html#Each">Each</a></li><li data-type='method'><a href="Object.html#Extend">Extend</a></li><li data-type='method'><a href="Object.html#Extend">Extend</a></li><li data-type='method'><a href="Object.html#Get">Get</a></li><li data-type='method'><a href="Object.html#Get">Get</a></li><li data-type='method'><a href="Object.html#Has">Has</a></li><li data-type='method'><a href="Object.html#Has">Has</a></li><li data-type='method'><a href="Object.html#Includes">Includes</a></li><li data-type='method'><a href="Object.html#Includes">Includes</a></li><li data-type='method'><a href="Object.html#IsEqual">IsEqual</a></li><li data-type='method'><a href="Object.html#IsEqual">IsEqual</a></li><li data-type='method'><a href="Object.html#Keys">Keys</a></li><li data-type='method'><a href="Object.html#Keys">Keys</a></li><li data-type='method'><a href="Object.html#Merge">Merge</a></li><li data-type='method'><a href="Object.html#Merge">Merge</a></li><li data-type='method'><a href="Object.html#Paths">Paths</a></li><li data-type='method'><a href="Object.html#Paths">Paths</a></li><li data-type='method'><a href="Object.html#Pick">Pick</a></li><li data-type='method'><a href="Object.html#Pick">Pick</a></li><li data-type='method'><a href="Object.html#Set">Set</a></li><li data-type='method'><a href="Object.html#Set">Set</a></li><li data-type='method'><a href="Object.html#Trim">Trim</a></li><li data-type='method'><a href="Object.html#Trim">Trim</a></li><li data-type='method'><a href="Object.html#Type">Type</a></li><li data-type='method'><a href="Object.html#Type">Type</a></li></ul></li><li></li><li><a href="String.html">String</a><ul class='methods'><li data-type='method'><a href="String.html#AsAscii">AsAscii</a></li><li data-type='method'><a href="String.html#AsAscii">AsAscii</a></li><li data-type='method'><a href="String.html#AsBase64">AsBase64</a></li><li data-type='method'><a href="String.html#AsBase64">AsBase64</a></li><li data-type='method'><a href="String.html#AsUrlMatch">AsUrlMatch</a></li><li data-type='method'><a href="String.html#AsUrlMatch">AsUrlMatch</a></li><li data-type='method'><a href="String.html#CamelCase">CamelCase</a></li><li data-type='method'><a href="String.html#CamelCase">CamelCase</a></li><li data-type='method'><a href="String.html#Capitalize">Capitalize</a></li><li data-type='method'><a href="String.html#Capitalize">Capitalize</a></li><li data-type='method'><a href="String.html#Hash">Hash</a></li><li data-type='method'><a href="String.html#Hash">Hash</a></li><li data-type='method'><a href="String.html#IsBase64">IsBase64</a></li><li data-type='method'><a href="String.html#IsBase64">IsBase64</a></li><li data-type='method'><a href="String.html#IsEmpty">IsEmpty</a></li><li data-type='method'><a href="String.html#IsEmpty">IsEmpty</a></li><li data-type='method'><a href="String.html#IsJson">IsJson</a></li><li data-type='method'><a href="String.html#IsJson">IsJson</a></li><li data-type='method'><a href="String.html#Pad">Pad</a></li><li data-type='method'><a href="String.html#Pad">Pad</a></li><li data-type='method'><a href="String.html#Repeat">Repeat</a></li><li data-type='method'><a href="String.html#Repeat">Repeat</a></li></ul></li><li></li></ul><h3>Modules</h3><ul><li><a href="@tyler.thayn_js.module_core.html">core</a></li><li></li></ul><h3>Namespaces</h3><ul><li><a href="@tyler.thayn_js.module_core-tyler.html">tyler</a></li><li></li></ul><h3>Global</h3><ul><li><a href="global.html#Clone">Clone</a></li><li><a href="global.html#Define">Define</a></li><li><a href="global.html#Extend">Extend</a></li><li><a href="global.html#global#global">global</a></li><li><a href="global.html#global#global#IsEqual">IsEqual</a></li><li><a href="global.html#global#global#log">log</a></li><li><a href="global.html#global#global#logj">logj</a></li><li><a href="global.html#global#global#Merge">Merge</a></li><li><a href="global.html#global#global#Type">Type</a></li><li><a href="global.html#global#global#Uuid">Uuid</a></li></ul>
+	
+</nav>
+
+<i class="material-icons ShowMenu">more_vert</i>
+
+<div id="main">
+    
+    <h1 class="page-title">Extensions/EventEmitter.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+* @property {Plugin} EventEmitter
+*/
+Object.Extensions.EventEmitter = function (o) {
+	var R = typeof Reflect === 'object' ? Reflect : null
+	var ReflectApply=R&amp;&amp;'function'==typeof R.apply?R.apply:function ReflectApply(target,receiver,args){return Function.prototype.apply.call(target,receiver,args)};
+	var ReflectOwnKeys
+	R&amp;&amp;'function'==typeof R.ownKeys?ReflectOwnKeys=R.ownKeys:Object.getOwnPropertySymbols?ReflectOwnKeys=function ReflectOwnKeys(target){return Object.getOwnPropertyNames(target).concat(Object.getOwnPropertySymbols(target))}:ReflectOwnKeys=function ReflectOwnKeys(target){return Object.getOwnPropertyNames(target)};
+	function ProcessEmitWarning(warning){console&amp;&amp;console.warn&amp;&amp;console.warn(warning)}
+	var NumberIsNaN=Number.isNaN||function NumberIsNaN(value){return value!=value};
+
+	Define(o, '_events', undefined)
+	Define(o, '_eventsCount', 0)
+	Define(o, '_maxListeners', undefined)
+	var defaultMaxListeners = 10;
+	Define(Object, 'defaultMaxListeners', {get:function(){return defaultMaxListeners},set:function(arg){if('number'!=typeof arg||arg&lt;0||NumberIsNaN(arg))throw new RangeError('The value of "defaultMaxListeners" is out of range. It must be a non-negative number. Received '+arg+'.');defaultMaxListeners=arg}})
+	function setMaxListeners(n){if('number'!=typeof n||n&lt;0||NumberIsNaN(n))throw new RangeError('The value of "n" is out of range. It must be a non-negative number. Received '+n+'.');this._maxListeners=n;return this}
+	Define(o, 'setMaxListeners', setMaxListeners)
+	function $getMaxListeners(that){return void 0===that._maxListeners?Object.defaultMaxListeners:that._maxListeners}
+	function getMaxListeners(){return $getMaxListeners(this)}
+	Define(o, 'getMaxListeners', getMaxListeners)
+	function emit(type){var args=[];for(var i=1;i&lt;arguments.length;i++)args.push(arguments[i]);var doError='error'===type;var events=this._events;if(void 0!==events)doError=doError&amp;&amp;void 0===events.error;else if(!doError)return false;if(doError){var er;args.length>0&amp;&amp;(er=args[0]);if(er instanceof Error)throw er;var err=new Error('Unhandled error.'+(er?' ('+er.message+')':''));err.context=er;throw err}var handler=events[type];if(void 0===handler)return false;if('function'==typeof handler)ReflectApply(handler,this,args);else{var len=handler.length;var listeners=arrayClone(handler,len);for(i=0;i&lt;len;++i)ReflectApply(listeners[i],this,args)}return true};
+	Define(o, 'emit', emit)
+	function _addListener(target,type,listener,prepend){var m;var events;var existing;if('function'!=typeof listener)throw new TypeError('The "listener" argument must be of type Function. Received type '+typeof listener);if(void 0===(events=target._events)){events=target._events=Object.create(null);target._eventsCount=0}else{if(void 0!==events.newListener){target.emit('newListener',type,listener.listener?listener.listener:listener);events=target._events}existing=events[type]}if(void 0===existing){existing=events[type]=listener;++target._eventsCount}else{'function'==typeof existing?existing=events[type]=prepend?[listener,existing]:[existing,listener]:prepend?existing.unshift(listener):existing.push(listener);if((m=$getMaxListeners(target))>0&amp;&amp;existing.length>m&amp;&amp;!existing.warned){existing.warned=true;var w=new Error('Possible EventEmitter memory leak detected. '+existing.length+' '+String(type)+' listeners added. Use emitter.setMaxListeners() to increase limit');w.name='MaxListenersExceededWarning';w.emitter=target;w.type=type;w.count=existing.length;ProcessEmitWarning(w)}}return target}
+	function addListener(type,listener){return _addListener(this,type,listener,false)}
+	Define(o, 'addListener', addListener)
+	Define(o, 'on', addListener)
+	function prependListener(type,listener){return _addListener(this,type,listener,true)}
+	Define(o, 'prependListener', prependListener)
+	function onceWrapper(){var args=[];for(var i=0;i&lt;arguments.length;i++)args.push(arguments[i]);if(!this.fired){this.target.removeListener(this.type,this.wrapFn);this.fired=true;ReflectApply(this.listener,this.target,args)}}
+	function _onceWrap(target,type,listener){var state={fired:false,wrapFn:void 0,target:target,type:type,listener:listener};var wrapped=onceWrapper.bind(state);wrapped.listener=listener;state.wrapFn=wrapped;return wrapped}
+	function once(type,listener){if('function'!=typeof listener)throw new TypeError('The "listener" argument must be of type Function. Received type '+typeof listener);this.on(type,_onceWrap(this,type,listener));return this}
+	Define(o, 'once', once)
+	function prependOnceListener(type,listener){if('function'!=typeof listener)throw new TypeError('The "listener" argument must be of type Function. Received type '+typeof listener);this.prependListener(type,_onceWrap(this,type,listener));return this};
+	Define(o, 'prependOnceListener', prependOnceListener)
+	function removeListener(type,listener){var list,events,position,i,originalListener;if('function'!=typeof listener)throw new TypeError('The "listener" argument must be of type Function. Received type '+typeof listener);if(void 0===(events=this._events))return this;if(void 0===(list=events[type]))return this;if(list===listener||list.listener===listener)if(0==--this._eventsCount)this._events=Object.create(null);else{delete events[type];events.removeListener&amp;&amp;this.emit('removeListener',type,list.listener||listener)}else if('function'!=typeof list){position=-1;for(i=list.length-1;i>=0;i--)if(list[i]===listener||list[i].listener===listener){originalListener=list[i].listener;position=i;break}if(position&lt;0)return this;0===position?list.shift():spliceOne(list,position);1===list.length&amp;&amp;(events[type]=list[0]);void 0!==events.removeListener&amp;&amp;this.emit('removeListener',type,originalListener||listener)}return this}
+	Define(o, 'removeListener', removeListener)
+	Define(o, 'off', removeListener)
+	function removeAllListeners(type){var listeners,events,i;if(void 0===(events=this._events))return this;if(void 0===events.removeListener){if(0===arguments.length){this._events=Object.create(null);this._eventsCount=0}else void 0!==events[type]&amp;&amp;(0==--this._eventsCount?this._events=Object.create(null):delete events[type]);return this}if(0===arguments.length){var keys=Object.keys(events);var key;for(i=0;i&lt;keys.length;++i)'removeListener'!==(key=keys[i])&amp;&amp;this.removeAllListeners(key);this.removeAllListeners('removeListener');this._events=Object.create(null);this._eventsCount=0;return this}if('function'==typeof(listeners=events[type]))this.removeListener(type,listeners);else if(void 0!==listeners)for(i=listeners.length-1;i>=0;i--)this.removeListener(type,listeners[i]);return this};
+	Define(o, 'removeAllListeners', removeAllListeners)
+	function _listeners(target,type,unwrap){var events=target._events;if(void 0===events)return[];var evlistener=events[type];return void 0===evlistener?[]:'function'==typeof evlistener?unwrap?[evlistener.listener||evlistener]:[evlistener]:unwrap?unwrapListeners(evlistener):arrayClone(evlistener,evlistener.length)}
+	function listeners(type){return _listeners(this,type,true)};
+	Define(o, 'listeners', listeners)
+	function rawListeners(type){return _listeners(this,type,false)};
+	Define(o, 'rawListenrs', rawListeners)
+	Define(o, 'listenerCount', listenerCount)
+	function listenerCount(type){var events=this._events;if(void 0!==events){var evlistener=events[type];if('function'==typeof evlistener)return 1;if(void 0!==evlistener)return evlistener.length}return 0}
+	function eventNames(){return this._eventsCount>0?ReflectOwnKeys(this._events):[]};
+	Define(o, 'eventNames', eventNames)
+	function arrayClone(arr,n){var copy=new Array(n);for(var i=0;i&lt;n;++i)copy[i]=arr[i];return copy}
+	function spliceOne(list,index){for(;index+1&lt;list.length;index++)list[index]=list[index+1];list.pop()}
+	function unwrapListeners(arr){var ret=new Array(arr.length);for(var i=0;i&lt;ret.length;++i)ret[i]=arr[i].listener||arr[i];return ret}
+
+	return o
+
+}
+
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+
+    
+</div>
+
+<br class="clear">
+
+
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+
+
+</body>
+</html>

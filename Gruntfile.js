@@ -49,7 +49,6 @@ module.exports = function(grunt) {
 				src: ["src/*.js", "src/**/*.js", "README.md"],
 				options: {
 					"destination": "docs",
-					"template": ".Build/templates/docs/template",
 					"configure": "jsdoc.conf"
 				}
 			}
@@ -83,13 +82,17 @@ module.exports = function(grunt) {
 				template: '.Build/templates/readme'
 			}
 		},
-		rev: {}
+		rev: {},
+		bump: {},
+		dox: {}
 	})
 
 	grunt.loadTasks('.Build/tasks')
 	grunt.loadNpmTasks('grunt-jsdoc')
+	grunt.loadNpmTasks('@grunt/bump')
+
 	grunt.registerTask('docs', ['jsdoc', 'readme'])
-	grunt.registerTask('default', ['clean', 'concat', 'amd', 'docs'])
+	grunt.registerTask('default', ['clean', 'concat', 'amd', 'jsdoc'])
 	grunt.registerTask('patch', ['rev:patch'])
 	grunt.registerTask('minor', ['rev:minor'])
 	grunt.registerTask('major', ['rev:major'])

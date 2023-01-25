@@ -1,7 +1,11 @@
 /**
  * Object extensions
  *
- * @name Object.Extensions
- * @type {Object}
+ * @property {object} Extensions
  */
 Object.Extensions = {}
+
+/**
+* @typedef {function} Plugin
+* @param {object} o
+*/
