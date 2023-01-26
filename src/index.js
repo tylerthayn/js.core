@@ -1,8 +1,4 @@
 /**
- * @module @tyler.thayn/js.core
-*/
-
-/**
 * Array class
 * @summary [Array@MDN]{@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array}
 * @class Array
