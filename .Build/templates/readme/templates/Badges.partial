@@ -1,0 +1,4 @@
+[![Build Status]({{pkg.homepage}}/workflows/build/badge.svg)](https://github.com/tj/commander.js/actions?query=workflow%3A%22build%22)
+[![NPM Version](http://img.shields.io/npm/v/{{pkg.name}}.svg?style=flat)](https://www.npmjs.org/package/{{pkg.name}})
+[![NPM Downloads](https://img.shields.io/npm/dm/{{pkg.name}}.svg?style=flat)](https://npmcharts.com/compare/{{pkg.name}}?minimal=true)
+[![license](https://img.shields.io/npm/l/{{pkg.name}}.svg)](LICENSE)

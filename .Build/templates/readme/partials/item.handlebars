@@ -1,0 +1,7 @@
+({{Scope scope}}) {{name}}
+{{~#if (Equals kind 'member')}}
+{{#type}}{{> type}}{{/type}}
+{{~/if}}
+{{~#if (Equals kind 'function')}}
+({{#params}}{{> param}}{{#unless @last}}, {{/unless}}{{/params}}){{#if (Has this 'returns')}}	=>	{{/if}}{{#returns}}{{#type}}{{> type}}{{/type}}{{#unless @last}}, {{/unless}}{{/returns}}
+{{~/if}}

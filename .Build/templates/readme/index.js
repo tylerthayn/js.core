@@ -1,85 +1,61 @@
-require('@js/core')
-let Fs = require('fs')
-let Path = require('path')
+let $fs = require('fs')
+let Handlebars = require('handlebars')
 
-function Filter(ast,filters){let _ast=Clone(ast);filters.Keys().forEach(key=>{_ast=_ast.filter(d=>d[key]==filters[key])});return _ast}
-function Sort (a, b) {return a.longname.localeCompare(b.longname, 'en'/*, { sensitivity: 'base' }*/)}
-function StringifyParam(param){let s=`${param.name}`;return param.optional?`[${s}]`:s}
-
-let package = JSON.parse(Fs.readFileSync(Path.resolve(__dirname, '../../../', 'package.json'), 'utf-8'))
-
-Array.prototype.Debug = function (s = '') {
-//	console.log(s.toString()+this.length)
-	return this
+let Keys = {
+	'Scope>Kind>Name': (ctx) => {
+		let keys = []
+		Object.keys(ctx).filter(k => ctx[k]._.scope === 'inner').filter(k => ctx[k]._.kind === 'typedef').sort().forEach(k => keys.push(k))
+		Object.keys(ctx).filter(k => ctx[k]._.scope === 'static').filter(k => ctx[k]._.kind === 'member').sort().forEach(k => keys.push(k))
+		Object.keys(ctx).filter(k => ctx[k]._.scope === 'static').filter(k => ctx[k]._.kind === 'function').sort().forEach(k => keys.push(k))
+		Object.keys(ctx).filter(k => ctx[k]._.scope === 'instance').filter(k => ctx[k]._.kind === 'member').sort().forEach(k => keys.push(k))
+		Object.keys(ctx).filter(k => ctx[k]._.scope === 'instance').filter(k => ctx[k]._.kind === 'function').sort().forEach(k => keys.push(k))
+		return keys
+	},
+	'Kind>Name': (ctx) => {
+		let keys = []
+		Object.keys(ctx).filter(k => ctx[k]._.kind === 'typedef').sort().forEach(k => keys.push(k))
+		Object.keys(ctx).filter(k => ctx[k]._.kind === 'member').sort().forEach(k => keys.push(k))
+		Object.keys(ctx).filter(k => ctx[k]._.kind === 'function').sort().forEach(k => keys.push(k))
+		return keys
+	},
+	'Name': (ctx) => {
+		return Object.keys(ctx)
+	}
 }
+let configs = {
+	params: {
+		showType: false
+	},
+	showTopLevel: false
+}
+Handlebars.registerHelper('Brace', function (which = false) {return which ? '{' : '}'})
+Handlebars.registerHelper('Capitalize', function (ctx) {return ctx.toString().Capitalize()})
+Handlebars.registerHelper('Equals', function (a, b) {return a === b})
+Handlebars.registerHelper('Get', function (k, v) {return configs.Get(k, v)})
+Handlebars.registerHelper('Has', function (ctx, name) {return Reflect.has(ctx, name)})
+Handlebars.registerHelper('HasChildren', function (ctx) {return Object.keys(ctx).length > 0})
+Handlebars.registerHelper('Include', function (path) {try {return $fs.readFileSync(path, 'utf-8')} catch (e) {} return ''})
+Handlebars.registerHelper('Join', function (names, s) {return names.join(s)})
+Handlebars.registerHelper('JSON', function (ctx) {return JSON.stringify(ctx, null, '\t')})
+Handlebars.registerHelper('Scope', function (scope) {return scope === 'static' ? new Handlebars.SafeString('&#8716; ') : ''})
+Handlebars.registerHelper('Each', function (ctx, sort = 'Name', options = {}) {return Keys[sort](ctx).map(k => {return options.fn({name: k, value: ctx[k]})}).join('\n')})
 
+let _templates = require('./templates'), templates = {}
+Object.keys(_templates._partials).forEach(k => Handlebars.registerPartial(k, _templates._partials[k]))
+Object.keys(_templates).forEach(k => templates[k] = Handlebars.compile(_templates[k]))
 
-
-function Render (ast, template = './Template.Readme.js') {
-	let Template = require(template)
-
-	function Process (doclet, ast, indent = 0) {
-		Template.Start('item', indent, doclet)
-
-		let _ast = Filter(ast, {memberof: doclet.longname})
-		if (_ast.length > 0) {
-			//Template.Start('children', indent+3)
-
-			let _ast = Filter(ast, {memberof: doclet.longname, scope: 'static'})
-			if (_ast.length > 0) {
-				//Template.Start('static', indent+4)
-				Filter(ast, {memberof: doclet.longname, scope: 'static', kind: 'class'}).Debug('\t').forEach(child => Process(child, ast, indent+1))
-				Filter(ast, {memberof: doclet.longname, scope: 'static', kind: 'member'}).Debug('\t').forEach(child => Process(child, ast, indent+1))
-				Filter(ast, {memberof: doclet.longname, scope: 'static', kind: 'function'}).Debug('\t').forEach(child => Process(child, ast, indent+1))
-				//Template.End('static', indent+4)
-			}
-
-			_ast = Filter(ast, {memberof: doclet.longname, scope: 'instance'})
-			if (_ast.length > 0) {
-				//Template.Start('instance', indent+4)
-				Filter(ast, {memberof: doclet.longname, scope: 'instance', kind: 'class'}).forEach(child => Process(child, ast, indent+1))
-				Filter(ast, {memberof: doclet.longname, scope: 'instance', kind: 'member'}).forEach(child => Process(child, ast, indent+1))
-				Filter(ast, {memberof: doclet.longname, scope: 'instance', kind: 'function'}).forEach(child => Process(child, ast, indent+1))
-				//Template.End('instance', indent+4)
-			}
-
-			_ast = Filter(ast, {memberof: doclet.longname, kind: 'event'})
-			if (_ast.length > 0) {
-				//Template.Start('event', indent+4)
-				Filter(ast, {memberof: doclet.longname, kind: 'event'}).forEach(child => Process(child, ast, indent+2))
-				//Tempalte.End('event', indent+4)
-			}
-
-			//Template.End('children', indent+3)
-
+module.exports = (ast, options) => {
+	return new Promise((resolve, reject) => {
+		if (typeof options.pkg === 'string') {
+			options.pkg = JSON.parse($fs.readFileSync(options.pkg, 'utf-8'))
 		}
 
-		Template.End('item', indent, doclet)
+		let render = Handlebars.compile($fs.readFileSync(options.template, 'utf-8'))
+		$fs.writeFile(options.output, render({ast: ast, outline: ast.Outline(true), pkg: options.pkg}), 'utf-8', error => {
+			if (error) return reject(error)
+			resolve()
+		})
 
-	}
-
-	// Filter non comment asts
-	ast = ast.filter(t => t.Get('comment', '') != '')
-
-	Template.Start('doc', 0, {name: package.name})
-	Filter(ast, {scope: 'global', kind: 'class'}).sort(Sort).Debug().forEach(t => {Process(t, ast, 1)})
-
-	Filter(ast, {scope: 'global', kind: 'function'}).sort(Sort).Debug().forEach(t => {Process(t, ast, 1)})
-	Filter(ast, {scope: 'global', kind: 'member'}).sort(Sort).Debug().forEach(t => {Process(t, ast, 1)})
-	Template.End('doc')
-
-
-	//Filter(ast, {kind: 'module'}).sort(Sort).forEach(t => {Process(t, ast)})
-	//Filter(ast, {kind: '').sort(Sort).forEach(t => {Process(t, ast)})
-//log(JSON.stringify(Template.data, null, '\t'))
-//log(JSON.stringify(Template.names, null, '\t'))
-	return Template.Export()
-
+	})
 }
 
-
-if (require.main === module) {
-	$fs.writeFileSync(process.argv[2], Render(JSON.parse($fs.readFileSync($path.resolve(__dirname, '../../tmp/ast'), 'utf-8')), process.argv[3]), 'utf-8')
-} else {
-	module.exports = Render
-}

@@ -1,0 +1,17 @@
+
+* Remove alias's... problematic for larger integrations
+* Remove Unused Pieces:
+	- Array: .From, .IsArray, .Intersection, .Xor
+	- String: AsUrlMatch
+	- JSON(): short cut, wrapped method
+
+* Add Pieces:
+	+ Array: .Sorts{.Alphabetically}, .Until, .While
+
+
+Pkg Outputs/Deliverables
+========================
++ Npm: 
+	+ index.js, package.json, README.md, docs/, LICENSE
+
+

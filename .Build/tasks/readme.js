@@ -1,4 +1,4 @@
-require('@js/core')
+require('@tyler.thayn/js.core')
 const ChildProcess = require('child_process')
 const Fs = require('fs'), Path = require('path')
 
@@ -7,6 +7,7 @@ module.exports = function(grunt) {
 		let done = this.async()
 
 		let options = this.options({})
+		//let options.pkg = require(Path.resolve(options.pkg))
 		let template = require(Path.resolve(options.template))
 
 		let jsdoc = Path.resolve(Path.dirname(process.argv[0]), "jsdoc.cmd")
@@ -15,7 +16,7 @@ module.exports = function(grunt) {
 		cp.stdout.on('data', chunk => {data += chunk.toString()})
 		cp.on('close', code => {
 			grunt.file.write('./.Build/tmp/ast', data)
-			let readme = template(JSON.parse(data))
+			let readme = template(JSON.parse(data), options)
 			grunt.file.write(options.output, template(JSON.parse(data)))
 			done(true)
 		})

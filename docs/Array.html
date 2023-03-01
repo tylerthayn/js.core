@@ -1,102 +1,134 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-    
-    <meta charset="utf-8">
-    <title>Array - Documentation</title>
-    
-    
-    <script src="scripts/prettify/prettify.js"></script>
-    <script src="scripts/prettify/lang-css.js"></script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
-	<!--<link type="text/css" rel="stylesheet" href="styles/jsdoc.css">-->
-	<link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
-	<link type="text/css" rel="stylesheet" href="styles/jquery-ui.css">
-	<link type="text/css" rel="stylesheet" href="styles/tts.css">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Documentation Class: Array</title>
 
-    <script src="scripts/nav.js" defer></script>
-    
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
 
-	<script src="scripts/web.core.js" data-main="scripts/main" defer></script>
+	<link type="text/css" rel="stylesheet" href="styles/site.spacelab.css">
 
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
+
 <body>
 
-<input type="checkbox" id="nav-trigger" class="nav-trigger" />
-<label for="nav-trigger" class="navicon-button x">
-  <div class="navicon"></div>
-</label>
+<div class="navbar navbar-default navbar-fixed-top navbar-inverse">
+<div class="container">
+	<div class="navbar-header">
+		<a class="navbar-brand" href="index.html"><img class="branding-logo" src="data:image/png;base64,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////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////AFP3ByUAABMGSURBVHja7Hz9c9tIkmxmdQMUQZG0dmxL8s2N5yz6/f9/z47oHdMWKdkzFj/BL3Tl+wGk7Nm4d3uULK9fhBGhMAVChUR2dXVVdsEUvsfD8APWD1g/YP2A9QPWVzhi/c/Y8R2Ee9qT/ScBt62xXE6ITgCEAIgiIFDU/hwpEQDq3wCI1P4q1t8JtQ0KFGC1MUBfnAT3N9hZI51kYKyRRWCMGcGaN+7sAzCh/qDgNShLJL02KKvZJWQCDE7BnJC5SEqAggMw7R6QMv9sfvc44P6HpED5nq3NNG0p7kax/kSofiIZJKPqZ3NidwuITgKUxP1fYYdRbtiR4qjhqqa1xgtSYKIJqtncfS9GZie1y089iQBr/69RSQYKTjqMLgk0iAQgSCJJUHDQRIoSDAwgIBglB2UyklZbF8j9CDtEwh2UIEBOiaDcWzu2bpASSQeIUMNKJiq4uQhzOkE4YZAAghDhkBGim5sIJIgE6ebwwEQYHE5SgCWKBtQDTDdBlizRBIPTjawoGrb5ae1bogjR6IEgXEZSTAysyaVRpkBKVEhWO7CCSAhBBtKNlmKy+tlq3oSAAIEKXttygxP0IJPMjZARyRAh0ZyE0o6tEVxmImG7qdmdQuhO6nnSwQSgm9CddKe+nzxdTAWgiwmBzhToTCh2puhMxO5UYGcCEG4Qxc5UQHcqqjuVSCc7U3UnrJ+xiyk6mBCdP35q7MKpZJ4Ehq51jWZdGLsG61inY5zP2DU+YdfAGUO3ayF0rTubdrrWtRmMHaJDzro0m9PQDTbrmBHd0LVO7LDbMYJmYdYhDR0L1gldA7ozGgM7Hc5nHc7BTmfO0Y6toVVmpHXmJAuUKIASRcnmgkUJqkBZlEVZYGGi2FwKQLEU2ARQFgCAsiiBAksBBRatckd8UaIoKdSTaWcJKMri7i+BEmyWqO8x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"
+		alt="logo"/>TTSCloud</a>
+		<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+        </button>
+	</div>
+	<div class="navbar-collapse collapse" id="topNavigation">
+		<ul class="nav navbar-nav">
+			
+			<li class="dropdown">
+				<a href="namespaces.list.html" class="dropdown-toggle" data-toggle="dropdown">Namespaces<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="tyler.html">tyler</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="Array.html">Array</a></li><li><a href="Function.html">Function</a></li><li><a href="Object.html">Object</a></li><li><a href="String.html">String</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="global.html#Clone">Clone</a></li><li><a href="global.html#Define">Define</a></li><li><a href="global.html#Extend">Extend</a></li><li><a href="global.html#global#global">global</a></li><li><a href="global.html#global#global#IsEqual">IsEqual</a></li><li><a href="global.html#global#global#log">log</a></li><li><a href="global.html#global#global#logj">logj</a></li><li><a href="global.html#global#global#Merge">Merge</a></li><li><a href="global.html#global#global#Type">Type</a></li><li><a href="global.html#global#global#Uuid">Uuid</a></li>
+				</ul>
+			</li>
+			
+		</ul>
+        
+            <div class="col-sm-3 col-md-3">
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search" name="q" id="search-input">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" id="search-submit"><i class="glyphicon glyphicon-search"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        
+	</div>
 
-<label for="nav-trigger" class="overlay"></label>
+</div>
+</div>
 
 
-<nav style="display:none;" >
+<div class="container" id="toc-content">
+<div class="row">
+
 	
+	<div class="col-md-8">
 	
-	<i class="material-icons CloseMenu" data-action="Close">close</i>
-	<h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Array.html">Array</a><ul class='methods'><li data-type='method'><a href="Array.html#.Difference">Difference</a></li><li data-type='method'><a href="Array.html#.Difference">Difference</a></li><li data-type='method'><a href="Array.html#.Flatten">Flatten</a></li><li data-type='method'><a href="Array.html#.Flatten">Flatten</a></li><li data-type='method'><a href="Array.html#.From">From</a></li><li data-type='method'><a href="Array.html#.From">From</a></li><li data-type='method'><a href="Array.html#.IsArray">IsArray</a></li><li data-type='method'><a href="Array.html#.IsArray">IsArray</a></li><li data-type='method'><a href="Array.html#Delete">Delete</a></li><li data-type='method'><a href="Array.html#Delete">Delete</a></li><li data-type='method'><a href="Array.html#DeleteAt">DeleteAt</a></li><li data-type='method'><a href="Array.html#DeleteAt">DeleteAt</a></li><li data-type='method'><a href="Array.html#Difference">Difference</a></li><li data-type='method'><a href="Array.html#Difference">Difference</a></li><li data-type='method'><a href="Array.html#Intersection">Intersection</a></li><li data-type='method'><a href="Array.html#Intersection">Intersection</a></li><li data-type='method'><a href="Array.html#Omit">Omit</a></li><li data-type='method'><a href="Array.html#Omit">Omit</a></li><li data-type='method'><a href="Array.html#OmitAt">OmitAt</a></li><li data-type='method'><a href="Array.html#OmitAt">OmitAt</a></li><li data-type='method'><a href="Array.html#Pick">Pick</a></li><li data-type='method'><a href="Array.html#Pick">Pick</a></li><li data-type='method'><a href="Array.html#Shuffle">Shuffle</a></li><li data-type='method'><a href="Array.html#Shuffle">Shuffle</a></li><li data-type='method'><a href="Array.html#Union">Union</a></li><li data-type='method'><a href="Array.html#Union">Union</a></li><li data-type='method'><a href="Array.html#Unique">Unique</a></li><li data-type='method'><a href="Array.html#Unique">Unique</a></li><li data-type='method'><a href="Array.html#Xor">Xor</a></li><li data-type='method'><a href="Array.html#Xor">Xor</a></li></ul></li><li></li><li><a href="Function.html">Function</a><ul class='methods'><li data-type='method'><a href="Function.html#.Debug">Debug</a></li><li data-type='method'><a href="Function.html#.Debug">Debug</a></li><li data-type='method'><a href="Function.html#.Delay">Delay</a></li><li data-type='method'><a href="Function.html#.Delay">Delay</a></li><li data-type='method'><a href="Function.html#.Noop">Noop</a></li><li data-type='method'><a href="Function.html#.Noop">Noop</a></li></ul></li><li></li><li><a href="Object.html">Object</a><ul class='methods'><li data-type='method'><a href="Object.html#Clone">Clone</a></li><li data-type='method'><a href="Object.html#Clone">Clone</a></li><li data-type='method'><a href="Object.html#Define">Define</a></li><li data-type='method'><a href="Object.html#Define">Define</a></li><li data-type='method'><a href="Object.html#Each">Each</a></li><li data-type='method'><a href="Object.html#Each">Each</a></li><li data-type='method'><a href="Object.html#Extend">Extend</a></li><li data-type='method'><a href="Object.html#Extend">Extend</a></li><li data-type='method'><a href="Object.html#Get">Get</a></li><li data-type='method'><a href="Object.html#Get">Get</a></li><li data-type='method'><a href="Object.html#Has">Has</a></li><li data-type='method'><a href="Object.html#Has">Has</a></li><li data-type='method'><a href="Object.html#Includes">Includes</a></li><li data-type='method'><a href="Object.html#Includes">Includes</a></li><li data-type='method'><a href="Object.html#IsEqual">IsEqual</a></li><li data-type='method'><a href="Object.html#IsEqual">IsEqual</a></li><li data-type='method'><a href="Object.html#Keys">Keys</a></li><li data-type='method'><a href="Object.html#Keys">Keys</a></li><li data-type='method'><a href="Object.html#Merge">Merge</a></li><li data-type='method'><a href="Object.html#Merge">Merge</a></li><li data-type='method'><a href="Object.html#Paths">Paths</a></li><li data-type='method'><a href="Object.html#Paths">Paths</a></li><li data-type='method'><a href="Object.html#Pick">Pick</a></li><li data-type='method'><a href="Object.html#Pick">Pick</a></li><li data-type='method'><a href="Object.html#Set">Set</a></li><li data-type='method'><a href="Object.html#Set">Set</a></li><li data-type='method'><a href="Object.html#Trim">Trim</a></li><li data-type='method'><a href="Object.html#Trim">Trim</a></li><li data-type='method'><a href="Object.html#Type">Type</a></li><li data-type='method'><a href="Object.html#Type">Type</a></li></ul></li><li></li><li><a href="String.html">String</a><ul class='methods'><li data-type='method'><a href="String.html#AsAscii">AsAscii</a></li><li data-type='method'><a href="String.html#AsAscii">AsAscii</a></li><li data-type='method'><a href="String.html#AsBase64">AsBase64</a></li><li data-type='method'><a href="String.html#AsBase64">AsBase64</a></li><li data-type='method'><a href="String.html#AsUrlMatch">AsUrlMatch</a></li><li data-type='method'><a href="String.html#AsUrlMatch">AsUrlMatch</a></li><li data-type='method'><a href="String.html#CamelCase">CamelCase</a></li><li data-type='method'><a href="String.html#CamelCase">CamelCase</a></li><li data-type='method'><a href="String.html#Capitalize">Capitalize</a></li><li data-type='method'><a href="String.html#Capitalize">Capitalize</a></li><li data-type='method'><a href="String.html#Hash">Hash</a></li><li data-type='method'><a href="String.html#Hash">Hash</a></li><li data-type='method'><a href="String.html#IsBase64">IsBase64</a></li><li data-type='method'><a href="String.html#IsBase64">IsBase64</a></li><li data-type='method'><a href="String.html#IsEmpty">IsEmpty</a></li><li data-type='method'><a href="String.html#IsEmpty">IsEmpty</a></li><li data-type='method'><a href="String.html#IsJson">IsJson</a></li><li data-type='method'><a href="String.html#IsJson">IsJson</a></li><li data-type='method'><a href="String.html#Pad">Pad</a></li><li data-type='method'><a href="String.html#Pad">Pad</a></li><li data-type='method'><a href="String.html#Repeat">Repeat</a></li><li data-type='method'><a href="String.html#Repeat">Repeat</a></li></ul></li><li></li></ul><h3>Modules</h3><ul><li><a href="@tyler.thayn_js.module_core.html">core</a></li><li></li></ul><h3>Namespaces</h3><ul><li><a href="@tyler.thayn_js.module_core-tyler.html">tyler</a></li><li></li></ul><h3>Global</h3><ul><li><a href="global.html#Clone">Clone</a></li><li><a href="global.html#Define">Define</a></li><li><a href="global.html#Extend">Extend</a></li><li><a href="global.html#global#global">global</a></li><li><a href="global.html#global#global#IsEqual">IsEqual</a></li><li><a href="global.html#global#global#log">log</a></li><li><a href="global.html#global#global#logj">logj</a></li><li><a href="global.html#global#global#Merge">Merge</a></li><li><a href="global.html#global#global#Type">Type</a></li><li><a href="global.html#global#global#Uuid">Uuid</a></li></ul>
-	
-</nav>
+		<div id="main">
+			
 
-<i class="material-icons ShowMenu">more_vert</i>
-
-<div id="main">
-    
-    <h1 class="page-title">Array</h1>
-    
-
-    
-
-
-
-
+	<h1 class="page-title">Class: Array</h1>
 <section>
 
 <header>
     
         <h2>
-        
-            Array
-        
+        Array
         </h2>
         
     
 </header>
 
+
 <article>
+    <div class="container-overview">
     
-        <div class="container-overview">
         
-            
+<hr>
+<dt>
+    <h4 class="name" id="Array"><span class="type-signature"></span>new Array()</h4>
+    
+    
+    <p class="summary"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array@MDN</a></p>
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        Array class
+    </div>
+    
 
     
 
-    <h4 class="name" id="Array"><span class="type-signature"></span>new Array<span class="signature">()</span><span class="type-signature"></span></h4>
-
-    
-    <p class="summary usertext"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array@MDN</a></p>
     
 
+    
+    
 
-
-
+    
 <dl class="details">
     
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>Array class</li></ul></dd>
-    
 
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line5">line 5</a>
-    </li></ul></dd>
-    
+	
+
+	
+
+	
 
     
 
@@ -106,60 +138,28 @@
 
     
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
 
-    
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
+	
 </dl>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-        </div>
     
 
     
@@ -167,114 +167,67 @@
     
 
     
-    
+
     
 
-     
+    
+
+    
+</dd>
+
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
 
     
 
     
         <h3 class="subsection-title">Members</h3>
 
-        
+        <dl>
             
-<h4 class="name" id="first"><span class="type-signature"></span>first<span class="type-signature"> :*</span></h4>
-
-
-
-
-
-<dl class="details">
-    
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>First element in an array</li></ul></dd>
-    
+<hr>
+<dt class="name" id="first">
+    <h4 id="first"><span class="type-signature"></span>first<span class="type-signature"> :*</span></h4>
 
     
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Array_first.js.html">Array/first.js</a>, <a href="Array_first.js.html#line1">line 1</a>
-    </li></ul></dd>
+</dt>
+<dd>
+    
+    <div class="description">
+        First element in an array
+    </div>
     
 
     
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description usertext">
-    First element in an array
-</div>
-
-
-
-    <h5 class="h5-types">Type:</h5>
-    <ul>
-        <li>
-            
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
 <span class="param-type">*</span>
 
 
 
-        </li>
-    </ul>
+            </li>
+        </ul>
+    
 
-
-
-
-
-
-        
-            
-<h4 class="name" id="first"><span class="type-signature"></span>first<span class="type-signature"> :*</span></h4>
-
-
-
-
-
+    
 <dl class="details">
     
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>First element in an array</li></ul></dd>
-    
 
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Array_first.js.html">Array/first.js</a>, <a href="Array_first.js.html#line1">line 1</a>
-    </li></ul></dd>
-    
+	
+
+	
+
+	
 
     
 
@@ -284,75 +237,68 @@
 
     
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
 
-    
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
+	
 </dl>
 
 
+    
+</dd>
 
-
-
-<div class="description usertext">
-    First element in an array
-</div>
-
-
-
-    <h5 class="h5-types">Type:</h5>
-    <ul>
-        <li>
+        
             
+<hr>
+<dt class="name" id="first">
+    <h4 id="first"><span class="type-signature"></span>first<span class="type-signature"> :*</span></h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        First element in an array
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
 <span class="param-type">*</span>
 
 
 
-        </li>
-    </ul>
+            </li>
+        </ul>
+    
 
-
-
-
-
-
-        
-            
-<h4 class="name" id="head"><span class="type-signature"></span>head<span class="type-signature"> :array</span></h4>
-
-
-
-
-
+    
 <dl class="details">
     
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>Gets all but the last element of array</li></ul></dd>
-    
 
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Array_head.js.html">Array/head.js</a>, <a href="Array_head.js.html#line1">line 1</a>
-    </li></ul></dd>
-    
+	
+
+	
+
+	
 
     
 
@@ -362,75 +308,68 @@
 
     
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
 
-    
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
+	
 </dl>
 
 
+    
+</dd>
 
-
-
-<div class="description usertext">
-    Gets all but the last element of array
-</div>
-
-
-
-    <h5 class="h5-types">Type:</h5>
-    <ul>
-        <li>
+        
             
+<hr>
+<dt class="name" id="head">
+    <h4 id="head"><span class="type-signature"></span>head<span class="type-signature"> :array</span></h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        Gets all but the last element of array
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
 <span class="param-type">array</span>
 
 
 
-        </li>
-    </ul>
+            </li>
+        </ul>
+    
 
-
-
-
-
-
-        
-            
-<h4 class="name" id="head"><span class="type-signature"></span>head<span class="type-signature"> :array</span></h4>
-
-
-
-
-
+    
 <dl class="details">
     
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>Gets all but the last element of array</li></ul></dd>
-    
 
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Array_head.js.html">Array/head.js</a>, <a href="Array_head.js.html#line1">line 1</a>
-    </li></ul></dd>
-    
+	
+
+	
+
+	
 
     
 
@@ -440,75 +379,68 @@
 
     
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
 
-    
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
+	
 </dl>
 
 
+    
+</dd>
 
-
-
-<div class="description usertext">
-    Gets all but the last element of array
-</div>
-
-
-
-    <h5 class="h5-types">Type:</h5>
-    <ul>
-        <li>
+        
             
+<hr>
+<dt class="name" id="head">
+    <h4 id="head"><span class="type-signature"></span>head<span class="type-signature"> :array</span></h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        Gets all but the last element of array
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
 <span class="param-type">array</span>
 
 
 
-        </li>
-    </ul>
+            </li>
+        </ul>
+    
 
-
-
-
-
-
-        
-            
-<h4 class="name" id="last"><span class="type-signature"></span>last<span class="type-signature"> :*</span></h4>
-
-
-
-
-
+    
 <dl class="details">
     
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>Gets the last element of an array</li></ul></dd>
-    
 
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Array_last.js.html">Array/last.js</a>, <a href="Array_last.js.html#line1">line 1</a>
-    </li></ul></dd>
-    
+	
+
+	
+
+	
 
     
 
@@ -518,75 +450,68 @@
 
     
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
 
-    
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
+	
 </dl>
 
 
+    
+</dd>
 
-
-
-<div class="description usertext">
-    Gets the last element of an array
-</div>
-
-
-
-    <h5 class="h5-types">Type:</h5>
-    <ul>
-        <li>
+        
             
+<hr>
+<dt class="name" id="last">
+    <h4 id="last"><span class="type-signature"></span>last<span class="type-signature"> :*</span></h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        Gets the last element of an array
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
 <span class="param-type">*</span>
 
 
 
-        </li>
-    </ul>
+            </li>
+        </ul>
+    
 
-
-
-
-
-
-        
-            
-<h4 class="name" id="last"><span class="type-signature"></span>last<span class="type-signature"> :*</span></h4>
-
-
-
-
-
+    
 <dl class="details">
     
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>Gets the last element of an array</li></ul></dd>
-    
 
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Array_last.js.html">Array/last.js</a>, <a href="Array_last.js.html#line1">line 1</a>
-    </li></ul></dd>
-    
+	
+
+	
+
+	
 
     
 
@@ -596,75 +521,68 @@
 
     
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
 
-    
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
+	
 </dl>
 
 
+    
+</dd>
 
-
-
-<div class="description usertext">
-    Gets the last element of an array
-</div>
-
-
-
-    <h5 class="h5-types">Type:</h5>
-    <ul>
-        <li>
+        
             
+<hr>
+<dt class="name" id="last">
+    <h4 id="last"><span class="type-signature"></span>last<span class="type-signature"> :*</span></h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        Gets the last element of an array
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
 <span class="param-type">*</span>
 
 
 
-        </li>
-    </ul>
+            </li>
+        </ul>
+    
 
-
-
-
-
-
-        
-            
-<h4 class="name" id="tail"><span class="type-signature"></span>tail<span class="type-signature"> :array</span></h4>
-
-
-
-
-
+    
 <dl class="details">
     
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>Gets all but the first element of array</li></ul></dd>
-    
 
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Array_tail.js.html">Array/tail.js</a>, <a href="Array_tail.js.html#line1">line 1</a>
-    </li></ul></dd>
-    
+	
+
+	
+
+	
 
     
 
@@ -674,75 +592,68 @@
 
     
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
 
-    
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
+	
 </dl>
 
 
+    
+</dd>
 
-
-
-<div class="description usertext">
-    Gets all but the first element of array
-</div>
-
-
-
-    <h5 class="h5-types">Type:</h5>
-    <ul>
-        <li>
+        
             
+<hr>
+<dt class="name" id="tail">
+    <h4 id="tail"><span class="type-signature"></span>tail<span class="type-signature"> :array</span></h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        Gets all but the first element of array
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
 <span class="param-type">array</span>
 
 
 
-        </li>
-    </ul>
+            </li>
+        </ul>
+    
 
-
-
-
-
-
-        
-            
-<h4 class="name" id="tail"><span class="type-signature"></span>tail<span class="type-signature"> :array</span></h4>
-
-
-
-
-
+    
 <dl class="details">
     
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>Gets all but the first element of array</li></ul></dd>
-    
 
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Array_tail.js.html">Array/tail.js</a>, <a href="Array_tail.js.html#line1">line 1</a>
-    </li></ul></dd>
-    
+	
+
+	
+
+	
 
     
 
@@ -752,84 +663,122 @@
 
     
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
 
-    
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
+	
 </dl>
 
 
+    
+</dd>
 
-
-
-<div class="description usertext">
-    Gets all but the first element of array
-</div>
-
-
-
-    <h5 class="h5-types">Type:</h5>
-    <ul>
-        <li>
+        
             
+<hr>
+<dt class="name" id="tail">
+    <h4 id="tail"><span class="type-signature"></span>tail<span class="type-signature"> :array</span></h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        Gets all but the first element of array
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
 <span class="param-type">array</span>
 
 
 
-        </li>
-    </ul>
+            </li>
+        </ul>
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
 
 
 
+	
+
+	
+
+	
+
+	
+</dl>
 
 
+    
+</dd>
 
-        
+        </dl>
     
 
     
         <h3 class="subsection-title">Methods</h3>
 
-        
+        <dl>
             
+<hr>
+<dt>
+    <h4 class="name" id=".Difference"><span class="type-signature">&lt;static> </span>Difference(lists)</h4>
+    
+    
+</dt>
+<dd>
 
     
-
-    <h4 class="name" id=".Difference"><span class="type-signature type-signature-static">(static) </span>Difference<span class="signature">(lists)</span><span class="type-signature"> &rarr; {array}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-    
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>Difference in arrays</li></ul></dd>
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Array_Difference.js.html">Array/Difference.js</a>, <a href="Array_Difference.js.html#line21">line 21</a>
-    </li></ul></dd>
+    <div class="description">
+        Difference in arrays
+    </div>
     
 
     
@@ -837,48 +786,11 @@
     
 
     
-
     
+        <h5>Parameters:</h5>
+        
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <h5 class="h5-parameters">Parameters:</h5>
-    
-
-<table class="params">
+<table class="params table table-striped">
     <thead>
     <tr>
         
@@ -924,31 +836,69 @@
     </tbody>
 </table>
 
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
 
 
 
+	
+
+	
+
+	
+
+	
+</dl>
 
 
+    
 
+    
 
+    
 
+    
 
+    
 
-
-
-
-
-
-<h5 class="h5-returns">Returns:</h5>
-
-        
+    
+    <h5>Returns:</h5>
+    
+            
 <div class="param-desc">
     diff - List of diffference values
 </div>
 
 
 
-<dl class="param-type">
+<dl>
     <dt>
         Type
     </dt>
@@ -961,33 +911,26 @@
     </dd>
 </dl>
 
+
+        
+
     
-
-
+</dd>
 
         
             
+<hr>
+<dt>
+    <h4 class="name" id=".Difference"><span class="type-signature">&lt;static> </span>Difference(lists)</h4>
+    
+    
+</dt>
+<dd>
 
     
-
-    <h4 class="name" id=".Difference"><span class="type-signature type-signature-static">(static) </span>Difference<span class="signature">(lists)</span><span class="type-signature"> &rarr; {array}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-    
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>Difference in arrays</li></ul></dd>
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Array_Difference.js.html">Array/Difference.js</a>, <a href="Array_Difference.js.html#line21">line 21</a>
-    </li></ul></dd>
+    <div class="description">
+        Difference in arrays
+    </div>
     
 
     
@@ -995,48 +938,11 @@
     
 
     
-
     
+        <h5>Parameters:</h5>
+        
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <h5 class="h5-parameters">Parameters:</h5>
-    
-
-<table class="params">
+<table class="params table table-striped">
     <thead>
     <tr>
         
@@ -1082,31 +988,69 @@
     </tbody>
 </table>
 
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
 
 
 
+	
+
+	
+
+	
+
+	
+</dl>
 
 
+    
 
+    
 
+    
 
+    
 
+    
 
-
-
-
-
-
-<h5 class="h5-returns">Returns:</h5>
-
-        
+    
+    <h5>Returns:</h5>
+    
+            
 <div class="param-desc">
     diff - List of diffference values
 </div>
 
 
 
-<dl class="param-type">
+<dl>
     <dt>
         Type
     </dt>
@@ -1119,33 +1063,26 @@
     </dd>
 </dl>
 
+
+        
+
     
-
-
+</dd>
 
         
             
+<hr>
+<dt>
+    <h4 class="name" id=".Flatten"><span class="type-signature">&lt;static> </span>Flatten(depth)</h4>
+    
+    
+</dt>
+<dd>
 
     
-
-    <h4 class="name" id=".Flatten"><span class="type-signature type-signature-static">(static) </span>Flatten<span class="signature">(depth)</span><span class="type-signature"> &rarr; {array}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-    
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>Flatten array elements</li></ul></dd>
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Array_Flatten.js.html">Array/Flatten.js</a>, <a href="Array_Flatten.js.html#line1">line 1</a>
-    </li></ul></dd>
+    <div class="description">
+        Flatten array elements
+    </div>
     
 
     
@@ -1153,48 +1090,11 @@
     
 
     
-
     
+        <h5>Parameters:</h5>
+        
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <h5 class="h5-parameters">Parameters:</h5>
-    
-
-<table class="params">
+<table class="params table table-striped">
     <thead>
     <tr>
         
@@ -1240,31 +1140,69 @@
     </tbody>
 </table>
 
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
 
 
 
+	
+
+	
+
+	
+
+	
+</dl>
 
 
+    
 
+    
 
+    
 
+    
 
+    
 
-
-
-
-
-
-<h5 class="h5-returns">Returns:</h5>
-
-        
+    
+    <h5>Returns:</h5>
+    
+            
 <div class="param-desc">
     list - Flattened list
 </div>
 
 
 
-<dl class="param-type">
+<dl>
     <dt>
         Type
     </dt>
@@ -1277,33 +1215,26 @@
     </dd>
 </dl>
 
+
+        
+
     
-
-
+</dd>
 
         
             
+<hr>
+<dt>
+    <h4 class="name" id=".Flatten"><span class="type-signature">&lt;static> </span>Flatten(depth)</h4>
+    
+    
+</dt>
+<dd>
 
     
-
-    <h4 class="name" id=".Flatten"><span class="type-signature type-signature-static">(static) </span>Flatten<span class="signature">(depth)</span><span class="type-signature"> &rarr; {array}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-    
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>Flatten array elements</li></ul></dd>
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Array_Flatten.js.html">Array/Flatten.js</a>, <a href="Array_Flatten.js.html#line1">line 1</a>
-    </li></ul></dd>
+    <div class="description">
+        Flatten array elements
+    </div>
     
 
     
@@ -1311,48 +1242,11 @@
     
 
     
-
     
+        <h5>Parameters:</h5>
+        
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <h5 class="h5-parameters">Parameters:</h5>
-    
-
-<table class="params">
+<table class="params table table-striped">
     <thead>
     <tr>
         
@@ -1398,31 +1292,69 @@
     </tbody>
 </table>
 
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
 
 
 
+	
+
+	
+
+	
+
+	
+</dl>
 
 
+    
 
+    
 
+    
 
+    
 
+    
 
-
-
-
-
-
-<h5 class="h5-returns">Returns:</h5>
-
-        
+    
+    <h5>Returns:</h5>
+    
+            
 <div class="param-desc">
     list - Flattened list
 </div>
 
 
 
-<dl class="param-type">
+<dl>
     <dt>
         Type
     </dt>
@@ -1435,33 +1367,26 @@
     </dd>
 </dl>
 
+
+        
+
     
-
-
+</dd>
 
         
             
+<hr>
+<dt>
+    <h4 class="name" id=".From"><span class="type-signature">&lt;static> </span>From(value)</h4>
+    
+    
+</dt>
+<dd>
 
     
-
-    <h4 class="name" id=".From"><span class="type-signature type-signature-static">(static) </span>From<span class="signature">(value)</span><span class="type-signature"> &rarr; {array}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-    
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>Converts value to an array</li></ul></dd>
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Array_From.js.html">Array/From.js</a>, <a href="Array_From.js.html#line1">line 1</a>
-    </li></ul></dd>
+    <div class="description">
+        Converts value to an array
+    </div>
     
 
     
@@ -1469,48 +1394,11 @@
     
 
     
-
     
+        <h5>Parameters:</h5>
+        
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <h5 class="h5-parameters">Parameters:</h5>
-    
-
-<table class="params">
+<table class="params table table-striped">
     <thead>
     <tr>
         
@@ -1556,31 +1444,69 @@
     </tbody>
 </table>
 
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
 
 
 
+	
+
+	
+
+	
+
+	
+</dl>
 
 
+    
 
+    
 
+    
 
+    
 
+    
 
-
-
-
-
-
-<h5 class="h5-returns">Returns:</h5>
-
-        
+    
+    <h5>Returns:</h5>
+    
+            
 <div class="param-desc">
     array - The converted array
 </div>
 
 
 
-<dl class="param-type">
+<dl>
     <dt>
         Type
     </dt>
@@ -1593,33 +1519,26 @@
     </dd>
 </dl>
 
+
+        
+
     
-
-
+</dd>
 
         
             
+<hr>
+<dt>
+    <h4 class="name" id=".From"><span class="type-signature">&lt;static> </span>From(value)</h4>
+    
+    
+</dt>
+<dd>
 
     
-
-    <h4 class="name" id=".From"><span class="type-signature type-signature-static">(static) </span>From<span class="signature">(value)</span><span class="type-signature"> &rarr; {array}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-    
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>Converts value to an array</li></ul></dd>
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Array_From.js.html">Array/From.js</a>, <a href="Array_From.js.html#line1">line 1</a>
-    </li></ul></dd>
+    <div class="description">
+        Converts value to an array
+    </div>
     
 
     
@@ -1627,48 +1546,11 @@
     
 
     
-
     
+        <h5>Parameters:</h5>
+        
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <h5 class="h5-parameters">Parameters:</h5>
-    
-
-<table class="params">
+<table class="params table table-striped">
     <thead>
     <tr>
         
@@ -1714,31 +1596,69 @@
     </tbody>
 </table>
 
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
 
 
 
+	
+
+	
+
+	
+
+	
+</dl>
 
 
+    
 
+    
 
+    
 
+    
 
+    
 
-
-
-
-
-
-<h5 class="h5-returns">Returns:</h5>
-
-        
+    
+    <h5>Returns:</h5>
+    
+            
 <div class="param-desc">
     array - The converted array
 </div>
 
 
 
-<dl class="param-type">
+<dl>
     <dt>
         Type
     </dt>
@@ -1751,33 +1671,26 @@
     </dd>
 </dl>
 
+
+        
+
     
-
-
+</dd>
 
         
             
+<hr>
+<dt>
+    <h4 class="name" id=".IsArray"><span class="type-signature">&lt;static> </span>IsArray(object)</h4>
+    
+    
+</dt>
+<dd>
 
     
-
-    <h4 class="name" id=".IsArray"><span class="type-signature type-signature-static">(static) </span>IsArray<span class="signature">(object)</span><span class="type-signature"> &rarr; {boolean}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-    
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>Check if an object is an array</li></ul></dd>
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Array_IsArray.js.html">Array/IsArray.js</a>, <a href="Array_IsArray.js.html#line1">line 1</a>
-    </li></ul></dd>
+    <div class="description">
+        Check if an object is an array
+    </div>
     
 
     
@@ -1785,48 +1698,11 @@
     
 
     
-
     
+        <h5>Parameters:</h5>
+        
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <h5 class="h5-parameters">Parameters:</h5>
-    
-
-<table class="params">
+<table class="params table table-striped">
     <thead>
     <tr>
         
@@ -1872,31 +1748,69 @@
     </tbody>
 </table>
 
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
 
 
 
+	
+
+	
+
+	
+
+	
+</dl>
 
 
+    
 
+    
 
+    
 
+    
 
+    
 
-
-
-
-
-
-<h5 class="h5-returns">Returns:</h5>
-
-        
+    
+    <h5>Returns:</h5>
+    
+            
 <div class="param-desc">
     result
 </div>
 
 
 
-<dl class="param-type">
+<dl>
     <dt>
         Type
     </dt>
@@ -1909,33 +1823,26 @@
     </dd>
 </dl>
 
+
+        
+
     
-
-
+</dd>
 
         
             
+<hr>
+<dt>
+    <h4 class="name" id=".IsArray"><span class="type-signature">&lt;static> </span>IsArray(object)</h4>
+    
+    
+</dt>
+<dd>
 
     
-
-    <h4 class="name" id=".IsArray"><span class="type-signature type-signature-static">(static) </span>IsArray<span class="signature">(object)</span><span class="type-signature"> &rarr; {boolean}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-    
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>Check if an object is an array</li></ul></dd>
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Array_IsArray.js.html">Array/IsArray.js</a>, <a href="Array_IsArray.js.html#line1">line 1</a>
-    </li></ul></dd>
+    <div class="description">
+        Check if an object is an array
+    </div>
     
 
     
@@ -1943,48 +1850,11 @@
     
 
     
-
     
+        <h5>Parameters:</h5>
+        
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <h5 class="h5-parameters">Parameters:</h5>
-    
-
-<table class="params">
+<table class="params table table-striped">
     <thead>
     <tr>
         
@@ -2030,31 +1900,69 @@
     </tbody>
 </table>
 
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
 
 
 
+	
+
+	
+
+	
+
+	
+</dl>
 
 
+    
 
+    
 
+    
 
+    
 
+    
 
-
-
-
-
-
-<h5 class="h5-returns">Returns:</h5>
-
-        
+    
+    <h5>Returns:</h5>
+    
+            
 <div class="param-desc">
     result
 </div>
 
 
 
-<dl class="param-type">
+<dl>
     <dt>
         Type
     </dt>
@@ -2067,33 +1975,26 @@
     </dd>
 </dl>
 
+
+        
+
     
-
-
+</dd>
 
         
             
+<hr>
+<dt>
+    <h4 class="name" id="Delete"><span class="type-signature"></span>Delete(elements, array)</h4>
+    
+    
+</dt>
+<dd>
 
     
-
-    <h4 class="name" id="Delete"><span class="type-signature"></span>Delete<span class="signature">(elements, array)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
-<dl class="details">
-    
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>Delete array item</li></ul></dd>
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Array_Delete.js.html">Array/Delete.js</a>, <a href="Array_Delete.js.html#line1">line 1</a>
-    </li></ul></dd>
+    <div class="description">
+        Delete array item
+    </div>
     
 
     
@@ -2101,60 +2002,11 @@
     
 
     
-
     
+        <h5>Parameters:</h5>
+        
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-tutorial">Tutorials:</dt>
-    <dd class="tag-tutorial">
-        <ul>
-            <li><em class="disabled">Tutorial: Array/Delete</em></li>
-        </ul>
-    </dd>
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-    <h5 class="h5-examples">Example</h5>
-    
-    <pre class="prettyprint"><code>exname['one', 'two', 'three'].Delete('two')</code></pre>
-
-
-
-
-    <h5 class="h5-parameters">Parameters:</h5>
-    
-
-<table class="params">
+<table class="params table table-striped">
     <thead>
     <tr>
         
@@ -2224,48 +2076,17 @@
     </tbody>
 </table>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
     
 
-    <h4 class="name" id="Delete"><span class="type-signature"></span>Delete<span class="signature">(elements, array)</span><span class="type-signature"></span></h4>
-
     
-
-
-
-
 <dl class="details">
     
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>Delete array item</li></ul></dd>
-    
 
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Array_Delete.js.html">Array/Delete.js</a>, <a href="Array_Delete.js.html#line1">line 1</a>
-    </li></ul></dd>
-    
+	
+
+	
+
+	
 
     
 
@@ -2275,57 +2096,82 @@
 
     
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
 
-    
 
-    
+	
 
-    
-    <dt class="tag-tutorial">Tutorials:</dt>
-    <dd class="tag-tutorial">
-        <ul>
-            <li><em class="disabled">Tutorial: Array/Delete</em></li>
-        </ul>
-    </dd>
-    
+	
+	<dt class="tag-tutorial method-doc-label method-doc-details-label">Tutorials:</dt>
+	<dd class="tag-tutorial">
+		<ul>
+			<li><em class="disabled">Tutorial: Array/Delete</em></li>
+			</ul>
+	</dd>
+	
 
-    
+	
 
-    
+	
 </dl>
 
 
-
-
-
-
-
-
-
-
-
-    <h5 class="h5-examples">Example</h5>
-    
-    <pre class="prettyprint"><code>exname['one', 'two', 'three'].Delete('two')</code></pre>
-
-
-
-
-    <h5 class="h5-parameters">Parameters:</h5>
     
 
-<table class="params">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">exname[&#x27;one&#x27;, &#x27;two&#x27;, &#x27;three&#x27;].Delete(&#x27;two&#x27;)</pre>
+
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="Delete"><span class="type-signature"></span>Delete(elements, array)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        Delete array item
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
     <thead>
     <tr>
         
@@ -2395,48 +2241,17 @@
     </tbody>
 </table>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
     
 
-    <h4 class="name" id="DeleteAt"><span class="type-signature"></span>DeleteAt<span class="signature">(indexes, array)</span><span class="type-signature"></span></h4>
-
     
-
-
-
-
 <dl class="details">
     
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>DeleteAt array item</li></ul></dd>
-    
 
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Array_DeleteAt.js.html">Array/DeleteAt.js</a>, <a href="Array_DeleteAt.js.html#line1">line 1</a>
-    </li></ul></dd>
-    
+	
+
+	
+
+	
 
     
 
@@ -2446,45 +2261,82 @@
 
     
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
 
-    
 
-    
+	
 
-    
+	
+	<dt class="tag-tutorial method-doc-label method-doc-details-label">Tutorials:</dt>
+	<dd class="tag-tutorial">
+		<ul>
+			<li><em class="disabled">Tutorial: Array/Delete</em></li>
+			</ul>
+	</dd>
+	
 
-    
+	
 
-    
+	
 </dl>
 
 
-
-
-
-
-
-
-
-
-
-
-
-    <h5 class="h5-parameters">Parameters:</h5>
     
 
-<table class="params">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">exname[&#x27;one&#x27;, &#x27;two&#x27;, &#x27;three&#x27;].Delete(&#x27;two&#x27;)</pre>
+
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="DeleteAt"><span class="type-signature"></span>DeleteAt(indexes, array)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        DeleteAt array item
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
     <thead>
     <tr>
         
@@ -2554,48 +2406,17 @@
     </tbody>
 </table>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
     
 
-    <h4 class="name" id="DeleteAt"><span class="type-signature"></span>DeleteAt<span class="signature">(indexes, array)</span><span class="type-signature"></span></h4>
-
     
-
-
-
-
 <dl class="details">
     
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>DeleteAt array item</li></ul></dd>
-    
 
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Array_DeleteAt.js.html">Array/DeleteAt.js</a>, <a href="Array_DeleteAt.js.html#line1">line 1</a>
-    </li></ul></dd>
-    
+	
+
+	
+
+	
 
     
 
@@ -2605,45 +2426,69 @@
 
     
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
 
-    
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
+	
 </dl>
 
 
-
-
-
-
-
-
-
-
-
-
-
-    <h5 class="h5-parameters">Parameters:</h5>
     
 
-<table class="params">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="DeleteAt"><span class="type-signature"></span>DeleteAt(indexes, array)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        DeleteAt array item
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
     <thead>
     <tr>
         
@@ -2713,48 +2558,17 @@
     </tbody>
 </table>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
     
 
-    <h4 class="name" id="Difference"><span class="type-signature"></span>Difference<span class="signature">(lists)</span><span class="type-signature"> &rarr; {array}</span></h4>
-
     
-
-
-
-
 <dl class="details">
     
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>Difference in arrays</li></ul></dd>
-    
 
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Array_Difference.js.html">Array/Difference.js</a>, <a href="Array_Difference.js.html#line37">line 37</a>
-    </li></ul></dd>
-    
+	
+
+	
+
+	
 
     
 
@@ -2764,45 +2578,69 @@
 
     
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
 
-    
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
+	
 </dl>
 
 
-
-
-
-
-
-
-
-
-
-
-
-    <h5 class="h5-parameters">Parameters:</h5>
     
 
-<table class="params">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="Difference"><span class="type-signature"></span>Difference(lists)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        Difference in arrays
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
     <thead>
     <tr>
         
@@ -2848,31 +2686,69 @@
     </tbody>
 </table>
 
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
 
 
 
+	
+
+	
+
+	
+
+	
+</dl>
 
 
+    
 
+    
 
+    
 
+    
 
+    
 
-
-
-
-
-
-<h5 class="h5-returns">Returns:</h5>
-
-        
+    
+    <h5>Returns:</h5>
+    
+            
 <div class="param-desc">
     diff - List of diffference values
 </div>
 
 
 
-<dl class="param-type">
+<dl>
     <dt>
         Type
     </dt>
@@ -2885,33 +2761,26 @@
     </dd>
 </dl>
 
+
+        
+
     
-
-
+</dd>
 
         
             
+<hr>
+<dt>
+    <h4 class="name" id="Difference"><span class="type-signature"></span>Difference(lists)</h4>
+    
+    
+</dt>
+<dd>
 
     
-
-    <h4 class="name" id="Difference"><span class="type-signature"></span>Difference<span class="signature">(lists)</span><span class="type-signature"> &rarr; {array}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-    
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>Difference in arrays</li></ul></dd>
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Array_Difference.js.html">Array/Difference.js</a>, <a href="Array_Difference.js.html#line37">line 37</a>
-    </li></ul></dd>
+    <div class="description">
+        Difference in arrays
+    </div>
     
 
     
@@ -2919,48 +2788,11 @@
     
 
     
-
     
+        <h5>Parameters:</h5>
+        
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <h5 class="h5-parameters">Parameters:</h5>
-    
-
-<table class="params">
+<table class="params table table-striped">
     <thead>
     <tr>
         
@@ -3006,31 +2838,69 @@
     </tbody>
 </table>
 
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
 
 
 
+	
+
+	
+
+	
+
+	
+</dl>
 
 
+    
 
+    
 
+    
 
+    
 
+    
 
-
-
-
-
-
-<h5 class="h5-returns">Returns:</h5>
-
-        
+    
+    <h5>Returns:</h5>
+    
+            
 <div class="param-desc">
     diff - List of diffference values
 </div>
 
 
 
-<dl class="param-type">
+<dl>
     <dt>
         Type
     </dt>
@@ -3043,33 +2913,26 @@
     </dd>
 </dl>
 
+
+        
+
     
-
-
+</dd>
 
         
             
+<hr>
+<dt>
+    <h4 class="name" id="Intersection"><span class="type-signature"></span>Intersection(lists)</h4>
+    
+    
+</dt>
+<dd>
 
     
-
-    <h4 class="name" id="Intersection"><span class="type-signature"></span>Intersection<span class="signature">(lists)</span><span class="type-signature"> &rarr; {array}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-    
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>Array Intersection</li></ul></dd>
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Array_Intersection.js.html">Array/Intersection.js</a>, <a href="Array_Intersection.js.html#line1">line 1</a>
-    </li></ul></dd>
+    <div class="description">
+        Array Intersection
+    </div>
     
 
     
@@ -3077,48 +2940,11 @@
     
 
     
-
     
+        <h5>Parameters:</h5>
+        
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <h5 class="h5-parameters">Parameters:</h5>
-    
-
-<table class="params">
+<table class="params table table-striped">
     <thead>
     <tr>
         
@@ -3164,31 +2990,69 @@
     </tbody>
 </table>
 
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
 
 
 
+	
+
+	
+
+	
+
+	
+</dl>
 
 
+    
 
+    
 
+    
 
+    
 
+    
 
-
-
-
-
-
-<h5 class="h5-returns">Returns:</h5>
-
-        
+    
+    <h5>Returns:</h5>
+    
+            
 <div class="param-desc">
     array
 </div>
 
 
 
-<dl class="param-type">
+<dl>
     <dt>
         Type
     </dt>
@@ -3201,33 +3065,26 @@
     </dd>
 </dl>
 
+
+        
+
     
-
-
+</dd>
 
         
             
+<hr>
+<dt>
+    <h4 class="name" id="Intersection"><span class="type-signature"></span>Intersection(lists)</h4>
+    
+    
+</dt>
+<dd>
 
     
-
-    <h4 class="name" id="Intersection"><span class="type-signature"></span>Intersection<span class="signature">(lists)</span><span class="type-signature"> &rarr; {array}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-    
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>Array Intersection</li></ul></dd>
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Array_Intersection.js.html">Array/Intersection.js</a>, <a href="Array_Intersection.js.html#line1">line 1</a>
-    </li></ul></dd>
+    <div class="description">
+        Array Intersection
+    </div>
     
 
     
@@ -3235,48 +3092,11 @@
     
 
     
-
     
+        <h5>Parameters:</h5>
+        
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <h5 class="h5-parameters">Parameters:</h5>
-    
-
-<table class="params">
+<table class="params table table-striped">
     <thead>
     <tr>
         
@@ -3322,31 +3142,69 @@
     </tbody>
 </table>
 
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
 
 
 
+	
+
+	
+
+	
+
+	
+</dl>
 
 
+    
 
+    
 
+    
 
+    
 
+    
 
-
-
-
-
-
-<h5 class="h5-returns">Returns:</h5>
-
-        
+    
+    <h5>Returns:</h5>
+    
+            
 <div class="param-desc">
     array
 </div>
 
 
 
-<dl class="param-type">
+<dl>
     <dt>
         Type
     </dt>
@@ -3359,33 +3217,26 @@
     </dd>
 </dl>
 
+
+        
+
     
-
-
+</dd>
 
         
             
+<hr>
+<dt>
+    <h4 class="name" id="Omit"><span class="type-signature"></span>Omit(elements)</h4>
+    
+    
+</dt>
+<dd>
 
     
-
-    <h4 class="name" id="Omit"><span class="type-signature"></span>Omit<span class="signature">(elements)</span><span class="type-signature"> &rarr; {array}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-    
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>Create a new array with elements omitted</li></ul></dd>
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Array_Omit.js.html">Array/Omit.js</a>, <a href="Array_Omit.js.html#line1">line 1</a>
-    </li></ul></dd>
+    <div class="description">
+        Create a new array with elements omitted
+    </div>
     
 
     
@@ -3393,48 +3244,11 @@
     
 
     
-
     
+        <h5>Parameters:</h5>
+        
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <h5 class="h5-parameters">Parameters:</h5>
-    
-
-<table class="params">
+<table class="params table table-striped">
     <thead>
     <tr>
         
@@ -3480,31 +3294,69 @@
     </tbody>
 </table>
 
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
 
 
 
+	
+
+	
+
+	
+
+	
+</dl>
 
 
+    
 
+    
 
+    
 
+    
 
+    
 
-
-
-
-
-
-<h5 class="h5-returns">Returns:</h5>
-
-        
+    
+    <h5>Returns:</h5>
+    
+            
 <div class="param-desc">
     array
 </div>
 
 
 
-<dl class="param-type">
+<dl>
     <dt>
         Type
     </dt>
@@ -3517,33 +3369,26 @@
     </dd>
 </dl>
 
+
+        
+
     
-
-
+</dd>
 
         
             
+<hr>
+<dt>
+    <h4 class="name" id="Omit"><span class="type-signature"></span>Omit(elements)</h4>
+    
+    
+</dt>
+<dd>
 
     
-
-    <h4 class="name" id="Omit"><span class="type-signature"></span>Omit<span class="signature">(elements)</span><span class="type-signature"> &rarr; {array}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-    
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>Create a new array with elements omitted</li></ul></dd>
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Array_Omit.js.html">Array/Omit.js</a>, <a href="Array_Omit.js.html#line1">line 1</a>
-    </li></ul></dd>
+    <div class="description">
+        Create a new array with elements omitted
+    </div>
     
 
     
@@ -3551,48 +3396,11 @@
     
 
     
-
     
+        <h5>Parameters:</h5>
+        
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <h5 class="h5-parameters">Parameters:</h5>
-    
-
-<table class="params">
+<table class="params table table-striped">
     <thead>
     <tr>
         
@@ -3638,31 +3446,69 @@
     </tbody>
 </table>
 
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
 
 
 
+	
+
+	
+
+	
+
+	
+</dl>
 
 
+    
 
+    
 
+    
 
+    
 
+    
 
-
-
-
-
-
-<h5 class="h5-returns">Returns:</h5>
-
-        
+    
+    <h5>Returns:</h5>
+    
+            
 <div class="param-desc">
     array
 </div>
 
 
 
-<dl class="param-type">
+<dl>
     <dt>
         Type
     </dt>
@@ -3675,33 +3521,26 @@
     </dd>
 </dl>
 
+
+        
+
     
-
-
+</dd>
 
         
             
+<hr>
+<dt>
+    <h4 class="name" id="OmitAt"><span class="type-signature"></span>OmitAt(indexes)</h4>
+    
+    
+</dt>
+<dd>
 
     
-
-    <h4 class="name" id="OmitAt"><span class="type-signature"></span>OmitAt<span class="signature">(indexes)</span><span class="type-signature"> &rarr; {array}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-    
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>Create a new array with elements omitted at certain indexes</li></ul></dd>
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Array_OmitAt.js.html">Array/OmitAt.js</a>, <a href="Array_OmitAt.js.html#line1">line 1</a>
-    </li></ul></dd>
+    <div class="description">
+        Create a new array with elements omitted at certain indexes
+    </div>
     
 
     
@@ -3709,48 +3548,11 @@
     
 
     
-
     
+        <h5>Parameters:</h5>
+        
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <h5 class="h5-parameters">Parameters:</h5>
-    
-
-<table class="params">
+<table class="params table table-striped">
     <thead>
     <tr>
         
@@ -3796,31 +3598,69 @@
     </tbody>
 </table>
 
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
 
 
 
+	
+
+	
+
+	
+
+	
+</dl>
 
 
+    
 
+    
 
+    
 
+    
 
+    
 
-
-
-
-
-
-<h5 class="h5-returns">Returns:</h5>
-
-        
+    
+    <h5>Returns:</h5>
+    
+            
 <div class="param-desc">
     array
 </div>
 
 
 
-<dl class="param-type">
+<dl>
     <dt>
         Type
     </dt>
@@ -3833,33 +3673,26 @@
     </dd>
 </dl>
 
+
+        
+
     
-
-
+</dd>
 
         
             
+<hr>
+<dt>
+    <h4 class="name" id="OmitAt"><span class="type-signature"></span>OmitAt(indexes)</h4>
+    
+    
+</dt>
+<dd>
 
     
-
-    <h4 class="name" id="OmitAt"><span class="type-signature"></span>OmitAt<span class="signature">(indexes)</span><span class="type-signature"> &rarr; {array}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-    
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>Create a new array with elements omitted at certain indexes</li></ul></dd>
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Array_OmitAt.js.html">Array/OmitAt.js</a>, <a href="Array_OmitAt.js.html#line1">line 1</a>
-    </li></ul></dd>
+    <div class="description">
+        Create a new array with elements omitted at certain indexes
+    </div>
     
 
     
@@ -3867,48 +3700,11 @@
     
 
     
-
     
+        <h5>Parameters:</h5>
+        
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <h5 class="h5-parameters">Parameters:</h5>
-    
-
-<table class="params">
+<table class="params table table-striped">
     <thead>
     <tr>
         
@@ -3954,31 +3750,69 @@
     </tbody>
 </table>
 
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
 
 
 
+	
+
+	
+
+	
+
+	
+</dl>
 
 
+    
 
+    
 
+    
 
+    
 
+    
 
-
-
-
-
-
-<h5 class="h5-returns">Returns:</h5>
-
-        
+    
+    <h5>Returns:</h5>
+    
+            
 <div class="param-desc">
     array
 </div>
 
 
 
-<dl class="param-type">
+<dl>
     <dt>
         Type
     </dt>
@@ -3991,33 +3825,26 @@
     </dd>
 </dl>
 
+
+        
+
     
-
-
+</dd>
 
         
             
+<hr>
+<dt>
+    <h4 class="name" id="Pick"><span class="type-signature"></span>Pick(elements)</h4>
+    
+    
+</dt>
+<dd>
 
     
-
-    <h4 class="name" id="Pick"><span class="type-signature"></span>Pick<span class="signature">(elements)</span><span class="type-signature"> &rarr; {array}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-    
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>Pick elements of an array</li></ul></dd>
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Array_Pick.js.html">Array/Pick.js</a>, <a href="Array_Pick.js.html#line1">line 1</a>
-    </li></ul></dd>
+    <div class="description">
+        Pick elements of an array
+    </div>
     
 
     
@@ -4025,48 +3852,11 @@
     
 
     
-
     
+        <h5>Parameters:</h5>
+        
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <h5 class="h5-parameters">Parameters:</h5>
-    
-
-<table class="params">
+<table class="params table table-striped">
     <thead>
     <tr>
         
@@ -4112,31 +3902,69 @@
     </tbody>
 </table>
 
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
 
 
 
+	
+
+	
+
+	
+
+	
+</dl>
 
 
+    
 
+    
 
+    
 
+    
 
+    
 
-
-
-
-
-
-<h5 class="h5-returns">Returns:</h5>
-
-        
+    
+    <h5>Returns:</h5>
+    
+            
 <div class="param-desc">
     array
 </div>
 
 
 
-<dl class="param-type">
+<dl>
     <dt>
         Type
     </dt>
@@ -4149,33 +3977,26 @@
     </dd>
 </dl>
 
+
+        
+
     
-
-
+</dd>
 
         
             
+<hr>
+<dt>
+    <h4 class="name" id="Pick"><span class="type-signature"></span>Pick(elements)</h4>
+    
+    
+</dt>
+<dd>
 
     
-
-    <h4 class="name" id="Pick"><span class="type-signature"></span>Pick<span class="signature">(elements)</span><span class="type-signature"> &rarr; {array}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-    
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>Pick elements of an array</li></ul></dd>
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Array_Pick.js.html">Array/Pick.js</a>, <a href="Array_Pick.js.html#line1">line 1</a>
-    </li></ul></dd>
+    <div class="description">
+        Pick elements of an array
+    </div>
     
 
     
@@ -4183,48 +4004,11 @@
     
 
     
-
     
+        <h5>Parameters:</h5>
+        
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <h5 class="h5-parameters">Parameters:</h5>
-    
-
-<table class="params">
+<table class="params table table-striped">
     <thead>
     <tr>
         
@@ -4270,31 +4054,69 @@
     </tbody>
 </table>
 
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
 
 
 
+	
+
+	
+
+	
+
+	
+</dl>
 
 
+    
 
+    
 
+    
 
+    
 
+    
 
-
-
-
-
-
-<h5 class="h5-returns">Returns:</h5>
-
-        
+    
+    <h5>Returns:</h5>
+    
+            
 <div class="param-desc">
     array
 </div>
 
 
 
-<dl class="param-type">
+<dl>
     <dt>
         Type
     </dt>
@@ -4307,34 +4129,44 @@
     </dd>
 </dl>
 
+
+        
+
     
-
-
+</dd>
 
         
             
+<hr>
+<dt>
+    <h4 class="name" id="Shuffle"><span class="type-signature"></span>Shuffle()</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        In-place array shuffle
+    </div>
+    
 
     
 
-    <h4 class="name" id="Shuffle"><span class="type-signature"></span>Shuffle<span class="signature">()</span><span class="type-signature"></span></h4>
-
     
 
+    
+    
 
-
-
+    
 <dl class="details">
     
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>In-place array shuffle</li></ul></dd>
-    
 
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Array_Shuffle.js.html">Array/Shuffle.js</a>, <a href="Array_Shuffle.js.html#line1">line 1</a>
-    </li></ul></dd>
-    
+	
+
+	
+
+	
 
     
 
@@ -4344,82 +4176,75 @@
 
     
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
 
-    
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
+	
 </dl>
 
 
+    
 
+    
 
+    
 
+    
 
+    
 
+    
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    
+</dd>
 
         
             
+<hr>
+<dt>
+    <h4 class="name" id="Shuffle"><span class="type-signature"></span>Shuffle()</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        In-place array shuffle
+    </div>
+    
 
     
 
-    <h4 class="name" id="Shuffle"><span class="type-signature"></span>Shuffle<span class="signature">()</span><span class="type-signature"></span></h4>
-
     
 
+    
+    
 
-
-
+    
 <dl class="details">
     
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>In-place array shuffle</li></ul></dd>
-    
 
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Array_Shuffle.js.html">Array/Shuffle.js</a>, <a href="Array_Shuffle.js.html#line1">line 1</a>
-    </li></ul></dd>
-    
+	
+
+	
+
+	
 
     
 
@@ -4429,81 +4254,57 @@
 
     
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
 
-    
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
+	
 </dl>
 
 
+    
 
+    
 
+    
 
+    
 
+    
 
+    
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    
+</dd>
 
         
             
+<hr>
+<dt>
+    <h4 class="name" id="Union"><span class="type-signature"></span>Union(lists)</h4>
+    
+    
+</dt>
+<dd>
 
     
-
-    <h4 class="name" id="Union"><span class="type-signature"></span>Union<span class="signature">(lists)</span><span class="type-signature"> &rarr; {array}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-    
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>Array Union</li></ul></dd>
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Array_Union.js.html">Array/Union.js</a>, <a href="Array_Union.js.html#line1">line 1</a>
-    </li></ul></dd>
+    <div class="description">
+        Array Union
+    </div>
     
 
     
@@ -4511,48 +4312,11 @@
     
 
     
-
     
+        <h5>Parameters:</h5>
+        
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <h5 class="h5-parameters">Parameters:</h5>
-    
-
-<table class="params">
+<table class="params table table-striped">
     <thead>
     <tr>
         
@@ -4598,31 +4362,69 @@
     </tbody>
 </table>
 
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
 
 
 
+	
+
+	
+
+	
+
+	
+</dl>
 
 
+    
 
+    
 
+    
 
+    
 
+    
 
-
-
-
-
-
-<h5 class="h5-returns">Returns:</h5>
-
-        
+    
+    <h5>Returns:</h5>
+    
+            
 <div class="param-desc">
     array
 </div>
 
 
 
-<dl class="param-type">
+<dl>
     <dt>
         Type
     </dt>
@@ -4635,33 +4437,26 @@
     </dd>
 </dl>
 
+
+        
+
     
-
-
+</dd>
 
         
             
+<hr>
+<dt>
+    <h4 class="name" id="Union"><span class="type-signature"></span>Union(lists)</h4>
+    
+    
+</dt>
+<dd>
 
     
-
-    <h4 class="name" id="Union"><span class="type-signature"></span>Union<span class="signature">(lists)</span><span class="type-signature"> &rarr; {array}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-    
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>Array Union</li></ul></dd>
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Array_Union.js.html">Array/Union.js</a>, <a href="Array_Union.js.html#line1">line 1</a>
-    </li></ul></dd>
+    <div class="description">
+        Array Union
+    </div>
     
 
     
@@ -4669,48 +4464,11 @@
     
 
     
-
     
+        <h5>Parameters:</h5>
+        
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <h5 class="h5-parameters">Parameters:</h5>
-    
-
-<table class="params">
+<table class="params table table-striped">
     <thead>
     <tr>
         
@@ -4756,31 +4514,69 @@
     </tbody>
 </table>
 
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
 
 
 
+	
+
+	
+
+	
+
+	
+</dl>
 
 
+    
 
+    
 
+    
 
+    
 
+    
 
-
-
-
-
-
-<h5 class="h5-returns">Returns:</h5>
-
-        
+    
+    <h5>Returns:</h5>
+    
+            
 <div class="param-desc">
     array
 </div>
 
 
 
-<dl class="param-type">
+<dl>
     <dt>
         Type
     </dt>
@@ -4793,33 +4589,26 @@
     </dd>
 </dl>
 
+
+        
+
     
-
-
+</dd>
 
         
             
+<hr>
+<dt>
+    <h4 class="name" id="Unique"><span class="type-signature"></span>Unique(lists)</h4>
+    
+    
+</dt>
+<dd>
 
     
-
-    <h4 class="name" id="Unique"><span class="type-signature"></span>Unique<span class="signature">(lists)</span><span class="type-signature"> &rarr; {array}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-    
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>Array Unique</li></ul></dd>
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Array_Unique.js.html">Array/Unique.js</a>, <a href="Array_Unique.js.html#line1">line 1</a>
-    </li></ul></dd>
+    <div class="description">
+        Array Unique
+    </div>
     
 
     
@@ -4827,48 +4616,11 @@
     
 
     
-
     
+        <h5>Parameters:</h5>
+        
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <h5 class="h5-parameters">Parameters:</h5>
-    
-
-<table class="params">
+<table class="params table table-striped">
     <thead>
     <tr>
         
@@ -4914,31 +4666,69 @@
     </tbody>
 </table>
 
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
 
 
 
+	
+
+	
+
+	
+
+	
+</dl>
 
 
+    
 
+    
 
+    
 
+    
 
+    
 
-
-
-
-
-
-<h5 class="h5-returns">Returns:</h5>
-
-        
+    
+    <h5>Returns:</h5>
+    
+            
 <div class="param-desc">
     array
 </div>
 
 
 
-<dl class="param-type">
+<dl>
     <dt>
         Type
     </dt>
@@ -4951,33 +4741,26 @@
     </dd>
 </dl>
 
+
+        
+
     
-
-
+</dd>
 
         
             
+<hr>
+<dt>
+    <h4 class="name" id="Unique"><span class="type-signature"></span>Unique(lists)</h4>
+    
+    
+</dt>
+<dd>
 
     
-
-    <h4 class="name" id="Unique"><span class="type-signature"></span>Unique<span class="signature">(lists)</span><span class="type-signature"> &rarr; {array}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-    
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>Array Unique</li></ul></dd>
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Array_Unique.js.html">Array/Unique.js</a>, <a href="Array_Unique.js.html#line1">line 1</a>
-    </li></ul></dd>
+    <div class="description">
+        Array Unique
+    </div>
     
 
     
@@ -4985,48 +4768,11 @@
     
 
     
-
     
+        <h5>Parameters:</h5>
+        
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <h5 class="h5-parameters">Parameters:</h5>
-    
-
-<table class="params">
+<table class="params table table-striped">
     <thead>
     <tr>
         
@@ -5072,31 +4818,69 @@
     </tbody>
 </table>
 
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
 
 
 
+	
+
+	
+
+	
+
+	
+</dl>
 
 
+    
 
+    
 
+    
 
+    
 
+    
 
-
-
-
-
-
-<h5 class="h5-returns">Returns:</h5>
-
-        
+    
+    <h5>Returns:</h5>
+    
+            
 <div class="param-desc">
     array
 </div>
 
 
 
-<dl class="param-type">
+<dl>
     <dt>
         Type
     </dt>
@@ -5109,33 +4893,26 @@
     </dd>
 </dl>
 
+
+        
+
     
-
-
+</dd>
 
         
             
+<hr>
+<dt>
+    <h4 class="name" id="Xor"><span class="type-signature"></span>Xor(lists, array)</h4>
+    
+    
+</dt>
+<dd>
 
     
-
-    <h4 class="name" id="Xor"><span class="type-signature"></span>Xor<span class="signature">(lists, array)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
-<dl class="details">
-    
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>Array Xor</li></ul></dd>
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Array_Xor.js.html">Array/Xor.js</a>, <a href="Array_Xor.js.html#line1">line 1</a>
-    </li></ul></dd>
+    <div class="description">
+        Array Xor
+    </div>
     
 
     
@@ -5143,48 +4920,11 @@
     
 
     
-
     
+        <h5>Parameters:</h5>
+        
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <h5 class="h5-parameters">Parameters:</h5>
-    
-
-<table class="params">
+<table class="params table table-striped">
     <thead>
     <tr>
         
@@ -5254,48 +4994,17 @@
     </tbody>
 </table>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
     
 
-    <h4 class="name" id="Xor"><span class="type-signature"></span>Xor<span class="signature">(lists, array)</span><span class="type-signature"></span></h4>
-
     
-
-
-
-
 <dl class="details">
     
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>Array Xor</li></ul></dd>
-    
 
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Array_Xor.js.html">Array/Xor.js</a>, <a href="Array_Xor.js.html#line1">line 1</a>
-    </li></ul></dd>
-    
+	
+
+	
+
+	
 
     
 
@@ -5305,45 +5014,69 @@
 
     
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
 
-    
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
+	
 </dl>
 
 
-
-
-
-
-
-
-
-
-
-
-
-    <h5 class="h5-parameters">Parameters:</h5>
     
 
-<table class="params">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="Xor"><span class="type-signature"></span>Xor(lists, array)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        Array Xor
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
     <thead>
     <tr>
         
@@ -5413,25 +5146,64 @@
     </tbody>
 </table>
 
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
 
 
 
+	
+
+	
+
+	
+
+	
+</dl>
 
 
+    
 
+    
 
+    
 
+    
 
+    
 
+    
 
+    
+</dd>
 
-
-
-
-
-
-
-        
+        </dl>
     
 
     
@@ -5444,51 +5216,55 @@
 
 
 
-
-
-
+	<h1 class="page-title">Class: Array</h1>
 <section>
 
 <header>
     
         <h2>
-        
-            Array
-        
+        Array
         </h2>
         
     
 </header>
 
+
 <article>
+    <div class="container-overview">
     
-        <div class="container-overview">
         
-            
+<hr>
+<dt>
+    <h4 class="name" id="Array"><span class="type-signature"></span>new Array()</h4>
+    
+    
+    <p class="summary"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array@MDN</a></p>
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        Array class
+    </div>
+    
 
     
 
-    <h4 class="name" id="Array"><span class="type-signature"></span>new Array<span class="signature">()</span><span class="type-signature"></span></h4>
-
-    
-    <p class="summary usertext"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array@MDN</a></p>
     
 
+    
+    
 
-
-
+    
 <dl class="details">
     
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>Array class</li></ul></dd>
-    
 
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line5">line 5</a>
-    </li></ul></dd>
-    
+	
+
+	
+
+	
 
     
 
@@ -5498,60 +5274,28 @@
 
     
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
 
-    
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
+	
 </dl>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-        </div>
     
 
     
@@ -5559,114 +5303,67 @@
     
 
     
-    
+
     
 
-     
+    
+
+    
+</dd>
+
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
 
     
 
     
         <h3 class="subsection-title">Members</h3>
 
-        
+        <dl>
             
-<h4 class="name" id="first"><span class="type-signature"></span>first<span class="type-signature"> :*</span></h4>
-
-
-
-
-
-<dl class="details">
-    
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>First element in an array</li></ul></dd>
-    
+<hr>
+<dt class="name" id="first">
+    <h4 id="first"><span class="type-signature"></span>first<span class="type-signature"> :*</span></h4>
 
     
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Array_first.js.html">Array/first.js</a>, <a href="Array_first.js.html#line1">line 1</a>
-    </li></ul></dd>
+</dt>
+<dd>
+    
+    <div class="description">
+        First element in an array
+    </div>
     
 
     
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description usertext">
-    First element in an array
-</div>
-
-
-
-    <h5 class="h5-types">Type:</h5>
-    <ul>
-        <li>
-            
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
 <span class="param-type">*</span>
 
 
 
-        </li>
-    </ul>
+            </li>
+        </ul>
+    
 
-
-
-
-
-
-        
-            
-<h4 class="name" id="first"><span class="type-signature"></span>first<span class="type-signature"> :*</span></h4>
-
-
-
-
-
+    
 <dl class="details">
     
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>First element in an array</li></ul></dd>
-    
 
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Array_first.js.html">Array/first.js</a>, <a href="Array_first.js.html#line1">line 1</a>
-    </li></ul></dd>
-    
+	
+
+	
+
+	
 
     
 
@@ -5676,75 +5373,68 @@
 
     
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
 
-    
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
+	
 </dl>
 
 
+    
+</dd>
 
-
-
-<div class="description usertext">
-    First element in an array
-</div>
-
-
-
-    <h5 class="h5-types">Type:</h5>
-    <ul>
-        <li>
+        
             
+<hr>
+<dt class="name" id="first">
+    <h4 id="first"><span class="type-signature"></span>first<span class="type-signature"> :*</span></h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        First element in an array
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
 <span class="param-type">*</span>
 
 
 
-        </li>
-    </ul>
+            </li>
+        </ul>
+    
 
-
-
-
-
-
-        
-            
-<h4 class="name" id="head"><span class="type-signature"></span>head<span class="type-signature"> :array</span></h4>
-
-
-
-
-
+    
 <dl class="details">
     
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>Gets all but the last element of array</li></ul></dd>
-    
 
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Array_head.js.html">Array/head.js</a>, <a href="Array_head.js.html#line1">line 1</a>
-    </li></ul></dd>
-    
+	
+
+	
+
+	
 
     
 
@@ -5754,75 +5444,68 @@
 
     
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
 
-    
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
+	
 </dl>
 
 
+    
+</dd>
 
-
-
-<div class="description usertext">
-    Gets all but the last element of array
-</div>
-
-
-
-    <h5 class="h5-types">Type:</h5>
-    <ul>
-        <li>
+        
             
+<hr>
+<dt class="name" id="head">
+    <h4 id="head"><span class="type-signature"></span>head<span class="type-signature"> :array</span></h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        Gets all but the last element of array
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
 <span class="param-type">array</span>
 
 
 
-        </li>
-    </ul>
+            </li>
+        </ul>
+    
 
-
-
-
-
-
-        
-            
-<h4 class="name" id="head"><span class="type-signature"></span>head<span class="type-signature"> :array</span></h4>
-
-
-
-
-
+    
 <dl class="details">
     
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>Gets all but the last element of array</li></ul></dd>
-    
 
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Array_head.js.html">Array/head.js</a>, <a href="Array_head.js.html#line1">line 1</a>
-    </li></ul></dd>
-    
+	
+
+	
+
+	
 
     
 
@@ -5832,75 +5515,68 @@
 
     
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
 
-    
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
+	
 </dl>
 
 
+    
+</dd>
 
-
-
-<div class="description usertext">
-    Gets all but the last element of array
-</div>
-
-
-
-    <h5 class="h5-types">Type:</h5>
-    <ul>
-        <li>
+        
             
+<hr>
+<dt class="name" id="head">
+    <h4 id="head"><span class="type-signature"></span>head<span class="type-signature"> :array</span></h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        Gets all but the last element of array
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
 <span class="param-type">array</span>
 
 
 
-        </li>
-    </ul>
+            </li>
+        </ul>
+    
 
-
-
-
-
-
-        
-            
-<h4 class="name" id="last"><span class="type-signature"></span>last<span class="type-signature"> :*</span></h4>
-
-
-
-
-
+    
 <dl class="details">
     
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>Gets the last element of an array</li></ul></dd>
-    
 
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Array_last.js.html">Array/last.js</a>, <a href="Array_last.js.html#line1">line 1</a>
-    </li></ul></dd>
-    
+	
+
+	
+
+	
 
     
 
@@ -5910,75 +5586,68 @@
 
     
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
 
-    
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
+	
 </dl>
 
 
+    
+</dd>
 
-
-
-<div class="description usertext">
-    Gets the last element of an array
-</div>
-
-
-
-    <h5 class="h5-types">Type:</h5>
-    <ul>
-        <li>
+        
             
+<hr>
+<dt class="name" id="last">
+    <h4 id="last"><span class="type-signature"></span>last<span class="type-signature"> :*</span></h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        Gets the last element of an array
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
 <span class="param-type">*</span>
 
 
 
-        </li>
-    </ul>
+            </li>
+        </ul>
+    
 
-
-
-
-
-
-        
-            
-<h4 class="name" id="last"><span class="type-signature"></span>last<span class="type-signature"> :*</span></h4>
-
-
-
-
-
+    
 <dl class="details">
     
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>Gets the last element of an array</li></ul></dd>
-    
 
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Array_last.js.html">Array/last.js</a>, <a href="Array_last.js.html#line1">line 1</a>
-    </li></ul></dd>
-    
+	
+
+	
+
+	
 
     
 
@@ -5988,75 +5657,68 @@
 
     
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
 
-    
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
+	
 </dl>
 
 
+    
+</dd>
 
-
-
-<div class="description usertext">
-    Gets the last element of an array
-</div>
-
-
-
-    <h5 class="h5-types">Type:</h5>
-    <ul>
-        <li>
+        
             
+<hr>
+<dt class="name" id="last">
+    <h4 id="last"><span class="type-signature"></span>last<span class="type-signature"> :*</span></h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        Gets the last element of an array
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
 <span class="param-type">*</span>
 
 
 
-        </li>
-    </ul>
+            </li>
+        </ul>
+    
 
-
-
-
-
-
-        
-            
-<h4 class="name" id="tail"><span class="type-signature"></span>tail<span class="type-signature"> :array</span></h4>
-
-
-
-
-
+    
 <dl class="details">
     
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>Gets all but the first element of array</li></ul></dd>
-    
 
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Array_tail.js.html">Array/tail.js</a>, <a href="Array_tail.js.html#line1">line 1</a>
-    </li></ul></dd>
-    
+	
+
+	
+
+	
 
     
 
@@ -6066,75 +5728,68 @@
 
     
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
 
-    
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
+	
 </dl>
 
 
+    
+</dd>
 
-
-
-<div class="description usertext">
-    Gets all but the first element of array
-</div>
-
-
-
-    <h5 class="h5-types">Type:</h5>
-    <ul>
-        <li>
+        
             
+<hr>
+<dt class="name" id="tail">
+    <h4 id="tail"><span class="type-signature"></span>tail<span class="type-signature"> :array</span></h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        Gets all but the first element of array
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
 <span class="param-type">array</span>
 
 
 
-        </li>
-    </ul>
+            </li>
+        </ul>
+    
 
-
-
-
-
-
-        
-            
-<h4 class="name" id="tail"><span class="type-signature"></span>tail<span class="type-signature"> :array</span></h4>
-
-
-
-
-
+    
 <dl class="details">
     
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>Gets all but the first element of array</li></ul></dd>
-    
 
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Array_tail.js.html">Array/tail.js</a>, <a href="Array_tail.js.html#line1">line 1</a>
-    </li></ul></dd>
-    
+	
+
+	
+
+	
 
     
 
@@ -6144,84 +5799,122 @@
 
     
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
 
-    
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
+	
 </dl>
 
 
+    
+</dd>
 
-
-
-<div class="description usertext">
-    Gets all but the first element of array
-</div>
-
-
-
-    <h5 class="h5-types">Type:</h5>
-    <ul>
-        <li>
+        
             
+<hr>
+<dt class="name" id="tail">
+    <h4 id="tail"><span class="type-signature"></span>tail<span class="type-signature"> :array</span></h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        Gets all but the first element of array
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
 <span class="param-type">array</span>
 
 
 
-        </li>
-    </ul>
+            </li>
+        </ul>
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
 
 
 
+	
+
+	
+
+	
+
+	
+</dl>
 
 
+    
+</dd>
 
-        
+        </dl>
     
 
     
         <h3 class="subsection-title">Methods</h3>
 
-        
+        <dl>
             
+<hr>
+<dt>
+    <h4 class="name" id=".Difference"><span class="type-signature">&lt;static> </span>Difference(lists)</h4>
+    
+    
+</dt>
+<dd>
 
     
-
-    <h4 class="name" id=".Difference"><span class="type-signature type-signature-static">(static) </span>Difference<span class="signature">(lists)</span><span class="type-signature"> &rarr; {array}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-    
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>Difference in arrays</li></ul></dd>
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Array_Difference.js.html">Array/Difference.js</a>, <a href="Array_Difference.js.html#line21">line 21</a>
-    </li></ul></dd>
+    <div class="description">
+        Difference in arrays
+    </div>
     
 
     
@@ -6229,48 +5922,11 @@
     
 
     
-
     
+        <h5>Parameters:</h5>
+        
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <h5 class="h5-parameters">Parameters:</h5>
-    
-
-<table class="params">
+<table class="params table table-striped">
     <thead>
     <tr>
         
@@ -6316,31 +5972,69 @@
     </tbody>
 </table>
 
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
 
 
 
+	
+
+	
+
+	
+
+	
+</dl>
 
 
+    
 
+    
 
+    
 
+    
 
+    
 
-
-
-
-
-
-<h5 class="h5-returns">Returns:</h5>
-
-        
+    
+    <h5>Returns:</h5>
+    
+            
 <div class="param-desc">
     diff - List of diffference values
 </div>
 
 
 
-<dl class="param-type">
+<dl>
     <dt>
         Type
     </dt>
@@ -6353,33 +6047,26 @@
     </dd>
 </dl>
 
+
+        
+
     
-
-
+</dd>
 
         
             
+<hr>
+<dt>
+    <h4 class="name" id=".Difference"><span class="type-signature">&lt;static> </span>Difference(lists)</h4>
+    
+    
+</dt>
+<dd>
 
     
-
-    <h4 class="name" id=".Difference"><span class="type-signature type-signature-static">(static) </span>Difference<span class="signature">(lists)</span><span class="type-signature"> &rarr; {array}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-    
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>Difference in arrays</li></ul></dd>
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Array_Difference.js.html">Array/Difference.js</a>, <a href="Array_Difference.js.html#line21">line 21</a>
-    </li></ul></dd>
+    <div class="description">
+        Difference in arrays
+    </div>
     
 
     
@@ -6387,48 +6074,11 @@
     
 
     
-
     
+        <h5>Parameters:</h5>
+        
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <h5 class="h5-parameters">Parameters:</h5>
-    
-
-<table class="params">
+<table class="params table table-striped">
     <thead>
     <tr>
         
@@ -6474,31 +6124,69 @@
     </tbody>
 </table>
 
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
 
 
 
+	
+
+	
+
+	
+
+	
+</dl>
 
 
+    
 
+    
 
+    
 
+    
 
+    
 
-
-
-
-
-
-<h5 class="h5-returns">Returns:</h5>
-
-        
+    
+    <h5>Returns:</h5>
+    
+            
 <div class="param-desc">
     diff - List of diffference values
 </div>
 
 
 
-<dl class="param-type">
+<dl>
     <dt>
         Type
     </dt>
@@ -6511,33 +6199,26 @@
     </dd>
 </dl>
 
+
+        
+
     
-
-
+</dd>
 
         
             
+<hr>
+<dt>
+    <h4 class="name" id=".Flatten"><span class="type-signature">&lt;static> </span>Flatten(depth)</h4>
+    
+    
+</dt>
+<dd>
 
     
-
-    <h4 class="name" id=".Flatten"><span class="type-signature type-signature-static">(static) </span>Flatten<span class="signature">(depth)</span><span class="type-signature"> &rarr; {array}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-    
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>Flatten array elements</li></ul></dd>
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Array_Flatten.js.html">Array/Flatten.js</a>, <a href="Array_Flatten.js.html#line1">line 1</a>
-    </li></ul></dd>
+    <div class="description">
+        Flatten array elements
+    </div>
     
 
     
@@ -6545,48 +6226,11 @@
     
 
     
-
     
+        <h5>Parameters:</h5>
+        
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <h5 class="h5-parameters">Parameters:</h5>
-    
-
-<table class="params">
+<table class="params table table-striped">
     <thead>
     <tr>
         
@@ -6632,31 +6276,69 @@
     </tbody>
 </table>
 
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
 
 
 
+	
+
+	
+
+	
+
+	
+</dl>
 
 
+    
 
+    
 
+    
 
+    
 
+    
 
-
-
-
-
-
-<h5 class="h5-returns">Returns:</h5>
-
-        
+    
+    <h5>Returns:</h5>
+    
+            
 <div class="param-desc">
     list - Flattened list
 </div>
 
 
 
-<dl class="param-type">
+<dl>
     <dt>
         Type
     </dt>
@@ -6669,33 +6351,26 @@
     </dd>
 </dl>
 
+
+        
+
     
-
-
+</dd>
 
         
             
+<hr>
+<dt>
+    <h4 class="name" id=".Flatten"><span class="type-signature">&lt;static> </span>Flatten(depth)</h4>
+    
+    
+</dt>
+<dd>
 
     
-
-    <h4 class="name" id=".Flatten"><span class="type-signature type-signature-static">(static) </span>Flatten<span class="signature">(depth)</span><span class="type-signature"> &rarr; {array}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-    
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>Flatten array elements</li></ul></dd>
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Array_Flatten.js.html">Array/Flatten.js</a>, <a href="Array_Flatten.js.html#line1">line 1</a>
-    </li></ul></dd>
+    <div class="description">
+        Flatten array elements
+    </div>
     
 
     
@@ -6703,48 +6378,11 @@
     
 
     
-
     
+        <h5>Parameters:</h5>
+        
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <h5 class="h5-parameters">Parameters:</h5>
-    
-
-<table class="params">
+<table class="params table table-striped">
     <thead>
     <tr>
         
@@ -6790,31 +6428,69 @@
     </tbody>
 </table>
 
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
 
 
 
+	
+
+	
+
+	
+
+	
+</dl>
 
 
+    
 
+    
 
+    
 
+    
 
+    
 
-
-
-
-
-
-<h5 class="h5-returns">Returns:</h5>
-
-        
+    
+    <h5>Returns:</h5>
+    
+            
 <div class="param-desc">
     list - Flattened list
 </div>
 
 
 
-<dl class="param-type">
+<dl>
     <dt>
         Type
     </dt>
@@ -6827,33 +6503,26 @@
     </dd>
 </dl>
 
+
+        
+
     
-
-
+</dd>
 
         
             
+<hr>
+<dt>
+    <h4 class="name" id=".From"><span class="type-signature">&lt;static> </span>From(value)</h4>
+    
+    
+</dt>
+<dd>
 
     
-
-    <h4 class="name" id=".From"><span class="type-signature type-signature-static">(static) </span>From<span class="signature">(value)</span><span class="type-signature"> &rarr; {array}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-    
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>Converts value to an array</li></ul></dd>
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Array_From.js.html">Array/From.js</a>, <a href="Array_From.js.html#line1">line 1</a>
-    </li></ul></dd>
+    <div class="description">
+        Converts value to an array
+    </div>
     
 
     
@@ -6861,48 +6530,11 @@
     
 
     
-
     
+        <h5>Parameters:</h5>
+        
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <h5 class="h5-parameters">Parameters:</h5>
-    
-
-<table class="params">
+<table class="params table table-striped">
     <thead>
     <tr>
         
@@ -6948,31 +6580,69 @@
     </tbody>
 </table>
 
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
 
 
 
+	
+
+	
+
+	
+
+	
+</dl>
 
 
+    
 
+    
 
+    
 
+    
 
+    
 
-
-
-
-
-
-<h5 class="h5-returns">Returns:</h5>
-
-        
+    
+    <h5>Returns:</h5>
+    
+            
 <div class="param-desc">
     array - The converted array
 </div>
 
 
 
-<dl class="param-type">
+<dl>
     <dt>
         Type
     </dt>
@@ -6985,33 +6655,26 @@
     </dd>
 </dl>
 
+
+        
+
     
-
-
+</dd>
 
         
             
+<hr>
+<dt>
+    <h4 class="name" id=".From"><span class="type-signature">&lt;static> </span>From(value)</h4>
+    
+    
+</dt>
+<dd>
 
     
-
-    <h4 class="name" id=".From"><span class="type-signature type-signature-static">(static) </span>From<span class="signature">(value)</span><span class="type-signature"> &rarr; {array}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-    
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>Converts value to an array</li></ul></dd>
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Array_From.js.html">Array/From.js</a>, <a href="Array_From.js.html#line1">line 1</a>
-    </li></ul></dd>
+    <div class="description">
+        Converts value to an array
+    </div>
     
 
     
@@ -7019,48 +6682,11 @@
     
 
     
-
     
+        <h5>Parameters:</h5>
+        
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <h5 class="h5-parameters">Parameters:</h5>
-    
-
-<table class="params">
+<table class="params table table-striped">
     <thead>
     <tr>
         
@@ -7106,31 +6732,69 @@
     </tbody>
 </table>
 
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
 
 
 
+	
+
+	
+
+	
+
+	
+</dl>
 
 
+    
 
+    
 
+    
 
+    
 
+    
 
-
-
-
-
-
-<h5 class="h5-returns">Returns:</h5>
-
-        
+    
+    <h5>Returns:</h5>
+    
+            
 <div class="param-desc">
     array - The converted array
 </div>
 
 
 
-<dl class="param-type">
+<dl>
     <dt>
         Type
     </dt>
@@ -7143,33 +6807,26 @@
     </dd>
 </dl>
 
+
+        
+
     
-
-
+</dd>
 
         
             
+<hr>
+<dt>
+    <h4 class="name" id=".IsArray"><span class="type-signature">&lt;static> </span>IsArray(object)</h4>
+    
+    
+</dt>
+<dd>
 
     
-
-    <h4 class="name" id=".IsArray"><span class="type-signature type-signature-static">(static) </span>IsArray<span class="signature">(object)</span><span class="type-signature"> &rarr; {boolean}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-    
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>Check if an object is an array</li></ul></dd>
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Array_IsArray.js.html">Array/IsArray.js</a>, <a href="Array_IsArray.js.html#line1">line 1</a>
-    </li></ul></dd>
+    <div class="description">
+        Check if an object is an array
+    </div>
     
 
     
@@ -7177,48 +6834,11 @@
     
 
     
-
     
+        <h5>Parameters:</h5>
+        
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <h5 class="h5-parameters">Parameters:</h5>
-    
-
-<table class="params">
+<table class="params table table-striped">
     <thead>
     <tr>
         
@@ -7264,31 +6884,69 @@
     </tbody>
 </table>
 
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
 
 
 
+	
+
+	
+
+	
+
+	
+</dl>
 
 
+    
 
+    
 
+    
 
+    
 
+    
 
-
-
-
-
-
-<h5 class="h5-returns">Returns:</h5>
-
-        
+    
+    <h5>Returns:</h5>
+    
+            
 <div class="param-desc">
     result
 </div>
 
 
 
-<dl class="param-type">
+<dl>
     <dt>
         Type
     </dt>
@@ -7301,33 +6959,26 @@
     </dd>
 </dl>
 
+
+        
+
     
-
-
+</dd>
 
         
             
+<hr>
+<dt>
+    <h4 class="name" id=".IsArray"><span class="type-signature">&lt;static> </span>IsArray(object)</h4>
+    
+    
+</dt>
+<dd>
 
     
-
-    <h4 class="name" id=".IsArray"><span class="type-signature type-signature-static">(static) </span>IsArray<span class="signature">(object)</span><span class="type-signature"> &rarr; {boolean}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-    
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>Check if an object is an array</li></ul></dd>
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Array_IsArray.js.html">Array/IsArray.js</a>, <a href="Array_IsArray.js.html#line1">line 1</a>
-    </li></ul></dd>
+    <div class="description">
+        Check if an object is an array
+    </div>
     
 
     
@@ -7335,48 +6986,11 @@
     
 
     
-
     
+        <h5>Parameters:</h5>
+        
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <h5 class="h5-parameters">Parameters:</h5>
-    
-
-<table class="params">
+<table class="params table table-striped">
     <thead>
     <tr>
         
@@ -7422,31 +7036,69 @@
     </tbody>
 </table>
 
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
 
 
 
+	
+
+	
+
+	
+
+	
+</dl>
 
 
+    
 
+    
 
+    
 
+    
 
+    
 
-
-
-
-
-
-<h5 class="h5-returns">Returns:</h5>
-
-        
+    
+    <h5>Returns:</h5>
+    
+            
 <div class="param-desc">
     result
 </div>
 
 
 
-<dl class="param-type">
+<dl>
     <dt>
         Type
     </dt>
@@ -7459,33 +7111,26 @@
     </dd>
 </dl>
 
+
+        
+
     
-
-
+</dd>
 
         
             
+<hr>
+<dt>
+    <h4 class="name" id="Delete"><span class="type-signature"></span>Delete(elements, array)</h4>
+    
+    
+</dt>
+<dd>
 
     
-
-    <h4 class="name" id="Delete"><span class="type-signature"></span>Delete<span class="signature">(elements, array)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
-<dl class="details">
-    
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>Delete array item</li></ul></dd>
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Array_Delete.js.html">Array/Delete.js</a>, <a href="Array_Delete.js.html#line1">line 1</a>
-    </li></ul></dd>
+    <div class="description">
+        Delete array item
+    </div>
     
 
     
@@ -7493,60 +7138,11 @@
     
 
     
-
     
+        <h5>Parameters:</h5>
+        
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-tutorial">Tutorials:</dt>
-    <dd class="tag-tutorial">
-        <ul>
-            <li><em class="disabled">Tutorial: Array/Delete</em></li>
-        </ul>
-    </dd>
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-    <h5 class="h5-examples">Example</h5>
-    
-    <pre class="prettyprint"><code>exname['one', 'two', 'three'].Delete('two')</code></pre>
-
-
-
-
-    <h5 class="h5-parameters">Parameters:</h5>
-    
-
-<table class="params">
+<table class="params table table-striped">
     <thead>
     <tr>
         
@@ -7616,48 +7212,17 @@
     </tbody>
 </table>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
     
 
-    <h4 class="name" id="Delete"><span class="type-signature"></span>Delete<span class="signature">(elements, array)</span><span class="type-signature"></span></h4>
-
     
-
-
-
-
 <dl class="details">
     
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>Delete array item</li></ul></dd>
-    
 
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Array_Delete.js.html">Array/Delete.js</a>, <a href="Array_Delete.js.html#line1">line 1</a>
-    </li></ul></dd>
-    
+	
+
+	
+
+	
 
     
 
@@ -7667,57 +7232,82 @@
 
     
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
 
-    
 
-    
+	
 
-    
-    <dt class="tag-tutorial">Tutorials:</dt>
-    <dd class="tag-tutorial">
-        <ul>
-            <li><em class="disabled">Tutorial: Array/Delete</em></li>
-        </ul>
-    </dd>
-    
+	
+	<dt class="tag-tutorial method-doc-label method-doc-details-label">Tutorials:</dt>
+	<dd class="tag-tutorial">
+		<ul>
+			<li><em class="disabled">Tutorial: Array/Delete</em></li>
+			</ul>
+	</dd>
+	
 
-    
+	
 
-    
+	
 </dl>
 
 
-
-
-
-
-
-
-
-
-
-    <h5 class="h5-examples">Example</h5>
-    
-    <pre class="prettyprint"><code>exname['one', 'two', 'three'].Delete('two')</code></pre>
-
-
-
-
-    <h5 class="h5-parameters">Parameters:</h5>
     
 
-<table class="params">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">exname[&#x27;one&#x27;, &#x27;two&#x27;, &#x27;three&#x27;].Delete(&#x27;two&#x27;)</pre>
+
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="Delete"><span class="type-signature"></span>Delete(elements, array)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        Delete array item
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
     <thead>
     <tr>
         
@@ -7787,48 +7377,17 @@
     </tbody>
 </table>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
     
 
-    <h4 class="name" id="DeleteAt"><span class="type-signature"></span>DeleteAt<span class="signature">(indexes, array)</span><span class="type-signature"></span></h4>
-
     
-
-
-
-
 <dl class="details">
     
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>DeleteAt array item</li></ul></dd>
-    
 
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Array_DeleteAt.js.html">Array/DeleteAt.js</a>, <a href="Array_DeleteAt.js.html#line1">line 1</a>
-    </li></ul></dd>
-    
+	
+
+	
+
+	
 
     
 
@@ -7838,45 +7397,82 @@
 
     
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
 
-    
 
-    
+	
 
-    
+	
+	<dt class="tag-tutorial method-doc-label method-doc-details-label">Tutorials:</dt>
+	<dd class="tag-tutorial">
+		<ul>
+			<li><em class="disabled">Tutorial: Array/Delete</em></li>
+			</ul>
+	</dd>
+	
 
-    
+	
 
-    
+	
 </dl>
 
 
-
-
-
-
-
-
-
-
-
-
-
-    <h5 class="h5-parameters">Parameters:</h5>
     
 
-<table class="params">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">exname[&#x27;one&#x27;, &#x27;two&#x27;, &#x27;three&#x27;].Delete(&#x27;two&#x27;)</pre>
+
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="DeleteAt"><span class="type-signature"></span>DeleteAt(indexes, array)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        DeleteAt array item
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
     <thead>
     <tr>
         
@@ -7946,48 +7542,17 @@
     </tbody>
 </table>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
     
 
-    <h4 class="name" id="DeleteAt"><span class="type-signature"></span>DeleteAt<span class="signature">(indexes, array)</span><span class="type-signature"></span></h4>
-
     
-
-
-
-
 <dl class="details">
     
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>DeleteAt array item</li></ul></dd>
-    
 
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Array_DeleteAt.js.html">Array/DeleteAt.js</a>, <a href="Array_DeleteAt.js.html#line1">line 1</a>
-    </li></ul></dd>
-    
+	
+
+	
+
+	
 
     
 
@@ -7997,45 +7562,69 @@
 
     
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
 
-    
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
+	
 </dl>
 
 
-
-
-
-
-
-
-
-
-
-
-
-    <h5 class="h5-parameters">Parameters:</h5>
     
 
-<table class="params">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="DeleteAt"><span class="type-signature"></span>DeleteAt(indexes, array)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        DeleteAt array item
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
     <thead>
     <tr>
         
@@ -8105,48 +7694,17 @@
     </tbody>
 </table>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
     
 
-    <h4 class="name" id="Difference"><span class="type-signature"></span>Difference<span class="signature">(lists)</span><span class="type-signature"> &rarr; {array}</span></h4>
-
     
-
-
-
-
 <dl class="details">
     
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>Difference in arrays</li></ul></dd>
-    
 
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Array_Difference.js.html">Array/Difference.js</a>, <a href="Array_Difference.js.html#line37">line 37</a>
-    </li></ul></dd>
-    
+	
+
+	
+
+	
 
     
 
@@ -8156,45 +7714,69 @@
 
     
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
 
-    
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
+	
 </dl>
 
 
-
-
-
-
-
-
-
-
-
-
-
-    <h5 class="h5-parameters">Parameters:</h5>
     
 
-<table class="params">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="Difference"><span class="type-signature"></span>Difference(lists)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        Difference in arrays
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
     <thead>
     <tr>
         
@@ -8240,31 +7822,69 @@
     </tbody>
 </table>
 
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
 
 
 
+	
+
+	
+
+	
+
+	
+</dl>
 
 
+    
 
+    
 
+    
 
+    
 
+    
 
-
-
-
-
-
-<h5 class="h5-returns">Returns:</h5>
-
-        
+    
+    <h5>Returns:</h5>
+    
+            
 <div class="param-desc">
     diff - List of diffference values
 </div>
 
 
 
-<dl class="param-type">
+<dl>
     <dt>
         Type
     </dt>
@@ -8277,33 +7897,26 @@
     </dd>
 </dl>
 
+
+        
+
     
-
-
+</dd>
 
         
             
+<hr>
+<dt>
+    <h4 class="name" id="Difference"><span class="type-signature"></span>Difference(lists)</h4>
+    
+    
+</dt>
+<dd>
 
     
-
-    <h4 class="name" id="Difference"><span class="type-signature"></span>Difference<span class="signature">(lists)</span><span class="type-signature"> &rarr; {array}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-    
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>Difference in arrays</li></ul></dd>
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Array_Difference.js.html">Array/Difference.js</a>, <a href="Array_Difference.js.html#line37">line 37</a>
-    </li></ul></dd>
+    <div class="description">
+        Difference in arrays
+    </div>
     
 
     
@@ -8311,48 +7924,11 @@
     
 
     
-
     
+        <h5>Parameters:</h5>
+        
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <h5 class="h5-parameters">Parameters:</h5>
-    
-
-<table class="params">
+<table class="params table table-striped">
     <thead>
     <tr>
         
@@ -8398,31 +7974,69 @@
     </tbody>
 </table>
 
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
 
 
 
+	
+
+	
+
+	
+
+	
+</dl>
 
 
+    
 
+    
 
+    
 
+    
 
+    
 
-
-
-
-
-
-<h5 class="h5-returns">Returns:</h5>
-
-        
+    
+    <h5>Returns:</h5>
+    
+            
 <div class="param-desc">
     diff - List of diffference values
 </div>
 
 
 
-<dl class="param-type">
+<dl>
     <dt>
         Type
     </dt>
@@ -8435,33 +8049,26 @@
     </dd>
 </dl>
 
+
+        
+
     
-
-
+</dd>
 
         
             
+<hr>
+<dt>
+    <h4 class="name" id="Intersection"><span class="type-signature"></span>Intersection(lists)</h4>
+    
+    
+</dt>
+<dd>
 
     
-
-    <h4 class="name" id="Intersection"><span class="type-signature"></span>Intersection<span class="signature">(lists)</span><span class="type-signature"> &rarr; {array}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-    
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>Array Intersection</li></ul></dd>
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Array_Intersection.js.html">Array/Intersection.js</a>, <a href="Array_Intersection.js.html#line1">line 1</a>
-    </li></ul></dd>
+    <div class="description">
+        Array Intersection
+    </div>
     
 
     
@@ -8469,48 +8076,11 @@
     
 
     
-
     
+        <h5>Parameters:</h5>
+        
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <h5 class="h5-parameters">Parameters:</h5>
-    
-
-<table class="params">
+<table class="params table table-striped">
     <thead>
     <tr>
         
@@ -8556,31 +8126,69 @@
     </tbody>
 </table>
 
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
 
 
 
+	
+
+	
+
+	
+
+	
+</dl>
 
 
+    
 
+    
 
+    
 
+    
 
+    
 
-
-
-
-
-
-<h5 class="h5-returns">Returns:</h5>
-
-        
+    
+    <h5>Returns:</h5>
+    
+            
 <div class="param-desc">
     array
 </div>
 
 
 
-<dl class="param-type">
+<dl>
     <dt>
         Type
     </dt>
@@ -8593,33 +8201,26 @@
     </dd>
 </dl>
 
+
+        
+
     
-
-
+</dd>
 
         
             
+<hr>
+<dt>
+    <h4 class="name" id="Intersection"><span class="type-signature"></span>Intersection(lists)</h4>
+    
+    
+</dt>
+<dd>
 
     
-
-    <h4 class="name" id="Intersection"><span class="type-signature"></span>Intersection<span class="signature">(lists)</span><span class="type-signature"> &rarr; {array}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-    
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>Array Intersection</li></ul></dd>
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Array_Intersection.js.html">Array/Intersection.js</a>, <a href="Array_Intersection.js.html#line1">line 1</a>
-    </li></ul></dd>
+    <div class="description">
+        Array Intersection
+    </div>
     
 
     
@@ -8627,48 +8228,11 @@
     
 
     
-
     
+        <h5>Parameters:</h5>
+        
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <h5 class="h5-parameters">Parameters:</h5>
-    
-
-<table class="params">
+<table class="params table table-striped">
     <thead>
     <tr>
         
@@ -8714,31 +8278,69 @@
     </tbody>
 </table>
 
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
 
 
 
+	
+
+	
+
+	
+
+	
+</dl>
 
 
+    
 
+    
 
+    
 
+    
 
+    
 
-
-
-
-
-
-<h5 class="h5-returns">Returns:</h5>
-
-        
+    
+    <h5>Returns:</h5>
+    
+            
 <div class="param-desc">
     array
 </div>
 
 
 
-<dl class="param-type">
+<dl>
     <dt>
         Type
     </dt>
@@ -8751,33 +8353,26 @@
     </dd>
 </dl>
 
+
+        
+
     
-
-
+</dd>
 
         
             
+<hr>
+<dt>
+    <h4 class="name" id="Omit"><span class="type-signature"></span>Omit(elements)</h4>
+    
+    
+</dt>
+<dd>
 
     
-
-    <h4 class="name" id="Omit"><span class="type-signature"></span>Omit<span class="signature">(elements)</span><span class="type-signature"> &rarr; {array}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-    
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>Create a new array with elements omitted</li></ul></dd>
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Array_Omit.js.html">Array/Omit.js</a>, <a href="Array_Omit.js.html#line1">line 1</a>
-    </li></ul></dd>
+    <div class="description">
+        Create a new array with elements omitted
+    </div>
     
 
     
@@ -8785,48 +8380,11 @@
     
 
     
-
     
+        <h5>Parameters:</h5>
+        
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <h5 class="h5-parameters">Parameters:</h5>
-    
-
-<table class="params">
+<table class="params table table-striped">
     <thead>
     <tr>
         
@@ -8872,31 +8430,69 @@
     </tbody>
 </table>
 
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
 
 
 
+	
+
+	
+
+	
+
+	
+</dl>
 
 
+    
 
+    
 
+    
 
+    
 
+    
 
-
-
-
-
-
-<h5 class="h5-returns">Returns:</h5>
-
-        
+    
+    <h5>Returns:</h5>
+    
+            
 <div class="param-desc">
     array
 </div>
 
 
 
-<dl class="param-type">
+<dl>
     <dt>
         Type
     </dt>
@@ -8909,33 +8505,26 @@
     </dd>
 </dl>
 
+
+        
+
     
-
-
+</dd>
 
         
             
+<hr>
+<dt>
+    <h4 class="name" id="Omit"><span class="type-signature"></span>Omit(elements)</h4>
+    
+    
+</dt>
+<dd>
 
     
-
-    <h4 class="name" id="Omit"><span class="type-signature"></span>Omit<span class="signature">(elements)</span><span class="type-signature"> &rarr; {array}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-    
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>Create a new array with elements omitted</li></ul></dd>
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Array_Omit.js.html">Array/Omit.js</a>, <a href="Array_Omit.js.html#line1">line 1</a>
-    </li></ul></dd>
+    <div class="description">
+        Create a new array with elements omitted
+    </div>
     
 
     
@@ -8943,48 +8532,11 @@
     
 
     
-
     
+        <h5>Parameters:</h5>
+        
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <h5 class="h5-parameters">Parameters:</h5>
-    
-
-<table class="params">
+<table class="params table table-striped">
     <thead>
     <tr>
         
@@ -9030,31 +8582,69 @@
     </tbody>
 </table>
 
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
 
 
 
+	
+
+	
+
+	
+
+	
+</dl>
 
 
+    
 
+    
 
+    
 
+    
 
+    
 
-
-
-
-
-
-<h5 class="h5-returns">Returns:</h5>
-
-        
+    
+    <h5>Returns:</h5>
+    
+            
 <div class="param-desc">
     array
 </div>
 
 
 
-<dl class="param-type">
+<dl>
     <dt>
         Type
     </dt>
@@ -9067,33 +8657,26 @@
     </dd>
 </dl>
 
+
+        
+
     
-
-
+</dd>
 
         
             
+<hr>
+<dt>
+    <h4 class="name" id="OmitAt"><span class="type-signature"></span>OmitAt(indexes)</h4>
+    
+    
+</dt>
+<dd>
 
     
-
-    <h4 class="name" id="OmitAt"><span class="type-signature"></span>OmitAt<span class="signature">(indexes)</span><span class="type-signature"> &rarr; {array}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-    
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>Create a new array with elements omitted at certain indexes</li></ul></dd>
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Array_OmitAt.js.html">Array/OmitAt.js</a>, <a href="Array_OmitAt.js.html#line1">line 1</a>
-    </li></ul></dd>
+    <div class="description">
+        Create a new array with elements omitted at certain indexes
+    </div>
     
 
     
@@ -9101,48 +8684,11 @@
     
 
     
-
     
+        <h5>Parameters:</h5>
+        
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <h5 class="h5-parameters">Parameters:</h5>
-    
-
-<table class="params">
+<table class="params table table-striped">
     <thead>
     <tr>
         
@@ -9188,31 +8734,69 @@
     </tbody>
 </table>
 
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
 
 
 
+	
+
+	
+
+	
+
+	
+</dl>
 
 
+    
 
+    
 
+    
 
+    
 
+    
 
-
-
-
-
-
-<h5 class="h5-returns">Returns:</h5>
-
-        
+    
+    <h5>Returns:</h5>
+    
+            
 <div class="param-desc">
     array
 </div>
 
 
 
-<dl class="param-type">
+<dl>
     <dt>
         Type
     </dt>
@@ -9225,33 +8809,26 @@
     </dd>
 </dl>
 
+
+        
+
     
-
-
+</dd>
 
         
             
+<hr>
+<dt>
+    <h4 class="name" id="OmitAt"><span class="type-signature"></span>OmitAt(indexes)</h4>
+    
+    
+</dt>
+<dd>
 
     
-
-    <h4 class="name" id="OmitAt"><span class="type-signature"></span>OmitAt<span class="signature">(indexes)</span><span class="type-signature"> &rarr; {array}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-    
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>Create a new array with elements omitted at certain indexes</li></ul></dd>
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Array_OmitAt.js.html">Array/OmitAt.js</a>, <a href="Array_OmitAt.js.html#line1">line 1</a>
-    </li></ul></dd>
+    <div class="description">
+        Create a new array with elements omitted at certain indexes
+    </div>
     
 
     
@@ -9259,48 +8836,11 @@
     
 
     
-
     
+        <h5>Parameters:</h5>
+        
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <h5 class="h5-parameters">Parameters:</h5>
-    
-
-<table class="params">
+<table class="params table table-striped">
     <thead>
     <tr>
         
@@ -9346,31 +8886,69 @@
     </tbody>
 </table>
 
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
 
 
 
+	
+
+	
+
+	
+
+	
+</dl>
 
 
+    
 
+    
 
+    
 
+    
 
+    
 
-
-
-
-
-
-<h5 class="h5-returns">Returns:</h5>
-
-        
+    
+    <h5>Returns:</h5>
+    
+            
 <div class="param-desc">
     array
 </div>
 
 
 
-<dl class="param-type">
+<dl>
     <dt>
         Type
     </dt>
@@ -9383,33 +8961,26 @@
     </dd>
 </dl>
 
+
+        
+
     
-
-
+</dd>
 
         
             
+<hr>
+<dt>
+    <h4 class="name" id="Pick"><span class="type-signature"></span>Pick(elements)</h4>
+    
+    
+</dt>
+<dd>
 
     
-
-    <h4 class="name" id="Pick"><span class="type-signature"></span>Pick<span class="signature">(elements)</span><span class="type-signature"> &rarr; {array}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-    
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>Pick elements of an array</li></ul></dd>
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Array_Pick.js.html">Array/Pick.js</a>, <a href="Array_Pick.js.html#line1">line 1</a>
-    </li></ul></dd>
+    <div class="description">
+        Pick elements of an array
+    </div>
     
 
     
@@ -9417,48 +8988,11 @@
     
 
     
-
     
+        <h5>Parameters:</h5>
+        
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <h5 class="h5-parameters">Parameters:</h5>
-    
-
-<table class="params">
+<table class="params table table-striped">
     <thead>
     <tr>
         
@@ -9504,31 +9038,69 @@
     </tbody>
 </table>
 
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
 
 
 
+	
+
+	
+
+	
+
+	
+</dl>
 
 
+    
 
+    
 
+    
 
+    
 
+    
 
-
-
-
-
-
-<h5 class="h5-returns">Returns:</h5>
-
-        
+    
+    <h5>Returns:</h5>
+    
+            
 <div class="param-desc">
     array
 </div>
 
 
 
-<dl class="param-type">
+<dl>
     <dt>
         Type
     </dt>
@@ -9541,33 +9113,26 @@
     </dd>
 </dl>
 
+
+        
+
     
-
-
+</dd>
 
         
             
+<hr>
+<dt>
+    <h4 class="name" id="Pick"><span class="type-signature"></span>Pick(elements)</h4>
+    
+    
+</dt>
+<dd>
 
     
-
-    <h4 class="name" id="Pick"><span class="type-signature"></span>Pick<span class="signature">(elements)</span><span class="type-signature"> &rarr; {array}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-    
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>Pick elements of an array</li></ul></dd>
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Array_Pick.js.html">Array/Pick.js</a>, <a href="Array_Pick.js.html#line1">line 1</a>
-    </li></ul></dd>
+    <div class="description">
+        Pick elements of an array
+    </div>
     
 
     
@@ -9575,48 +9140,11 @@
     
 
     
-
     
+        <h5>Parameters:</h5>
+        
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <h5 class="h5-parameters">Parameters:</h5>
-    
-
-<table class="params">
+<table class="params table table-striped">
     <thead>
     <tr>
         
@@ -9662,31 +9190,69 @@
     </tbody>
 </table>
 
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
 
 
 
+	
+
+	
+
+	
+
+	
+</dl>
 
 
+    
 
+    
 
+    
 
+    
 
+    
 
-
-
-
-
-
-<h5 class="h5-returns">Returns:</h5>
-
-        
+    
+    <h5>Returns:</h5>
+    
+            
 <div class="param-desc">
     array
 </div>
 
 
 
-<dl class="param-type">
+<dl>
     <dt>
         Type
     </dt>
@@ -9699,34 +9265,44 @@
     </dd>
 </dl>
 
+
+        
+
     
-
-
+</dd>
 
         
             
+<hr>
+<dt>
+    <h4 class="name" id="Shuffle"><span class="type-signature"></span>Shuffle()</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        In-place array shuffle
+    </div>
+    
 
     
 
-    <h4 class="name" id="Shuffle"><span class="type-signature"></span>Shuffle<span class="signature">()</span><span class="type-signature"></span></h4>
-
     
 
+    
+    
 
-
-
+    
 <dl class="details">
     
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>In-place array shuffle</li></ul></dd>
-    
 
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Array_Shuffle.js.html">Array/Shuffle.js</a>, <a href="Array_Shuffle.js.html#line1">line 1</a>
-    </li></ul></dd>
-    
+	
+
+	
+
+	
 
     
 
@@ -9736,82 +9312,75 @@
 
     
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
 
-    
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
+	
 </dl>
 
 
+    
 
+    
 
+    
 
+    
 
+    
 
+    
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    
+</dd>
 
         
             
+<hr>
+<dt>
+    <h4 class="name" id="Shuffle"><span class="type-signature"></span>Shuffle()</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        In-place array shuffle
+    </div>
+    
 
     
 
-    <h4 class="name" id="Shuffle"><span class="type-signature"></span>Shuffle<span class="signature">()</span><span class="type-signature"></span></h4>
-
     
 
+    
+    
 
-
-
+    
 <dl class="details">
     
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>In-place array shuffle</li></ul></dd>
-    
 
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Array_Shuffle.js.html">Array/Shuffle.js</a>, <a href="Array_Shuffle.js.html#line1">line 1</a>
-    </li></ul></dd>
-    
+	
+
+	
+
+	
 
     
 
@@ -9821,81 +9390,57 @@
 
     
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
 
-    
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
+	
 </dl>
 
 
+    
 
+    
 
+    
 
+    
 
+    
 
+    
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    
+</dd>
 
         
             
+<hr>
+<dt>
+    <h4 class="name" id="Union"><span class="type-signature"></span>Union(lists)</h4>
+    
+    
+</dt>
+<dd>
 
     
-
-    <h4 class="name" id="Union"><span class="type-signature"></span>Union<span class="signature">(lists)</span><span class="type-signature"> &rarr; {array}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-    
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>Array Union</li></ul></dd>
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Array_Union.js.html">Array/Union.js</a>, <a href="Array_Union.js.html#line1">line 1</a>
-    </li></ul></dd>
+    <div class="description">
+        Array Union
+    </div>
     
 
     
@@ -9903,48 +9448,11 @@
     
 
     
-
     
+        <h5>Parameters:</h5>
+        
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <h5 class="h5-parameters">Parameters:</h5>
-    
-
-<table class="params">
+<table class="params table table-striped">
     <thead>
     <tr>
         
@@ -9990,31 +9498,69 @@
     </tbody>
 </table>
 
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
 
 
 
+	
+
+	
+
+	
+
+	
+</dl>
 
 
+    
 
+    
 
+    
 
+    
 
+    
 
-
-
-
-
-
-<h5 class="h5-returns">Returns:</h5>
-
-        
+    
+    <h5>Returns:</h5>
+    
+            
 <div class="param-desc">
     array
 </div>
 
 
 
-<dl class="param-type">
+<dl>
     <dt>
         Type
     </dt>
@@ -10027,33 +9573,26 @@
     </dd>
 </dl>
 
+
+        
+
     
-
-
+</dd>
 
         
             
+<hr>
+<dt>
+    <h4 class="name" id="Union"><span class="type-signature"></span>Union(lists)</h4>
+    
+    
+</dt>
+<dd>
 
     
-
-    <h4 class="name" id="Union"><span class="type-signature"></span>Union<span class="signature">(lists)</span><span class="type-signature"> &rarr; {array}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-    
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>Array Union</li></ul></dd>
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Array_Union.js.html">Array/Union.js</a>, <a href="Array_Union.js.html#line1">line 1</a>
-    </li></ul></dd>
+    <div class="description">
+        Array Union
+    </div>
     
 
     
@@ -10061,48 +9600,11 @@
     
 
     
-
     
+        <h5>Parameters:</h5>
+        
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <h5 class="h5-parameters">Parameters:</h5>
-    
-
-<table class="params">
+<table class="params table table-striped">
     <thead>
     <tr>
         
@@ -10148,31 +9650,69 @@
     </tbody>
 </table>
 
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
 
 
 
+	
+
+	
+
+	
+
+	
+</dl>
 
 
+    
 
+    
 
+    
 
+    
 
+    
 
-
-
-
-
-
-<h5 class="h5-returns">Returns:</h5>
-
-        
+    
+    <h5>Returns:</h5>
+    
+            
 <div class="param-desc">
     array
 </div>
 
 
 
-<dl class="param-type">
+<dl>
     <dt>
         Type
     </dt>
@@ -10185,33 +9725,26 @@
     </dd>
 </dl>
 
+
+        
+
     
-
-
+</dd>
 
         
             
+<hr>
+<dt>
+    <h4 class="name" id="Unique"><span class="type-signature"></span>Unique(lists)</h4>
+    
+    
+</dt>
+<dd>
 
     
-
-    <h4 class="name" id="Unique"><span class="type-signature"></span>Unique<span class="signature">(lists)</span><span class="type-signature"> &rarr; {array}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-    
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>Array Unique</li></ul></dd>
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Array_Unique.js.html">Array/Unique.js</a>, <a href="Array_Unique.js.html#line1">line 1</a>
-    </li></ul></dd>
+    <div class="description">
+        Array Unique
+    </div>
     
 
     
@@ -10219,48 +9752,11 @@
     
 
     
-
     
+        <h5>Parameters:</h5>
+        
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <h5 class="h5-parameters">Parameters:</h5>
-    
-
-<table class="params">
+<table class="params table table-striped">
     <thead>
     <tr>
         
@@ -10306,31 +9802,69 @@
     </tbody>
 </table>
 
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
 
 
 
+	
+
+	
+
+	
+
+	
+</dl>
 
 
+    
 
+    
 
+    
 
+    
 
+    
 
-
-
-
-
-
-<h5 class="h5-returns">Returns:</h5>
-
-        
+    
+    <h5>Returns:</h5>
+    
+            
 <div class="param-desc">
     array
 </div>
 
 
 
-<dl class="param-type">
+<dl>
     <dt>
         Type
     </dt>
@@ -10343,33 +9877,26 @@
     </dd>
 </dl>
 
+
+        
+
     
-
-
+</dd>
 
         
             
+<hr>
+<dt>
+    <h4 class="name" id="Unique"><span class="type-signature"></span>Unique(lists)</h4>
+    
+    
+</dt>
+<dd>
 
     
-
-    <h4 class="name" id="Unique"><span class="type-signature"></span>Unique<span class="signature">(lists)</span><span class="type-signature"> &rarr; {array}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-    
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>Array Unique</li></ul></dd>
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Array_Unique.js.html">Array/Unique.js</a>, <a href="Array_Unique.js.html#line1">line 1</a>
-    </li></ul></dd>
+    <div class="description">
+        Array Unique
+    </div>
     
 
     
@@ -10377,48 +9904,11 @@
     
 
     
-
     
+        <h5>Parameters:</h5>
+        
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <h5 class="h5-parameters">Parameters:</h5>
-    
-
-<table class="params">
+<table class="params table table-striped">
     <thead>
     <tr>
         
@@ -10464,31 +9954,69 @@
     </tbody>
 </table>
 
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
 
 
 
+	
+
+	
+
+	
+
+	
+</dl>
 
 
+    
 
+    
 
+    
 
+    
 
+    
 
-
-
-
-
-
-<h5 class="h5-returns">Returns:</h5>
-
-        
+    
+    <h5>Returns:</h5>
+    
+            
 <div class="param-desc">
     array
 </div>
 
 
 
-<dl class="param-type">
+<dl>
     <dt>
         Type
     </dt>
@@ -10501,33 +10029,26 @@
     </dd>
 </dl>
 
+
+        
+
     
-
-
+</dd>
 
         
             
+<hr>
+<dt>
+    <h4 class="name" id="Xor"><span class="type-signature"></span>Xor(lists, array)</h4>
+    
+    
+</dt>
+<dd>
 
     
-
-    <h4 class="name" id="Xor"><span class="type-signature"></span>Xor<span class="signature">(lists, array)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
-<dl class="details">
-    
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>Array Xor</li></ul></dd>
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Array_Xor.js.html">Array/Xor.js</a>, <a href="Array_Xor.js.html#line1">line 1</a>
-    </li></ul></dd>
+    <div class="description">
+        Array Xor
+    </div>
     
 
     
@@ -10535,48 +10056,11 @@
     
 
     
-
     
+        <h5>Parameters:</h5>
+        
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <h5 class="h5-parameters">Parameters:</h5>
-    
-
-<table class="params">
+<table class="params table table-striped">
     <thead>
     <tr>
         
@@ -10646,48 +10130,17 @@
     </tbody>
 </table>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
     
 
-    <h4 class="name" id="Xor"><span class="type-signature"></span>Xor<span class="signature">(lists, array)</span><span class="type-signature"></span></h4>
-
     
-
-
-
-
 <dl class="details">
     
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>Array Xor</li></ul></dd>
-    
 
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Array_Xor.js.html">Array/Xor.js</a>, <a href="Array_Xor.js.html#line1">line 1</a>
-    </li></ul></dd>
-    
+	
+
+	
+
+	
 
     
 
@@ -10697,45 +10150,69 @@
 
     
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
 
-    
 
-    
+	
 
-    
+	
 
-    
+	
 
-    
+	
 </dl>
 
 
-
-
-
-
-
-
-
-
-
-
-
-    <h5 class="h5-parameters">Parameters:</h5>
     
 
-<table class="params">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="Xor"><span class="type-signature"></span>Xor(lists, array)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        Array Xor
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
     <thead>
     <tr>
         
@@ -10805,25 +10282,64 @@
     </tbody>
 </table>
 
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
 
 
 
+	
+
+	
+
+	
+
+	
+</dl>
 
 
+    
 
+    
 
+    
 
+    
 
+    
 
+    
 
+    
+</dd>
 
-
-
-
-
-
-
-        
+        </dl>
     
 
     
@@ -10836,18 +10352,131 @@
 
 
 
+		</div>
+	</div>
 
-    
+	<div class="clearfix"></div>
+
+	
+		<div class="col-md-3">
+			<div id="toc" class="col-md-3 hidden-xs hidden-sm hidden-md"></div>
+		</div>
+	
+
+</div>
 </div>
 
-<br class="clear">
+
+    <div class="modal fade" id="searchResults">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Search results</h4>
+          </div>
+          <div class="modal-body"></div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div>
+
+
+<footer>
+
+
+<span class="jsdoc-message">
+	<!--Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.11</a>
+	
+		on 2023-03-01T06:15:20-07:00
+	
+	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>. -->
+</span>
+</footer>
+
+<script src="scripts/docstrap.lib.js"></script>
+<script src="scripts/toc.js"></script>
+
+    <script type="text/javascript" src="scripts/fulltext-search-ui.js"></script>
+
+
+<script>
+$( function () {
+	$( "[id*='$']" ).each( function () {
+		var $this = $( this );
+
+		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
+	} );
+
+	$( ".tutorial-section pre, .readme-section pre, pre.prettyprint.source" ).each( function () {
+		var $this = $( this );
+
+		var example = $this.find( "code" );
+		exampleText = example.html();
+		var lang = /{@lang (.*?)}/.exec( exampleText );
+		if ( lang && lang[1] ) {
+			exampleText = exampleText.replace( lang[0], "" );
+			example.html( exampleText );
+			lang = lang[1];
+		} else {
+			var langClassMatch = example.parent()[0].className.match(/lang\-(\S+)/);
+			lang = langClassMatch ? langClassMatch[1] : "javascript";
+		}
+
+		if ( lang ) {
+
+			$this
+			.addClass( "sunlight-highlight-" + lang )
+			.addClass( "linenums" )
+			.html( example.html() );
+
+		}
+	} );
+
+	Sunlight.highlightAll( {
+		lineNumbers : false,
+		showMenu : true,
+		enableDoclinks : true
+	} );
+
+	$.catchAnchorLinks( {
+        navbarOffset: 10
+	} );
+	$( "#toc" ).toc( {
+		anchorName  : function ( i, heading, prefix ) {
+			return $( heading ).attr( "id" ) || ( prefix + i );
+		},
+		selectors   : "#toc-content h1,#toc-content h2,#toc-content h3,#toc-content h4",
+		showAndHide : false,
+		smoothScrolling: true
+	} );
+
+	$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+	$( '.dropdown-toggle' ).dropdown();
+
+    $( "table" ).each( function () {
+      var $this = $( this );
+      $this.addClass('table');
+    } );
+
+} );
+</script>
 
 
 
-<script>prettyPrint();</script>
-<script src="scripts/polyfill.js"></script>
-<script src="scripts/linenumber.js"></script>
+<!--Navigation and Symbol Display-->
 
+
+<!--Google Analytics-->
+
+
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            SearcherDisplay.init();
+        });
+    </script>
 
 
 </body>

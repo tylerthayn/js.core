@@ -1,0 +1,1 @@
+{{name}}{{#if (Get 'param.showType' false)}} {{#type}}{{> type}}{{/type}}{{/if}}

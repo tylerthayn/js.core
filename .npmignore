@@ -1,8 +1,15 @@
 src
+build
 .Build
+docs
 .gitignore
 .git
 .github
 jsdoc.conf
 node_modules
 Gruntfile.js
+.jshintrc
+.npmignore
+README.md
+Review-Todo.txt
+Review-Todo.txt.unsaved

@@ -1,0 +1,2 @@
+## Installation
+	npm install {{pkg.name}} --save-dev

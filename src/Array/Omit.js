@@ -12,7 +12,7 @@ Define(Array.prototype, 'Omit', function () {
 		omit.push(arguments[i])
 	}
 	this.forEach(function (e) {
-		if (!omit.contains(e)) {
+		if (!omit.includes(e)) {
 			a.push(e)
 		}
 	})
