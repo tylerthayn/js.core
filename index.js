@@ -1,17 +1,22 @@
 (function (factory) {
 	if (typeof define === 'function' && define.amd) {
-		define('@js/core', ['lodash'], factory)
+		define('@tyler.thayn/js.core', ['lodash'], factory)
 	} else if (typeof module === 'object' && module.exports) {
 		module.exports = factory(require('lodash'))
 	} else {
-		factory(_)
+		if (typeof _ === 'undefined') {
+			if (typeof fetch === 'function') {
+				fetch('https://cdn.jsdelivr.net/npm/lodash/lodash.min.js').then(res => res.text()).then(js => {
+					eval(js)
+					factory(_)
+				})
+			}
+		} else {
+			factory(_)
+		}
 	}
 }(function (_) {
 
-	/**	
-	 * @module @tyler.thayn/js.core	
-	*/	
-		
 	/**	
 	* Array class	
 	* @summary [Array@MDN]{@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array}	
@@ -944,6 +949,20 @@
 		
 		
 	/**	
+	* Creates an object composed of the filtered object properties	
+	* @memberof Object#	
+	* @instance	
+	* @function Filter	
+	* @param {...(string|string[])} paths	
+	* @returns {object} object	
+	*/	
+	Define(Object.prototype, 'Filter', function (fn) {	
+		return _.pickBy(this, fn)	
+	})	
+		
+		
+		
+	/**	
 	* Get object value at the given path	
 	* @memberof Object#	
 	* @instance	
@@ -1027,6 +1046,22 @@
 	Define(Object.prototype, 'Merge', function () {	
 		return Merge.apply(null, [this].concat(_.toArray(arguments)))	
 	})	
+		
+		
+	/**	
+	* Creates an object composed of the omitted object properties	
+	* @memberof Object#	
+	* @instance	
+	* @function Omit	
+	* @param {...(string|string[])} paths	
+	* @returns {object} object	
+	*/	
+	Define(Object.prototype, 'Omit', function (...args) {	
+		return _.pickBy(this, (value, key) => {	
+			return !args.includes(key)	
+		})	
+	})	
+		
 		
 		
 	/**	

@@ -1,4 +1,4 @@
-require('@js/core')
+require('@tyler.thayn/js.core')
 const ChildProcess = require('child_process')
 const Fs = require('fs'), Path = require('path')
 
