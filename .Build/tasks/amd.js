@@ -9,6 +9,7 @@ module.exports = function(grunt) {
 	grunt.registerMultiTask('amd', 'AMD Wrapper', function() {
 		let options = this.options({dependencies: []})
 
+		let pkg = require(Path.resolve('./package.json'))
 
 		let defineStatement = 'define('
 		if (options.name && options.name != '') {
@@ -22,11 +23,20 @@ module.exports = function(grunt) {
 		let args = Object.values(options.dependencies).join(', ')
 		grunt.file.write(options.dest, `(function (factory) {
 	if (typeof define === 'function' && define.amd) {
-		define('@js/core', ['lodash'], factory)
+		define('${pkg.name}', ['lodash'], factory)
 	} else if (typeof module === 'object' && module.exports) {
 		module.exports = factory(require('lodash'))
 	} else {
-		factory(_)
+		if (typeof _ === 'undefined') {
+			if (typeof fetch === 'function') {
+				fetch('https://cdn.jsdelivr.net/npm/lodash/lodash.min.js').then(res => res.text()).then(js => {
+					eval(js)
+					factory(_)
+				})
+			}
+		} else {
+			factory(_)
+		}
 	}
 }(function (_) {
 
